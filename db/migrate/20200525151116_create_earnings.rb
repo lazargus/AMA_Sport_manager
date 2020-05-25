@@ -6,7 +6,7 @@ class CreateEarnings < ActiveRecord::Migration[6.0]
       t.date :date
       t.integer :forecast_amount
       t.integer :real_amount
-      t.references :tournament, null: false, foreign_key: true
+      t.references :tournament, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

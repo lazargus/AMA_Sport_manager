@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_151302) do
     t.date "date"
     t.integer "forecast_amount"
     t.integer "real_amount"
-    t.bigint "tournament_id", null: false
+    t.bigint "tournament_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_151302) do
     t.string "category"
     t.date "date"
     t.integer "amount"
-    t.bigint "tournament_id", null: false
+    t.bigint "tournament_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
