@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_130252) do
+ActiveRecord::Schema.define(version: 2020_05_25_151302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "earnings", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.date "date"
+    t.integer "forecast_amount"
+    t.integer "real_amount"
+    t.bigint "tournament_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tournament_id"], name: "index_earnings_on_tournament_id"
+    t.index ["user_id"], name: "index_earnings_on_user_id"
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.date "date"
+    t.integer "amount"
+    t.bigint "tournament_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tournament_id"], name: "index_expenses_on_tournament_id"
+    t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.jsonb "prize_money"
+    t.string "surface"
+    t.string "category"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +62,17 @@ ActiveRecord::Schema.define(version: 2020_05_25_130252) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.string "nationality"
+    t.integer "ranking"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "earnings", "tournaments"
+  add_foreign_key "earnings", "users"
+  add_foreign_key "expenses", "tournaments"
+  add_foreign_key "expenses", "users"
 end
