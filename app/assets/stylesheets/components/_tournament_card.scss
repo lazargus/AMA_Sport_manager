@@ -1,8 +1,4 @@
-body
-{
-  background-color:#eee
-}
-.wrap
+.card-container
 {
   margin:50px auto 0 auto;
   width:100%;
@@ -12,8 +8,10 @@ body
 }
 .tournament-card
 {
-  width:380px;
-  height:380px;
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  border-radius: 10px;
+  width:400px;
+  height:200px;
   margin:10px;
   background-color:#99aeff;
   display:inline-block;
@@ -46,13 +44,14 @@ body
 }
 .tournament-card h1
 {
-
+  font-size: 30px;
   font-weight:300;
   margin:0;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 .tournament-card h2
 {
+  font-size: 15px;
   font-weight:100;
   margin:20px 0 0 0;
   font-style:italic;
@@ -60,6 +59,7 @@ body
 }
 .tournament-card p
 {
+  font-size: 15px;
   font-weight:300;
   margin:20px 0 0 0;
   line-height: 25px;
@@ -74,8 +74,8 @@ body
 }
 .tournament-card:hover
 {
-/*   background-color:#99aeff; */
-box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
+  background: linear-gradient(141deg, rgba(13,93,226,1) 0%, rgba(32,75,231,0.7245273109243697) 50%, rgba(11,142,230,0.5760679271708684) 100%);
+  box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:scale(1.05);
 }
 .tournament-card:hover img
@@ -87,34 +87,6 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:translateX(0);
   opacity:1;
 }
-.dots
-{
-  position:absolute;
-  bottom:20px;
-  right:30px;
-  margin: 0 auto;
-  width:30px;
-  height:30px;
-  color:currentColor;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-around;
-
-}
-
-.dots span
-{
-    width: 5px;
-    height:5px;
-    background-color: currentColor;
-    border-radius: 50%;
-    display:block;
-  opacity:0;
-  transition: transform 0.4s ease-out, opacity 0.5s ease;
-  transform: translateY(30px);
-
-}
 
 .tournament-card:hover span
 {
@@ -122,22 +94,8 @@ box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:translateY(0px);
 }
 
-.dots span:nth-child(1)
-{
-   transition-delay: 0.05s;
-}
-.dots span:nth-child(2)
-{
-   transition-delay: 0.1s;
-}
-.dots span:nth-child(3)
-{
-   transition-delay: 0.15s;
-}
-
-
 @media (max-width: 1000px) {
-  .wrap {
+  .card-container {
    flex-direction: column;
     width:400px;
   }
