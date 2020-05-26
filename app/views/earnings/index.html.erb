@@ -1,0 +1,7 @@
+<h1>My Earnings</h1>
+
+<ul>
+  <% @earnings.each do |earning| %>
+  <li><%= link_to earning.title, earning_path(earning) %></li>
+  <% end %>
+</ul>
