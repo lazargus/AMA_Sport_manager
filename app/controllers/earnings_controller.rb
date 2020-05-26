@@ -1,94 +1,49 @@
 class EarningsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  before_action :set_racket, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_earning, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @rackets = policy_scope(Racket).geocoded.order(created_at: :desc)
-
-    if params[:search]
-
-      if params[:search][:location].present?
-        @rackets = @rackets.search_by_location(params[:search][:location])
-      end
-
-      if params[:models].last.present?
-        results = []
-
-        params[:models].reject(&:empty?).each do |model|
-          results << @rackets.search_by_model(model)
-        end
-
-        @rackets = results.flatten
-      end
-
-    end
+    @earnings = Earning.all
   end
 
-  def my_rackets
-    @rackets = current_user.rackets
-    authorize @rackets
-  end
-
-  def show
-    @booking = Booking.new
-
-
-
-    # @markers = @rackets.map do |racket|
-    #   {
-    #     lat: racket.latitude,
-    #     lng: racket.longitude
-    #   }
-    # end
-
-    @marker = { lat: @racket.latitude, lng: @racket.longitude }
-  end
+  def show; end
 
   def new
-    @racket = Racket.new
-    authorize @racket
+    @earning = Earning.new
   end
 
   def create
-    @racket = Racket.new(racket_params)
-    authorize @racket
-    @racket.user = current_user
-    if @racket.save
-      redirect_to racket_path(@racket)
+    @earning = Earning.new(earning_params)
+    @earning.user = current_user
+    if @earning.save
+      redirect_to earning_path(@earning)
     else
       render :new
     end
   end
 
-  def edit
-    authorize @racket
-  end
+  def edit; end
 
   def update
-    authorize @racket
-    if @racket.update(racket_params)
-      redirect_to racket_path(@racket), notice: 'Racket was successfully updated.'
+    if @earning.update(earning_params)
+      redirect_to earning_path(@earning), notice: 'Earning was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    authorize @racket
-    @racket.destroy
-    redirect_to my_rackets_rackets_path, notice: 'Racket was successfully destroyed.'
+    @earning.destroy
   end
 
   private
 
-  def set_racket
-    @racket = Racket.find(params[:id])
-    authorize @racket
+  def set_earning
+    @earning = Earning.find(params[:id])
   end
 
-  def racket_params
-    params.require(:racket).permit(:description, :price, :location, :model, :year, :photo, :availability)
+  def earning_params
+    params.require(:earning).permit(:date, :forecast_amount, :title, :category)
   end
 
-end
 end
