@@ -1,0 +1,12 @@
+<div class="text-center m-4">
+    <h1>Edit earning</h1>
+  </div>
+  <%= simple_form_for(@earning) do |f| %>
+  <%= f.input :date %>
+  <%= f.input :forecast_amount %>
+  <%= f.input :title %>
+  <%= f.input :category %>
+  <%= f.submit "Edit earning", class: "btn btn-primary" %>
+  <% end %>
+<button><i class="fa fa-trash "></i></button>
+<%= link_to "", earning_path(@earning), method: :delete %>
