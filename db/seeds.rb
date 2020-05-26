@@ -46,9 +46,14 @@ url_tournaments.first(2).each do |url|
   # atp logo
   tournament_logo = html_doc.at('.tournmanet-logo')
   logo_link = "https://www.atptour.com#{tournament_logo.children[1].attributes['src'].value}"
+
   # atp category
   category = html_doc.at('.tournmanet-logo').children[1].attributes['alt'].value
 
+  tournament = Tournament.new({ name: name, address: address, prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon,  })
+  tournament.photo.attach(io: URI.open(photo_link), filename: "tournament.jpg", content_type: "image/jpg")
+  tournament.logo.attach(io: URI.open(logo_link), filename: "category.jpg", content_type: "image/jpg")
+  tournament.save!
 end
 
 # puts "Cleaning Users seeds"
