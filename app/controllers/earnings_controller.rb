@@ -6,7 +6,8 @@ class EarningsController < ApplicationController
     @earnings = Earning.all
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @earning = Earning.new
@@ -22,7 +23,8 @@ class EarningsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @earning.update(earning_params)
@@ -34,6 +36,7 @@ class EarningsController < ApplicationController
 
   def destroy
     @earning.destroy
+    redirect_to earnings_path, notice: 'Earning was successfully cancelled.'
   end
 
   private
