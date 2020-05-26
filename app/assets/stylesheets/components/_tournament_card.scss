@@ -1,11 +1,12 @@
 .card-container
 {
-  margin:50px auto 0 auto;
+  padding: 0px 50px;
   width:100%;
-  display:flex;
-  align-items:space-around;
-  max-width:1200px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
+
 .tournament-card
 {
   background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
@@ -74,7 +75,7 @@
 }
 .tournament-card:hover
 {
-  background: linear-gradient(141deg, rgba(13,93,226,1) 0%, rgba(32,75,231,0.7245273109243697) 50%, rgba(11,142,230,0.5760679271708684) 100%);
+  background: linear-gradient(142deg, rgba(24,145,208,1) 0%, rgba(24,145,208,0.8897934173669468) 50%, rgba(24,145,208,0.6685049019607843) 100%);
   box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
   transform:scale(1.05);
 }
