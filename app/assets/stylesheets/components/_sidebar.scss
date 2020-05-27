@@ -18,6 +18,8 @@ h6 {
     background: $my-blue;
     color: #fff;
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
     i {
       width: 20px;
       text-align: center;
