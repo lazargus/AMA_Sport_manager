@@ -3,8 +3,8 @@
   </div>
   <%= simple_form_for(@earning) do |f| %>
   <%= f.input :date %>
-  <%= f.input :forecast_amount,  %>
+  <%= f.input :real_amount, label: "Amount", placeholder: "122"  %>
   <%= f.input :title %>
-  <%= f.input :category, collection: Earning::CATEGORY  %>
+  <%= f.input :category, collection: Earning::CATEGORY %>
   <%= f.submit "Add earning", class: "btn btn-primary" %>
   <% end %>
