@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resources :earnings
 
+  resources :my_tournaments, only: :index
 end

@@ -5,7 +5,7 @@
      <% @tournaments.each do |tournament| %>
        <%= link_to tournament_path(tournament) do %>
           <div class="tournament-card">
-            <img src='https://images.unsplash.com/photo-1464054313797-e27fb58e90a9?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=996&q=80'/>
+          <%= cl_image_tag tournament.photo.key, alt: "alttext" %>
             <div class="text">
             <h1><%= tournament.name %></h1>
             <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
