@@ -3,7 +3,7 @@ class EarningsController < ApplicationController
   before_action :set_earning, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @earnings = Earning.all
+    @earnings = current_user.earnings
   end
 
   def show

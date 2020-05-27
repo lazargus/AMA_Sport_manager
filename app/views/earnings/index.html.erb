@@ -2,10 +2,14 @@
     <h1>My Earnings</h1>
   </div>
 
-<ul>
   <% @earnings.each do |earning| %>
-  <li><%= link_to earning.title, earning_path(earning) %></li>
+   <div class="tournament-card">
+          <img src='https://images.unsplash.com/photo-1464054313797-e27fb58e90a9?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=996&q=80'/>
+          <div class="text">
+          <h1><%= earning.tournament.name %></h1>
+          <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+          <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
+        </div>
+       </div>
   <% end %>
-</ul>
 
-<%= link_to "Add a new fixed earning", new_earning_path %>
