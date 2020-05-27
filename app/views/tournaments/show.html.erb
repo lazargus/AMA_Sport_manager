@@ -2,6 +2,8 @@
   <h1><%= @tournament.name %></h1>
 </div>
 
-<div class="add-tournament-btn">Add Tournament</div>
+<div class="add-tournament-btn">
+  <%= link_to "ADD TOURNAMENT", my_tournaments_path(tournament: @tournament), method: :post %>
+</div>
 
 <script> </script>
