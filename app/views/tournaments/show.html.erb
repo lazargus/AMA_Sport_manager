@@ -1,9 +1,18 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <h1><%= @tournament.name %></h1>
-</div>
 
-<div class="add-tournament-btn">
-  <%= link_to "ADD TOURNAMENT", my_tournaments_path(tournament: @tournament), method: :post %>
+<div class="container">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
+    <div class="container-banner">
+      <div class="row">
+        <h1><%= @tournament.name %></h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row d-flex justify-content-end">
+      <div class="add-tournament-btn">
+        <%= link_to "ADD TOURNAMENT", my_tournaments_path(tournament: @tournament), method: :post %>
+      </div>
+    </div>
+  </div>
+  <script> </script>
 </div>
-
-<script> </script>
