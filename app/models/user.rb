@@ -5,8 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :earnings, dependent: :destroy
   has_many :expenses, dependent: :destroy
-  has_many :tournaments, through: :earnings
-  has_many :tournaments, through: :expenses
-
   validates :first_name, :last_name, presence: true
+
+  def tournaments
+    Tournament.find tournament_ids
+  end
+
+  private
+
+  def tournament_ids
+    [
+      earnings.pluck(:tournament_id) +
+      expenses.pluck(:tournament_id)
+    ].flatten.compact.uniq
+  end
 end
