@@ -2,15 +2,15 @@
 
 <div class="card-container">
      <% @tournaments.each do |tournament| %>
-        <div class="tournament-card">
-            <div style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))" >
-              <%= cl_image_tag tournament.photo.key, alt: "alttext" %>
-            </div>          <div class="text">
-          <h1><%= tournament.name %></h1>
-          <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-          <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
-        </div>
-       </div>
+       <%= link_to tournament_path(tournament) do %>
+          <div class="tournament-card" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
+            <div class="text">
+            <h1><%= tournament.name %></h1>
+            <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+            <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
+          </div>
+         </div>
+       <% end %>
     <% end %>
 </div>
 
