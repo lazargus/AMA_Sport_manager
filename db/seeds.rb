@@ -136,11 +136,11 @@ end
 
 puts "Finished"
 
-puts "Cleaning Users seeds"
-User.destroy_all
-puts "Creating some Users"
-stephane = User.new({ first_name: "stephane", last_name: "Bargès", email: "stephane@gmail.com", password: "tennis" })
-stephane.avatar.attach(io: File.open("app/assets/images/avatars/stephane.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
-stephane.save
-puts "Finished!"
+# puts "Cleaning Users seeds"
+# User.destroy_all
+# puts "Creating some Users"
+# stephane = User.new({ first_name: "stephane", last_name: "Bargès", email: "stephane@gmail.com", password: "tennis" })
+# stephane.avatar.attach(io: File.open("app/assets/images/stephane.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
+# stephane.save
+# puts "Finished!"
 

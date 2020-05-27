@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_144403) do
+ActiveRecord::Schema.define(version: 2020_05_27_145728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_144403) do
 
   create_table "earnings", force: :cascade do |t|
     t.string "title"
-    t.string "category"
     t.date "date"
     t.integer "forecast_amount"
     t.integer "real_amount"
@@ -46,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_144403) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category", default: "Prize money"
     t.index ["tournament_id"], name: "index_earnings_on_tournament_id"
     t.index ["user_id"], name: "index_earnings_on_user_id"
   end

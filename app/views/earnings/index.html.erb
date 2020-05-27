@@ -1,7 +1,11 @@
-<h1>My Earnings</h1>
+<div class="text-center m-4">
+    <h1>My Earnings</h1>
+  </div>
 
 <ul>
   <% @earnings.each do |earning| %>
   <li><%= link_to earning.title, earning_path(earning) %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add a new fixed earning", new_earning_path %>
