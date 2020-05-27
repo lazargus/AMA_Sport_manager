@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
     <div class="container-banner">
@@ -8,9 +9,10 @@
   </div>
   <div class="container">
     <div class="row d-flex justify-content-end">
-      <div class="add-tournament-btn">Add Tournament</div>
+      <div class="add-tournament-btn">
+        <%= link_to "ADD TOURNAMENT", my_tournaments_path(tournament: @tournament), method: :post %>
+      </div>
     </div>
   </div>
-
   <script> </script>
 </div>
