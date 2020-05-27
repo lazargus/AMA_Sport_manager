@@ -1,10 +1,10 @@
 <div class="text-center m-4">
-    <h1>Add a new earning</h1>
+    <h1>Add a fixed earning</h1>
   </div>
   <%= simple_form_for(@earning) do |f| %>
   <%= f.input :date %>
-  <%= f.input :forecast_amount %>
+  <%= f.input :forecast_amount,  %>
   <%= f.input :title %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: Earning::CATEGORY  %>
   <%= f.submit "Add earning", class: "btn btn-primary" %>
   <% end %>
