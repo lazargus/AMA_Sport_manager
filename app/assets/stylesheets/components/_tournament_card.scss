@@ -22,12 +22,13 @@
   overflow:hidden;
   color:white;
   font-family:'Roboto';
+
 }
 
 .tournament-card .text {
 /*   z-index:99; */
   position:absolute;
-  padding:30px;
+  padding:20px;
 }
 
 .tournament-card h1 {
@@ -35,6 +36,7 @@
   font-weight:300;
   margin:0;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  transition: 0.6s ease;
 }
 
 .tournament-card h2 {
@@ -42,13 +44,13 @@
   font-weight:100;
   margin:20px 0 0 0;
   font-style:italic;
-   transform: translateX(200px);
+  transform: translateX(200px);
 }
 
 .tournament-card p {
   font-size: 15px;
   font-weight:300;
-  margin:20px 0 0 0;
+  margin:8px 0 0 0;
   line-height: 25px;
   transform: translateX(-200px);
   transition-delay: 0.2s;
@@ -62,6 +64,11 @@
 .tournament-card:hover {
   box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.34);
   transform:scale(1.05);
+
+  h1 {
+    font-size: 24px;
+    transition: 0.6s ease;
+  }
 }
 
 .tournament-card:hover img {
