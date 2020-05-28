@@ -14,8 +14,8 @@
       <div class="tournament-card" data-img-url="<%= cl_image_path earning.tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
         <div class="text">
           <h1><%= earning.tournament.name %></h1>
-          <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-          <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
+          <h2 class="animate-text"><%= earning.tournament.address %></h2>
+          <p class="animate-text"><%= earning.tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
         </div>
       </div>
       <div class="earning-status">
