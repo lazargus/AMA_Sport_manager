@@ -1,16 +1,21 @@
 
 <div class="container">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
-    <div class="container-banner">
-      <div class="row">
+    <div class="container-banner text-left">
+      <div class="my-4">
         <h1><%= @tournament.name %></h1>
+      </div>
+      <div class="ml-4">
+        <h5 class="mb-3"><i class="fas fa-money-bill-wave"></i> <%= @tournament.prize_money %></h5>
+        <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
+        <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date %> to <%= @tournament.end_date %></h5>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row d-flex justify-content-end">
-      <div class="add-tournament-btn">
-        <%= link_to "ADD TOURNAMENT", my_tournaments_path(tournament: @tournament), method: :post %>
+      <div class="add-tournament-btn">Add tournament
+        <%= link_to "" ,my_tournaments_path(tournament: @tournament), method: :post %>
       </div>
     </div>
   </div>
