@@ -1,6 +1,6 @@
 class EarningsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  before_action :set_earning, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_earning, only: [ :show, :edit, :update]
 
   def index
     @earnings = current_user.earnings.joins(:tournament)
@@ -38,11 +38,6 @@ class EarningsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @earning.destroy
-    redirect_to earnings_path, notice: 'Earning was successfully cancelled.'
   end
 
   private
