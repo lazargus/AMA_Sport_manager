@@ -778,6 +778,16 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@fullcalendar/core@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.4.1.tgz#36e08c06a84712aab13514c3f40d883b2452a6c9"
+  integrity sha512-MfDGrBHEEP3oJO8vgU3iL4RvDqGtK9DhaqCiR5tGEEvahY+4rfBtkJ/XN6JuiO09/QGgrfRGNlAeKC3FZwGoNg==
+
+"@fullcalendar/daygrid@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-4.4.1.tgz#9cb4395cca3dee2303a90fcdd98042f3d8b6390d"
+  integrity sha512-UWOg3Dl5dHqYwQElEgTQ97GMg7IZ7e7fZYhMisvGGa7Yi/d/8NRCYl2F+FR1QnSyht/RwAPTCvEunGHizQMv3w==
+
 "@rails/actioncable@^6.0.0":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
