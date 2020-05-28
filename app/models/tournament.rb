@@ -7,4 +7,6 @@ class Tournament < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  # store_accessor :data, :rounds :atp_points :prize_money
+
 end
