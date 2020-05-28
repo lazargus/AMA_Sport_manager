@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'ferrum'
 
 def download_to_file(uri)
   stream = open(uri, "rb")
@@ -30,7 +31,7 @@ end
 # url_tournaments[54]
 
 puts "Cleaning tournaments...."
-Tournament.destroy_all
+# Tournament.destroy_all
 
 puts "Creating tournament database...."
 url_tournaments.each do |url|
@@ -129,6 +130,18 @@ url_tournaments.each do |url|
   # atp points
   # tournament_points = html_doc.search('#tourneyOverviewTabs > div.tourney-tab-content > div > div:nth-child(1) > table > tbody > tr:nth-child(1) > td:nth-child(3)')
 
+  # browser = Ferrum::Browser.new(headless: false)
+  browser = Ferrum::Browser.new
+  browser.goto url
+  # require 'pry'
+  # binding.pry
+  puts singles_prize_money =
+    browser.css('#tourneyOverviewTabs > div.tourney-tab-content > div > div:nth-child(1) > table > tbody > tr > td')
+      .map(&:inner_text)
+      .reject(&:blank?)
+      sleep 10
+  browser.quit
+
   # tournament creation
   tournament = Tournament.new({ name: name, address: address, official_link: official_link, prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon })
   tournament.save
@@ -140,11 +153,12 @@ end
 
 puts "Finished"
 
-# puts "Cleaning Users seeds"
-# User.destroy_all
-# puts "Creating some Users"
-# stephane = User.new({ first_name: "stephane", last_name: "Bargès", email: "stephane@gmail.com", password: "tennis" })
-# stephane.avatar.attach(io: File.open("app/assets/images/stephane.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
-# stephane.save
-# puts "Finished!"
+
+
+url = 'https://www.atptour.com/en/tournaments/shanghai/5014/overview?detailTab=points'
+# url = 'https://gwww.atptour.com/en/tournaments/shanghai/5014/overview'
+​
+​
+
+
 
