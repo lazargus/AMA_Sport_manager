@@ -12,7 +12,7 @@
       <div class="ml-4">
         <h5 class="mb-3"><i class="fas fa-money-bill-wave"></i> <%= @tournament.total_prize_money %></h5>
         <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
-        <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date %> to <%= @tournament.end_date %></h5>
+        <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date.strftime("%A %B %d") %> to <%= @tournament.end_date.strftime("%A %B %d") %></h5>
       </div>
       <div class="row mr-5 justify-content-end">
         <div class="add-tournament-btn">Add tournament
@@ -33,7 +33,14 @@
       </div>
       <div class="container col-4">
         <div class="show-tournament-card">
-          <%= cl_image_tag @tournament.photo.key, alt: "alttext" %>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id voluptatibus consectetur inventore. Saepe consequatur, accusantium. Ad similique ipsa dolorem aspernatur provident veniam, necessitatibus reiciendis maiores, fugiat repudiandae facilis! Consectetur, facere, aliquam! Quae distinctio modi at eveniet, odit, doloremque fugit rerum.</p>
+          <br>
+          <br>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum voluptatem earum rem aliquid eaque mollitia, nam voluptas qui ipsam, minima natus ea delectus veniam quisquam. Iste veniam asperiores esse ex?</p>
+          <!-- simple form en radio button
+          collection de radio button ca sera array des keys de data (data.keys)
+
+           -->
         </div>
       </div>
     </div>

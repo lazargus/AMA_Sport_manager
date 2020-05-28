@@ -31,7 +31,7 @@ end
 # url_tournaments[54]
 
 puts "Cleaning tournaments...."
-# Tournament.destroy_all
+Tournament.destroy_all
 
 puts "Creating tournament database...."
 url_tournaments.each do |url|
@@ -133,18 +133,30 @@ url_tournaments.each do |url|
   # browser = Ferrum::Browser.new(headless: false)
   browser = Ferrum::Browser.new
   browser.goto url
-  # require 'pry'
-  # binding.pry
-  puts singles_prize_money =
-    browser.css('#tourneyOverviewTabs > div.tourney-tab-content > div > div:nth-child(1) > table > tbody > tr > td')
+  singles_prize_money =
+    browser.css('#tourneyOverviewTabs > div.tourney-tab-content > div > div:nth-child(1) > table > tbody > tr ')
       .map(&:inner_text)
       .reject(&:blank?)
-      sleep 10
   browser.quit
+  data = {}
+  singles_prize_money.each do |element|
+    round = element.strip.split("\t")
+    case round.length
+      when 2
+        data[round[0]] = {atp_points: round[1], prize_money: round[2]}
+      when 1
+        data[round[0]] = {atp_points: round[1], prize_money: 0}
+      when 0
+        data['empty'] = {atp_points: 'not available', prize_money: 'not available'}
+      when 3
+        data[round[0]] = {atp_points: round[1], prize_money: round[2]}
+    end
+  end
 
   # tournament creation
-  tournament = Tournament.new({ name: name, address: address, official_link: official_link, total_prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon })
+  tournament = Tournament.new({ name: name, address: address, official_link: official_link, total_prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon, data: data.to_json })
   tournament.save
+  # tournament.update(data: data.to_json)
   tournament.photo.attach(io: downloaded_photo, filename: "tournament.jpg")
   tournament.logo.attach(io: downloaded_logo, filename: "category.png")
 
@@ -153,10 +165,6 @@ end
 
 puts "Finished"
 
-
-
-url = 'https://www.atptour.com/en/tournaments/shanghai/5014/overview?detailTab=points'
-# url = 'https://gwww.atptour.com/en/tournaments/shanghai/5014/overview'
 ​
 ​
 
