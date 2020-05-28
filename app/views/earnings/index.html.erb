@@ -2,6 +2,11 @@
   <h1>My Earnings</h1>
   <%= link_to 'Add fixed earning', new_earning_path, class:'add-tournament-btn'  %>
 </div>
+<div class="filters">
+  <%= link_to 'All', earnings_path, class:'filter-btn'  %>
+  <%= link_to 'Past', earnings_path(only_past_earnings: true), class:'filter-btn ml-3'  %>
+  <%= link_to 'Future', earnings_path(only_past_earnings: false), class:'filter-btn ml-3'  %>
+</div>
 
 <% @earnings.each do |earning| %>
   <% if earning.tournament != nil %>
@@ -9,8 +14,8 @@
       <div class="tournament-card" data-img-url="<%= cl_image_path earning.tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
         <div class="text">
           <h1><%= earning.tournament.name %></h1>
-          <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-          <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
+          <h2 class="animate-text"><%= earning.tournament.address %></h2>
+          <p class="animate-text"><%= earning.tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
         </div>
       </div>
       <div class="earning-status">
@@ -20,7 +25,7 @@
             <i class="fas fa-arrow-right"></i>
           <% end %>
         <% else %>
-          <p><em><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. Wait until this date to validate your result</em></p>
+          <p class='waiting'><em><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. Wait until this date to validate your result</em></p>
         <% end %>
       </div>
     </div>
