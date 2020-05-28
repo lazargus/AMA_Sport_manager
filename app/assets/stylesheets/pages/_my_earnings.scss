@@ -10,20 +10,44 @@
   font-size: 35px;
   margin-left: 15px;
   height: 2em;
+  color: $my-dark-blue;
 }
 
 .earning-status {
   width: 50vw;
+  margin-left: 15px;
 }
 
 .validate {
   display: flex;
   align-items: center;
+  color: $my-dark-blue;
 }
 
 .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.filter-btn {
+  background-color: $my-light-gray;
+  color: #FFD400;
+  border: 1px solid #FFD400;
+  border-radius: 30px;
+  padding: 0 20px;
+  font-size: 14px;
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
   margin-bottom: 15px;
+}
+
+.waiting {
+  color: gray;
 }

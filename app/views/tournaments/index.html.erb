@@ -6,10 +6,10 @@
        <%= link_to tournament_path(tournament) do %>
           <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
             <div class="text">
-            <h1><%= tournament.name %></h1>
-            <h2 class="animate-text"><%= tournament.address %></h2>
-            <p class="animate-text"><%= tournament.start_date.strftime("%A %d %B %Y") %></p>
-          </div>
+              <h1><%= tournament.name %></h1>
+              <h2 class="animate-text"><%= tournament.address %></h2>
+              <p class="animate-text"><%= tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
+            </div>
          </div>
        <% end %>
     <% end %>
