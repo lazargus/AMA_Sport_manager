@@ -14,9 +14,7 @@
         <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
         <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date.strftime("%A %B %d") %> to <%= @tournament.end_date.strftime("%A %B %d") %></h5>
       </div>
-      <div class="add-tournament-btn">Add tournament
-        <%= link_to "" ,my_tournaments_path(tournament: @tournament), method: :post %>
-      </div>
+        <%= link_to "Add tournament" ,my_tournaments_path(tournament: @tournament), class:"add-tournament-btn", method: :post %>
     </div>
   </div>
 
