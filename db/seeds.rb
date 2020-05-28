@@ -85,7 +85,11 @@ url_tournaments.each do |url|
   if html_doc.search('.hero-date-range').present?
     date = html_doc.search('.hero-date-range')[1].children.first.text.gsub("- ", "").split(" ")
     start_date = Date.parse([date[0], date[1], date[3]].join(" "))
-    end_date = Date.parse([date[0], date[2], date[3]].join(" "))
+    if date.length == 4
+      end_date = Date.parse([date[0], date[2], date[3]].join(" "))
+    elsif date.length == 5
+      end_date = Date.parse([date[2], date[3], date[4]].join(" "))
+    end
   else
     start_date = 2020/01/01
     start_end = 2020/01/02
