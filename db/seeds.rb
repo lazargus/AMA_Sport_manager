@@ -143,7 +143,7 @@ url_tournaments.each do |url|
   browser.quit
 
   # tournament creation
-  tournament = Tournament.new({ name: name, address: address, official_link: official_link, prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon })
+  tournament = Tournament.new({ name: name, address: address, official_link: official_link, total_prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon })
   tournament.save
   tournament.photo.attach(io: downloaded_photo, filename: "tournament.jpg")
   tournament.logo.attach(io: downloaded_logo, filename: "category.png")
