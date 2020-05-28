@@ -3,7 +3,13 @@ class EarningsController < ApplicationController
   before_action :set_earning, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @earnings = current_user.earnings
+    @earnings = current_user.earnings.joins(:tournament)
+    if params[:only_past_earnings] == 'true'
+      @earnings = @earnings.where('tournaments.end_date <?', Date.today)
+    end
+    if params[:only_past_earnings] == 'false'
+      @earnings = @earnings.where('tournaments.end_date >?', Date.today)
+    end
   end
 
   def show
