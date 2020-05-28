@@ -1,7 +1,7 @@
 
 <div class="container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
-    <div class="container-banner text-left">
+  <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
+    <div class="container-banner d-flex flex-column text-left">
       <div class="my-4">
         <h1><%= @tournament.name %></h1>
       </div>
@@ -10,12 +10,21 @@
         <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
         <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date %> to <%= @tournament.end_date %></h5>
       </div>
+      <div class="row mr-5 justify-content-end">
+        <div class="add-tournament-btn">Add tournament
+          <%= link_to "" ,my_tournaments_path(tournament: @tournament), method: :post %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container">
-    <div class="row d-flex justify-content-end">
-      <div class="add-tournament-btn">Add tournament
-        <%= link_to "" ,my_tournaments_path(tournament: @tournament), method: :post %>
+    <div class="d-flex justify-content-between">
+      <div class="show-tournament-card col-7">
+        <p><%= @tournament.description %></p>
+      </div>
+      <div class="show-tournament-card col-4">
+        <%= cl_image_tag @tournament.photo.key, alt: "alttext" %>
+        <p>lorem20</p>
       </div>
     </div>
   </div>
