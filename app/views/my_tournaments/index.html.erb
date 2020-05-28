@@ -4,6 +4,17 @@
 <div id='calendar'></div>
 
 
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+
 <div class="add-tournament-btn">
   <%= link_to "ADD TOURNAMENT", tournaments_path %>
 </div>
@@ -11,7 +22,11 @@
 <div class="card-container">
      <% @tournaments.each do |tournament| %>
        <%= link_to tournament_path(tournament) do %>
-          <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
+          <div class="tournament-card my-tournaments"
+          data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');"
+          data-tournament-name="<%= tournament.name %>"
+          data-start-date="<%= tournament.start_date.strftime("%Y-%m-%d") %>"
+          data-end-date="<%= tournament.end_date.strftime("%Y-%m-%d") %>" >
             <div class="text">
             <h1><%= tournament.name %></h1>
             <h2 class="animate-text"><%= tournament.address %></h2>
@@ -21,5 +36,3 @@
        <% end %>
     <% end %>
 </div>
-
-<script> </script>
