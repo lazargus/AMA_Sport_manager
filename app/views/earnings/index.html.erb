@@ -1,17 +1,30 @@
-<div class="text-center m-4">
-    <h1>My Earnings</h1>
-  </div>
+<div class="top">
+  <h1>My Earnings</h1>
+  <%= link_to 'Add fixed earning', new_earning_path, class:'add-tournament-btn'  %>
+</div>
 
-  <% @earnings.each do |earning| %>
+<% @earnings.each do |earning| %>
   <% if earning.tournament != nil %>
-   <div class="tournament-card">
-          <img src='https://images.unsplash.com/photo-1464054313797-e27fb58e90a9?dpr=1&auto=format&crop=entropy&fit=crop&w=1500&h=996&q=80'/>
-          <div class="text">
-            <h1><%= earning.tournament.name %></h1>
-            <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
-            <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
+    <div class="earning-container">
+      <div class="tournament-card" data-img-url="<%= cl_image_path earning.tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
+        <div class="text">
+          <h1><%= earning.tournament.name %></h1>
+          <h2 class="animate-text">More lorem ipsum bacon ipsum.</h2>
+          <p class="animate-text">Bacon ipsum dolor amet pork belly tri-tip turducken, pancetta bresaola pork chicken meatloaf.</p>
         </div>
-       </div>
+      </div>
+      <div class="earning-status">
+        <% if earning.tournament.end_date < Date.today %>
+          <%= link_to edit_earning_path(earning), class:'validate' do  %>
+            <p><%= earning.tournament.name%> is finished since <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. <br>Please <strong>validate your result</strong> in order to calculate associated earning!</p>
+            <i class="fas fa-arrow-right"></i>
+          <% end %>
+        <% else %>
+          <p><em><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. Wait until this date to validate your result</em></p>
+        <% end %>
+      </div>
+    </div>
+  <hr>
   <% end %>
-  <% end %>
+<% end %>
 
