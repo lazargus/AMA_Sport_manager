@@ -1,16 +1,40 @@
 
 <div class="container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
-    <div class="container-banner">
-      <div class="row">
+  <%= link_to tournaments_path, method: :get  do %>
+    <i class="fas fa-history"></i> Back to tournaments
+  <% end %>
+  <hr>
+  <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
+    <div class="container-banner d-flex flex-column text-left">
+      <div class="my-4">
         <h1><%= @tournament.name %></h1>
+      </div>
+      <div class="ml-4">
+        <h5 class="mb-3"><i class="fas fa-money-bill-wave"></i> <%= @tournament.prize_money %></h5>
+        <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
+        <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date %> to <%= @tournament.end_date %></h5>
+      </div>
+      <div class="row mr-5 justify-content-end">
+        <div class="add-tournament-btn">Add tournament
+          <%= link_to "" ,my_tournaments_path(tournament: @tournament), method: :post %>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="container">
-    <div class="row d-flex justify-content-end">
-      <div class="add-tournament-btn">
-        <%= link_to "ADD TOURNAMENT", my_tournaments_path(tournament: @tournament), method: :post %>
+    <div class="d-flex justify-content-between">
+      <div class="container col-7">
+        <h5><em>Descritption</em></h5>
+        <hr>
+        <div class="show-tournament-card">
+          <p><%= @tournament.description %></p>
+        </div>
+      </div>
+      <div class="container col-4">
+        <div class="show-tournament-card">
+          <%= cl_image_tag @tournament.photo.key, alt: "alttext" %>
+        </div>
       </div>
     </div>
   </div>
