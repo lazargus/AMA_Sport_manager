@@ -1,10 +1,22 @@
-<div class="text-center m-4">
-    <h1>Add a fixed earning</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 offset-sm-3">
+      <div class="form-post">
+        <h1>Add a fixed earning</h1>
+        <%= simple_form_for(@earning) do |f| %>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <%= f.input :date %>
+            <%= f.input :real_amount, label: "What was the amount of your earning?", placeholder: "Enter amount" %>
+            <%= f.input :category, label: "Nature of your earning", collection: Earning::CATEGORY %>
+            <%= f.input :title, label: "Description", placeholder: "Please briefly describe your earning" %>
+          </div>
+
+        </div>
+          <%= f.submit "Add earning", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%= simple_form_for(@earning) do |f| %>
-  <%= f.input :date %>
-  <%= f.input :real_amount, label: "Amount", placeholder: "122" %>
-  <%= f.input :title, label: "Description", placeholder: "Sponsoring Lacoste" %>
-  <%= f.input :category, collection: Earning::CATEGORY %>
-  <%= f.submit "Add earning", class: "btn btn-primary" %>
-  <% end %>
+</div>
