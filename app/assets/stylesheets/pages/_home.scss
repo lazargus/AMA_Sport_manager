@@ -10,9 +10,17 @@
   background-color: $my-blue;
 }
 
+#image-home {
+  vertical-align: middle;
+  border-style: none;
+  width: 250px;
+  height: 250px;
+  align-items: center;
+}
+
 .container-image-home {
-  background-size: 300px;
+  background-size: cover;
   background-position: center;
-  height: 46%;
-  width: 285px;
+  height: 100%;
+  padding-top: 66px;
 }
