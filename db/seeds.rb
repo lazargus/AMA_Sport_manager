@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'ferrum'
 
 def download_to_file(uri)
   stream = open(uri, "rb")
@@ -129,9 +130,33 @@ url_tournaments.each do |url|
   # atp points
   # tournament_points = html_doc.search('#tourneyOverviewTabs > div.tourney-tab-content > div > div:nth-child(1) > table > tbody > tr:nth-child(1) > td:nth-child(3)')
 
+  # browser = Ferrum::Browser.new(headless: false)
+  browser = Ferrum::Browser.new
+  browser.goto url
+  singles_prize_money =
+    browser.css('#tourneyOverviewTabs > div.tourney-tab-content > div > div:nth-child(1) > table > tbody > tr ')
+      .map(&:inner_text)
+      .reject(&:blank?)
+  browser.quit
+  data = {}
+  singles_prize_money.each do |element|
+    round = element.strip.split("\t")
+    case round.length
+      when 2
+        data[round[0]] = {atp_points: round[1], prize_money: round[2]}
+      when 1
+        data[round[0]] = {atp_points: round[1], prize_money: 0}
+      when 0
+        data['empty'] = {atp_points: 'not available', prize_money: 'not available'}
+      when 3
+        data[round[0]] = {atp_points: round[1], prize_money: round[2]}
+    end
+  end
+
   # tournament creation
-  tournament = Tournament.new({ name: name, address: address, official_link: official_link, prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon })
+  tournament = Tournament.new({ name: name, address: address, official_link: official_link, total_prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon, data: data.to_json })
   tournament.save
+  # tournament.update(data: data.to_json)
   tournament.photo.attach(io: downloaded_photo, filename: "tournament.jpg")
   tournament.logo.attach(io: downloaded_logo, filename: "category.png")
 
@@ -140,11 +165,8 @@ end
 
 puts "Finished"
 
-# puts "Cleaning Users seeds"
-# User.destroy_all
-# puts "Creating some Users"
-# stephane = User.new({ first_name: "stephane", last_name: "Bargès", email: "stephane@gmail.com", password: "tennis" })
-# stephane.avatar.attach(io: File.open("app/assets/images/stephane.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
-# stephane.save
-# puts "Finished!"
+​
+​
+
+
 
