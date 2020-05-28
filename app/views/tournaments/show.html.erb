@@ -1,5 +1,9 @@
 
 <div class="container">
+  <%= link_to tournaments_path, method: :get  do %>
+    <i class="fas fa-history"></i> Back to tournaments
+  <% end %>
+  <hr>
   <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
     <div class="container-banner d-flex flex-column text-left">
       <div class="my-4">
@@ -17,14 +21,20 @@
       </div>
     </div>
   </div>
+
   <div class="container">
     <div class="d-flex justify-content-between">
-      <div class="show-tournament-card col-7">
-        <p><%= @tournament.description %></p>
+      <div class="container col-7">
+        <h5><em>Descritption</em></h5>
+        <hr>
+        <div class="show-tournament-card">
+          <p><%= @tournament.description %></p>
+        </div>
       </div>
-      <div class="show-tournament-card col-4">
-        <%= cl_image_tag @tournament.photo.key, alt: "alttext" %>
-        <p>lorem20</p>
+      <div class="container col-4">
+        <div class="show-tournament-card">
+          <%= cl_image_tag @tournament.photo.key, alt: "alttext" %>
+        </div>
       </div>
     </div>
   </div>
