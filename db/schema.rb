@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_145728) do
+ActiveRecord::Schema.define(version: 2020_05_28_154756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_145728) do
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.jsonb "prize_money"
+    t.jsonb "data"
     t.string "surface"
     t.string "category"
     t.date "start_date"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_145728) do
     t.string "last_winner"
     t.float "latitude"
     t.float "longitude"
+    t.string "total_prize_money"
   end
 
   create_table "users", force: :cascade do |t|

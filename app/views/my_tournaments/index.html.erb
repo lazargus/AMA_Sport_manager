@@ -1,25 +1,20 @@
 <h1>My tournaments</h1>
 
 
-<div id='calendar'></div>
+<div id='calendar' data-tournaments="<%= @tournaments.map{|tournament| tournament.data_for_calendar}.to_json %>"></div>
 
 
-<div class="add-tournament-btn">
-  <%= link_to "ADD TOURNAMENT", tournaments_path %>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
 </div>
 
-<div class="card-container">
-     <% @tournaments.each do |tournament| %>
-       <%= link_to tournament_path(tournament) do %>
-          <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
-            <div class="text">
-            <h1><%= tournament.name %></h1>
-            <h2 class="animate-text"><%= tournament.address %></h2>
-            <p class="animate-text"><%= tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
-          </div>
-         </div>
-       <% end %>
-    <% end %>
-</div>
 
-<script> </script>
+
+  <%= link_to "ADD TOURNAMENT", tournaments_path, class: 'add-tournament-btn' %>
+  
