@@ -8,7 +8,13 @@
 }
 
 #earnings-new .content-wrapper {
-  margin-top: 0px; 
+  margin-top: 0px;
+  min-height: 100vh;
+  padding: 0 0 0 190px;
+}
+
+#expenses-new .content-wrapper {
+  margin-top: 0px;
   min-height: 100vh;
   padding: 0 0 0 190px;
 }
