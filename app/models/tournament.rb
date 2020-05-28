@@ -16,4 +16,5 @@ class Tournament < ApplicationRecord
       id: id
     }
   end
+
 end
