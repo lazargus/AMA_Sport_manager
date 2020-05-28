@@ -32,6 +32,9 @@
       <div class="container col-4">
         <div class="show-tournament-card">
 
+          <%= simple_form_for(@tournament) do |f| %>
+            <%= f.association :data.keys, as: :check_box %>
+          <% end %>
 
 
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id voluptatibus consectetur inventore. Saepe consequatur, accusantium. Ad similique ipsa dolorem aspernatur provident veniam, necessitatibus reiciendis maiores, fugiat repudiandae facilis! Consectetur, facere, aliquam! Quae distinctio modi at eveniet, odit, doloremque fugit rerum.</p>
