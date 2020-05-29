@@ -3,13 +3,13 @@ class EarningsController < ApplicationController
   before_action :set_earning, only: [ :show, :edit, :update]
 
   def index
-    @earnings = current_user.earnings.joins(:tournament)
-    if params[:only_past_earnings] == 'true'
-      @earnings = @earnings.where('tournaments.end_date <?', Date.today)
-    end
-    if params[:only_past_earnings] == 'false'
-      @earnings = @earnings.where('tournaments.end_date >?', Date.today)
-    end
+    @earnings = if params[:only_past_earnings] == 'true'
+                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today)
+                elsif params[:only_past_earnings] == 'false'
+                  current_user.earnings.joins(:tournament).where('tournaments.end_date >?', Date.today)
+                else
+                  current_user.earnings.joins(:tournament)
+                end
   end
 
   def show
@@ -22,12 +22,7 @@ class EarningsController < ApplicationController
   def create
     @earning = Earning.new(earning_params)
     @earning.user = current_user
-    @tournament = Tournament.find(params[:tournament_id])
-    @earning.tournament = @tournament
-    @expense = Expense.new
-    @expense.user = current_user
-    @expense.tournament = @tournament
-    if @earning.save && @expense.save
+    if @earning.save
       redirect_to earning_path(@earning)
     else
       render :new

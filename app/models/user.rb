@@ -11,8 +11,9 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   def tournaments
-    Tournament.find tournament_ids
+    Tournament.where id: tournament_ids
   end
+
 
   private
 

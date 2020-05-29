@@ -3,10 +3,7 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :update]
 
   def index
-    # @expenses = current_user.tournaments.not_started.map(&:expenses).flatten
-    @expenses = current_user.expenses.joins(:tournament)
-    @expenses = @expenses.where('tournaments.start_date >?', Date.today)
-    # @tournaments = current_user.tournaments
+    @tournaments = current_user.tournaments.where('tournaments.end_date >?', Date.today)
   end
 
   def show
