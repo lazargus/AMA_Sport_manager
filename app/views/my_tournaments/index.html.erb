@@ -27,7 +27,7 @@
           <% end %>
         <% else %>
           <p class='waiting'><em><%= tournament.name%> will finish on <%= tournament.end_date.strftime("%d/%m/%Y")%>. Wait until this date to validate your result</em></p>
-          <p><%= tournament.total_prize_money %></p>
+          <p>Prize Money : <%= tournament.total_prize_money %></p>
         <% end %>
       </div>
     </div>
