@@ -1,6 +1,22 @@
 .content-wrapper {
   padding: 66px 25px 25px 220px;
   width: 100vw;
+  // Pour la photo de new earning:
+  // margin: 66px 0 0 190px;
+  // width: calc(100vw - 190px);
+  // min-height: calc(100vh - 66px);
+}
+
+#earnings-new .content-wrapper {
+  margin-top: 0px;
+  min-height: 100vh;
+  padding: 0 0 0 190px;
+}
+
+#expenses-new .content-wrapper {
+  margin-top: 0px;
+  min-height: 100vh;
+  padding: 0 0 0 190px;
 }
 
 .container-fluid {
@@ -13,7 +29,14 @@ body {
 }
 
 .earning-container {
-  width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
+}
+
+.container-image {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  padding-top: 66px;
 }
