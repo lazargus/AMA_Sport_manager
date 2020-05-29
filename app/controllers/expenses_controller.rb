@@ -6,6 +6,7 @@ class ExpensesController < ApplicationController
     # @expenses = current_user.tournaments.not_started.map(&:expenses).flatten
     @expenses = current_user.expenses.joins(:tournament)
     @expenses = @expenses.where('tournaments.start_date >?', Date.today)
+    # @tournaments = current_user.tournaments
   end
 
   def show
