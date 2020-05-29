@@ -34,7 +34,7 @@ class EarningsController < ApplicationController
 
   def update
     if @earning.update(earning_params)
-      redirect_to earning_path(@earning), notice: 'Earning was successfully updated.'
+      redirect_to earning_path(@earning), notice: 'Earning was successfully added.'
     else
       render :edit
     end

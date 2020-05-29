@@ -27,7 +27,7 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      redirect_to expense_path(@expense), notice: 'Expense was successfully updated.'
+      redirect_to expense_path(@expense), notice: 'Expense was successfully added.'
     else
       render :show
     end
