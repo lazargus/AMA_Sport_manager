@@ -1,12 +1,44 @@
-<div class="container-home">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-image"
+  style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80);">
+  <div class="container-image-home">
+    <%= image_tag("ama-noir2.png", class: "logo-ama mx-auto d-block") %>
+  </div>
+
+  <!-- <div class="row no-gutters"> -->
+    <div class="d-flex">
+      <div class="form-post-home">
+        <%= link_to earnings_path do %>
+        <%= image_tag("analytics.svg", class: "nom-de-ta-classe mx-auto d-block") %>
+        <h1>My Budget</h1>
+        <p>No more worries about managing your money, AMA has been built for you!</p>
+      </div>
+      <% end %>
+   
+
+    <!-- <div class="col-xs-12 col-sm-6 offset-sm-1"> -->
+      <div class="form-post-home">
+        <%= link_to earnings_path do %>
+        <%= image_tag("tennis.svg", class: "nom-de-ta-classe mx-auto d-block") %>
+        <h1>Analytics</h1>
+        <p>No more worries about managing your stats, AMA has been built for you!</p>
+      </div>
+      <% end %>
+    <!-- </div> -->
+  </div>
+    
+  <!-- </div> -->
+
+    <div class="col-xs-12 col-sm-6 offset-sm-4">
+      <div class="form-post-home-bottom">
+        <%= link_to my_tournaments_path do %>
+        <%= image_tag("calendar.svg", class: "nom-de-ta-classe mx-auto d-block") %>
+        <h1>Programmation</h1>
+        <p>No more worries about programming your tournaments, AMA has been built for you!</p>
+      </div>
+      <% end %>
+    </div>
+
+</div>
 </div>
 
-<div class="container-image-home">
-  <div>
-
-    <%= image_tag("balle.png") %>
-  </div>
-<p>Test</p>
 </div>

@@ -1,8 +1,6 @@
 <h1>My tournaments</h1>
-
-
+ <div class="card-container mt-3">
   <%= link_to "ADD TOURNAMENT", tournaments_path, class: 'add-tournament-btn' %>
-<div class="card-container">
      <% @tournaments.each do |tournament| %>
        <%= link_to tournament_path(tournament) do %>
           <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
