@@ -59,11 +59,11 @@ a:hover {
     &.active, p[data-toggle="collapse"].active {
       background: $my-light-gray;
       border-radius: 10px 0 0 10px;
-      color: $my-blue;
+      color: $my-dark-blue;
       p {
-        color: #0284c1;
+        color: $my-dark-blue;
         i {
-          color: #0284c1;
+          color: $my-dark-blue;
         }
       }
     }
@@ -83,7 +83,7 @@ i {
 }
 
 i.active {
-  color: #0284c1;
+  color: $my-dark-blue;
 }
 
 // .log-out {
