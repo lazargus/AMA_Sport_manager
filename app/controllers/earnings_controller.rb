@@ -22,7 +22,12 @@ class EarningsController < ApplicationController
   def create
     @earning = Earning.new(earning_params)
     @earning.user = current_user
-    if @earning.save
+    @tournament = Tournament.find(params[:tournament_id])
+    @earning.tournament = @tournament
+    @expense = Expense.new
+    @expense.user = current_user
+    @expense.tournament = @tournament
+    if @earning.save && @expense.save
       redirect_to earning_path(@earning)
     else
       render :new

@@ -31,7 +31,7 @@ end
 # url_tournaments[54]
 
 puts "Cleaning tournaments...."
-Tournament.destroy_all
+# Tournament.destroy_all
 
 puts "Creating tournament database...."
 url_tournaments.each do |url|
@@ -85,10 +85,11 @@ url_tournaments.each do |url|
   # start and end dates
   if html_doc.search('.hero-date-range').present?
     date = html_doc.search('.hero-date-range')[1].children.first.text.gsub("- ", "").split(" ")
-    start_date = Date.parse([date[0], date[1], date[3]].join(" "))
     if date.length == 4
+      start_date = Date.parse([date[0], date[1], date[3]].join(" "))
       end_date = Date.parse([date[0], date[2], date[3]].join(" "))
     elsif date.length == 5
+      start_date = Date.parse([date[0], date[1], date[4]].join(" "))
       end_date = Date.parse([date[2], date[3], date[4]].join(" "))
     end
   else

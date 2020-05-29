@@ -26,17 +26,25 @@
         <div class="show-tournament-card">
           <p><%= @tournament.description %></p>
         </div>
+          <div class="show-tournament-card">
+              <h1>Round selection</h1>
+              <% data = JSON.parse(@tournament.data) %>
+              <%= simple_form_for([@tournament, Earning.new]) do |f| %>
+
+                  <%= f.input :forecast_amount, label: "What will be your forcasted prize money?", placeholder: "Input the prize money associated result you are aiming" %>
+                <%= f.submit "Add tournament", class: "btn btn-primary", method: :post  %>
+              <% end %>
+          </div>
       </div>
       <div class="container col-4">
         <div class="show-tournament-card">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id voluptatibus consectetur inventore. Saepe consequatur, accusantium. Ad similique ipsa dolorem aspernatur provident veniam, necessitatibus reiciendis maiores, fugiat repudiandae facilis! Consectetur, facere, aliquam! Quae distinctio modi at eveniet, odit, doloremque fugit rerum.</p>
-          <br>
-          <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum voluptatem earum rem aliquid eaque mollitia, nam voluptas qui ipsam, minima natus ea delectus veniam quisquam. Iste veniam asperiores esse ex?</p>
-          <!-- simple form en radio button
-          collection de radio button ca sera array des keys de data (data.keys)
 
-           -->
+          <% data.keys.each do |element| %>
+            <p><strong><%= element %></strong></p>
+            <p>ATP Points: <%= data[element].values[0] %></p>
+            <p>Individual Prize Money: <%= data[element].values[1] %></p>
+          <% end %>
+
         </div>
       </div>
     </div>
