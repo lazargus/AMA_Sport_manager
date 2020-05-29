@@ -4,39 +4,34 @@
     <%= image_tag("ama-noir2.png", class: "logo-ama mx-auto d-block") %>
   </div>
 
-  <!-- <div class="row no-gutters"> -->
-    <div class="d-flex">
-      <div class="form-post-home">
-        <%= link_to earnings_path do %>
-        <%= image_tag("analytics.svg", class: "nom-de-ta-classe mx-auto d-block") %>
-        <h1>My Budget</h1>
-        <p>No more worries about managing your money, AMA has been built for you!</p>
-      </div>
-      <% end %>
-   
-
-    <!-- <div class="col-xs-12 col-sm-6 offset-sm-1"> -->
-      <div class="form-post-home">
-        <%= link_to earnings_path do %>
-        <%= image_tag("tennis.svg", class: "nom-de-ta-classe mx-auto d-block") %>
-        <h1>Analytics</h1>
-        <p>No more worries about managing your stats, AMA has been built for you!</p>
-      </div>
-      <% end %>
-    <!-- </div> -->
-  </div>
-    
-  <!-- </div> -->
-
-    <div class="col-xs-12 col-sm-6 offset-sm-4">
-      <div class="form-post-home-bottom">
-        <%= link_to my_tournaments_path do %>
-        <%= image_tag("calendar.svg", class: "nom-de-ta-classe mx-auto d-block") %>
-        <h1>Programmation</h1>
-        <p>No more worries about programming your tournaments, AMA has been built for you!</p>
-      </div>
-      <% end %>
+  <div class="d-flex">
+    <div class="form-post-home">
+      <%= link_to earnings_path do %>
+      <%= image_tag("analytics.svg", class: "nom-de-ta-classe mx-auto d-block") %>
+      <h1>My Budget</h1>
+      <p>No more worries about managing your money, AMA is here to help you!</p>
     </div>
+    <% end %>
+
+
+    <div class="form-post-home">
+      <%= link_to earnings_path do %>
+      <%= image_tag("tennis.svg", class: "nom-de-ta-classe mx-auto d-block") %>
+      <h1>Analytics</h1>
+      <p>No more worries about managing your stats, AMA is here to help you!</p>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 offset-sm-4">
+    <div class="form-post-home-bottom">
+      <%= link_to my_tournaments_path do %>
+      <%= image_tag("calendar.svg", class: "nom-de-ta-classe mx-auto d-block") %>
+      <h1>Programmation</h1>
+      <p>No more worries about programming your tournaments, AMA is here to help you!</p>
+    </div>
+    <% end %>
+  </div>
 
 </div>
 </div>
