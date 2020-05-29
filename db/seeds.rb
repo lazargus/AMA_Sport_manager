@@ -31,7 +31,7 @@ end
 # url_tournaments[54]
 
 puts "Cleaning tournaments...."
-# Tournament.destroy_all
+Tournament.destroy_all
 
 puts "Creating tournament database...."
 url_tournaments.each do |url|
