@@ -1,6 +1,6 @@
 <div class="top">
   <h1>Expenses to be created</h1>
-  <%= link_to 'Add fixed expense', new_expense_path, class: 'add-tournament-btn'  %>
+  <%= link_to 'Add fixed expense', new_expense_path, class: 'add-tournament-btn', data: { turbolinks: false }  %>
 </div>
 
 <% @tournaments.each do |tournament| %>
