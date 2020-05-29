@@ -3,23 +3,23 @@
   <%= link_to 'Add fixed expense', new_expense_path, class:'add-tournament-btn'  %>
 </div>
 
-<% @expenses.each do |expense| %>
-  <% if expense.tournament != nil %>
+<% @tournaments.each do |tournament| %>
+<% @expense.tournament = tournament %>
+<% @expense.save %>
     <div class="earning-container">
-      <div class="tournament-card" data-img-url="<%= cl_image_path expense.tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path expense.tournament.photo.key%>');" >
+      <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
         <div class="text">
-          <h1><%= expense.tournament.name %></h1>
-          <h2 class="animate-text"><%= expense.tournament.address %></h2>
-          <p class="animate-text"><%= expense.tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
+          <h1><%= tournament.name %></h1>
+          <h2 class="animate-text"><%= tournament.address %></h2>
+          <p class="animate-text"><%= tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
         </div>
       </div>
       <div class="earning-status">
-          <%= link_to expense_path(expense), class:'validate' do  %>
-            <p><%= expense.tournament.name%> will start on the <strong><%= expense.tournament.end_date.strftime("%d/%m/%Y")%></strong>. <br>Please <strong>enter</strong> the expenses linked to this tournament !</p>
+          <%= link_to expense_path(@expense), class:'validate' do  %>
+            <p><%= tournament.name%> will start on the <strong><%= tournament.end_date.strftime("%d/%m/%Y")%></strong>. <br>Please <strong>enter</strong> the expenses linked to this tournament !</p>
             <i class="fas fa-arrow-right"></i>
           <% end %>
       </div>
     </div>
     <hr>
   <% end %>
-<% end %>

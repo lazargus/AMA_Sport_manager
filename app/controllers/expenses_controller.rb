@@ -4,8 +4,10 @@ class ExpensesController < ApplicationController
 
   def index
     # @expenses = current_user.tournaments.not_started.map(&:expenses).flatten
-    @expenses = current_user.expenses.joins(:tournament)
-    @expenses = @expenses.where('tournaments.start_date >?', Date.today)
+    @tournaments = current_user.tournaments
+    @expense = Expense.new
+    @expense.user = current_user
+    # @expenses = @expenses.where('tournaments.start_date >?', Date.today)
   end
 
   def show
