@@ -17,7 +17,7 @@
             <%= link_to earnings_path do  %>
                 Earnings
               <% end %>
-            <%= link_to 'expenses_path' do  %>
+            <%= link_to expenses_path do  %>
                 Expenses
               <% end %>
           </div>
@@ -26,7 +26,7 @@
           <% end %>
       </div>
 
-      <div class="other mt-5 ml-4">
+      <div class="other mt-5 ml-4 mb-5">
         <h6 class='mb-3'>OTHER</h6>
           <%= link_to 'My profile', class: "#{'active' if current_page?('#')}" do %>
             <p><i class="fas fa-cogs mr-1"></i>My profile</p>
@@ -35,5 +35,8 @@
             <p><i class="far fa-address-book mr-1"></i>Contact</p>
         <% end %>
       </div>
+    <%= link_to destroy_user_session_path, method: :delete, class: " log-out ml-4 mt-5" do %>
+      <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
+    <% end %>
     </div>
   </div>

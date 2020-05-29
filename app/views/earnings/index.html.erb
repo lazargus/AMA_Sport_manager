@@ -4,8 +4,8 @@
 </div>
 <div class="filters">
   <%= link_to 'All', earnings_path, class:'filter-btn'  %>
-  <%= link_to 'Past', earnings_path(only_past_earnings: true), class:'filter-btn ml-3'  %>
-  <%= link_to 'Future', earnings_path(only_past_earnings: false), class:'filter-btn ml-3'  %>
+  <%= link_to 'To be validated', earnings_path(only_past_earnings: true), class:'filter-btn ml-3'  %>
+  <%= link_to 'Pending', earnings_path(only_past_earnings: false), class:'filter-btn ml-3'  %>
 </div>
 
 <% @earnings.each do |earning| %>

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :tournaments, only: [:index, :show]
 
-  resources :earnings
+  resources :earnings, except: :destroy
+
+  resources :expenses, except: :destroy
 
   resources :my_tournaments, only: [:index, :create]
 end

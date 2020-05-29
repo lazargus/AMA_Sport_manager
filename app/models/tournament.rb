@@ -8,6 +8,8 @@ class Tournament < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  scope :not_started, ->{where('start_date > ?', Date.today)}
+
   def data_for_calendar
     {
       title: name,
@@ -16,5 +18,4 @@ class Tournament < ApplicationRecord
       id: id
     }
   end
-
 end
