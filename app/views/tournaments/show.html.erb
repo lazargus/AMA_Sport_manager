@@ -14,37 +14,41 @@
         <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
         <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date.strftime("%A %B %d") %> to <%= @tournament.end_date.strftime("%A %B %d") %></h5>
       </div>
-        <%= link_to "Add tournament" ,my_tournaments_path(tournament: @tournament), class:"add-tournament-btn", method: :post %>
+        <%= link_to "Official website", @tournament.official_link, target: "_blank", class:"tournament-btn-secondary" %>
     </div>
   </div>
 
   <div class="container">
     <div class="d-flex justify-content-between">
       <div class="container col-7">
-        <h5><em>Descritption</em></h5>
-        <hr>
         <div class="show-tournament-card">
+          <h5><em>Descritption</em></h5>
+          <hr>
           <p><%= @tournament.description %></p>
         </div>
-          <div class="show-tournament-card">
-              <h1>Round selection</h1>
-              <% data = JSON.parse(@tournament.data) %>
-              <%= simple_form_for([@tournament, Earning.new]) do |f| %>
-
-                  <%= f.input :forecast_amount, label: "What will be your forcasted prize money?", placeholder: "Input the prize money associated result you are aiming" %>
-                <%= f.submit "Add tournament", class: "btn btn-primary", method: :post  %>
-              <% end %>
-          </div>
-      </div>
-      <div class="container col-4">
         <div class="show-tournament-card">
+          <h5><em>Prize money by round:</em></h5>
+          <hr>
+          <div class="row justify-content-center">
+            <% data = JSON.parse(@tournament.data) %>
+            <% data.keys.each do |element| %>
+              <div class="col-5 m-1 border">
+                <p><strong><%= element %></strong></p>
+                <p><em>ATP Points: </em><%= data[element].values[0] %></p>
+                <p><em>Prize Money: </em><%= data[element].values[1] %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
-          <% data.keys.each do |element| %>
-            <p><strong><%= element %></strong></p>
-            <p>ATP Points: <%= data[element].values[0] %></p>
-            <p>Individual Prize Money: <%= data[element].values[1] %></p>
+      <div class="container col-5">
+        <div class="show-tournament-card sticky-top">
+          <h1>Round selection</h1>
+          <%= simple_form_for([@tournament, Earning.new]) do |f| %>
+            <%= f.input :forecast_amount, label: "What will be your forcasted prize money?", placeholder: "Forcesated prize money" %>
+            <%= f.submit "Add tournament", class: "add-tournament-btn", method: :post  %>
           <% end %>
-
         </div>
       </div>
     </div>

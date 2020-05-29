@@ -165,9 +165,3 @@ url_tournaments.each do |url|
 end
 
 puts "Finished"
-
-​
-​
-
-
-
