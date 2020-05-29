@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :earnings, dependent: :destroy
   has_many :expenses, dependent: :destroy
+  # has_many :tournaments, through: :earnings
+  # has_many :tournaments, through: :expenses
   validates :first_name, :last_name, presence: true
 
   def tournaments
