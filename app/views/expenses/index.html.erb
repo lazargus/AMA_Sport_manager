@@ -4,8 +4,6 @@
 </div>
 
 <% @tournaments.each do |tournament| %>
-<% @expense.tournament = tournament %>
-<% @expense.save %>
     <div class="earning-container">
       <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
         <div class="text">
@@ -15,7 +13,7 @@
         </div>
       </div>
       <div class="earning-status">
-          <%= link_to expense_path(@expense), class:'validate' do  %>
+          <%= link_to new_tournament_expense_path(tournament), class:'validate' do  %>
             <p><%= tournament.name%> will start on the <strong><%= tournament.end_date.strftime("%d/%m/%Y")%></strong>. <br>Please <strong>enter</strong> the expenses linked to this tournament !</p>
             <i class="fas fa-arrow-right"></i>
           <% end %>
