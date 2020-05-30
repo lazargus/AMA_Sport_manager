@@ -1,7 +1,16 @@
 class MyTournamentsController < ApplicationController
 
   def index
-    @tournaments = current_user.tournaments
+    # @tournaments = current_user.tournaments
+
+    @tournaments = if params[:only_past_tournaments] == 'true'
+                  current_user.tournaments.where('tournaments.end_date <?', Date.today)
+                elsif params[:only_past_tournaments] == 'false'
+                  current_user.tournaments.where('tournaments.end_date >?', Date.today)
+                else
+                  current_user.tournaments
+                end
+
   end
 
   def create

@@ -2,18 +2,35 @@
   <h1>My tournaments</h1>
   <%= link_to "ADD TOURNAMENT", tournaments_path, class: "add-tournament-btn" %>
 </div>
-<div class="card-container mt-3">
-     <% @tournaments.each do |tournament| %>
-       <%= link_to tournament_path(tournament) do %>
-          <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
-            <div class="text">
-              <h1><%= tournament.name %></h1>
-              <h2 class="animate-text"><%= tournament.address %></h2>
-              <p class="animate-text"><%= tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
-            </div>
-         </div>
-       <% end %>
-    <% end %>
+
+<div class="filters">
+  <%= link_to 'All', my_tournaments_path, class:'filter-btn'  %>
+  <%= link_to 'Past Tournaments', my_tournaments_path(only_past_tournaments: true), class:'filter-btn ml-3'  %>
+  <%= link_to 'Next Tournaments', my_tournaments_path(only_past_tournaments: false), class:'filter-btn ml-3'  %>
 </div>
 
-<script></script>
+<% @tournaments.each do |tournament| %>
+  <% if tournament != nil %>
+    <div class="earning-container">
+      <div class="tournament-card" data-img-url="<%= cl_image_path tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path tournament.photo.key%>');" >
+        <div class="text">
+          <h1><%= tournament.name %></h1>
+          <h2 class="animate-text"><%= tournament.address %></h2>
+          <p class="animate-text"><%= tournament.start_date.strftime("Start on %A %B %d %Y") %></p>
+        </div>
+      </div>
+      <div class="earning-status">
+        <% if tournament.end_date < Date.today %>
+          <%= link_to "#", class:'validate' do  %>
+            <p><%= tournament.name%> is finished since <%= tournament.end_date.strftime("%d/%m/%Y")%>. <br>Please <strong>validate your result</strong> in order to calculate associated tournament!</p>
+            <i class="fas fa-arrow-right"></i>
+          <% end %>
+        <% else %>
+          <p class='waiting'><em><%= tournament.name%> will finish on <%= tournament.end_date.strftime("%d/%m/%Y")%>. Wait until this date to validate your result</em></p>
+          <p>Prize Money : <%= tournament.total_prize_money %></p>
+        <% end %>
+      </div>
+    </div>
+  <hr>
+  <% end %>
+<% end %>

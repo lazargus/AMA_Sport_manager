@@ -1,0 +1,57 @@
+.earning-status p {
+  font-size: 20px;
+}
+
+.earning-container .tournament-card {
+  width: 50vw;
+  &:hover {
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.34);
+    transform:scale(1);
+  }
+}
+
+.earning-status i {
+  font-size: 35px;
+  margin-left: 15px;
+  height: 2em;
+  color: $my-dark-blue;
+}
+
+.earning-status {
+  width: 50vw;
+  margin-left: 15px;
+}
+
+.validate {
+  display: flex;
+  align-items: center;
+  color: $my-dark-blue;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-btn {
+  background-color: $my-light-gray;
+  color: #FFD400;
+  border: 1px solid #FFD400;
+  border-radius: 30px;
+  padding: 0 20px;
+  font-size: 14px;
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.waiting {
+  color: gray;
+}
