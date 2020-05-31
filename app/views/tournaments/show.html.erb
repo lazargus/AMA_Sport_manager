@@ -15,6 +15,7 @@
         <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date.strftime("%A %B %d") %> to <%= @tournament.end_date.strftime("%A %B %d") %></h5>
       </div>
         <%= link_to "Official website", @tournament.official_link, target: "_blank", class:"tournament-btn-secondary" %>
+        <%= cl_image_tag @tournament.logo.key, alt: "alttext", class: "tournament-logo" %>
     </div>
   </div>
 
