@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'ferrum'
-
+# require 'pry'
 def download_to_file(uri)
   stream = open(uri, "rb")
   return stream if stream.respond_to?(:path)
@@ -144,16 +144,26 @@ url_tournaments.each do |url|
     round = element.strip.split("\t")
     case round.length
       when 2
-        data[round[0]] = {atp_points: round[1], prize_money: round[2]}
+        if round[2].nil?
+          data[round[0]] = {atp_points: round[1], prize_money: 0}
+        else
+          prize = round[2][1..-1].split(',').join.to_i
+          data[round[0]] = {atp_points: round[1], prize_money: prize}
+        end
       when 1
         data[round[0]] = {atp_points: round[1], prize_money: 0}
       when 0
         data['empty'] = {atp_points: 'not available', prize_money: 'not available'}
       when 3
-        data[round[0]] = {atp_points: round[1], prize_money: round[2]}
+        if round[2].nil?
+          data[round[0]] = {atp_points: round[1], prize_money: 0}
+        else
+          prize = round[2][1..-1].split(',').join.to_i
+          data[round[0]] = {atp_points: round[1], prize_money: prize}
+        end
     end
+    # binding.pry
   end
-
   # tournament creation
   tournament = Tournament.new({ name: name, address: address, official_link: official_link, total_prize_money: prize_money, surface: surface, category: category, start_date: start_date, end_date: end_date, participants: total_participants, description: description, latitude: lat, longitude: lon, data: data.to_json })
   tournament.save

@@ -10,6 +10,7 @@
     "@rails/webpacker": "4.2.2",
     "amadeus": "^5.0.0",
     "bootstrap": "^4.5.0",
+    "chart.js": "^2.9.3",
     "flatpickr": "^4.6.3",
     "jquery": "^3.5.1",
     "mapbox-gl": "^1.10.1",
