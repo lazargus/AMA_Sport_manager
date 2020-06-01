@@ -8,8 +8,13 @@ const tournamentShowPrizeMoney = () => {
         };
       });
       choice.classList.add('active');
+  const prize = choice.querySelectorAll('p:nth-child(4)')[0].textContent;
+  const form = document.getElementById('earning_forecast_amount');
+  form.value = prize;
     });
   });
+
+
 };
 
 export { tournamentShowPrizeMoney };
