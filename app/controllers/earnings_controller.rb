@@ -18,7 +18,6 @@ class EarningsController < ApplicationController
       end
     end
 
-                
   end
 
   def show

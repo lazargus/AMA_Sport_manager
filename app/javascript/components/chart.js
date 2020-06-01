@@ -3,8 +3,8 @@ import Chart from 'chart.js';
 const initChart = (data) => {
   const ctx = document.getElementById("chartExpense")
   const chartExpense = new Chart(ctx, {
-    type: 'bar',
-    data: data,
+    type: 'line',
+    data: data, 
     options: {
         scales: {
             yAxes: [{
