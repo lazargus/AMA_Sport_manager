@@ -15,6 +15,7 @@
         <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date.strftime("%A %B %d") %> to <%= @tournament.end_date.strftime("%A %B %d") %></h5>
       </div>
         <%= link_to "Official website", @tournament.official_link, target: "_blank", class:"tournament-btn-secondary" %>
+        <%= cl_image_tag @tournament.logo.key, alt: "alttext", class: "tournament-logo" %>
     </div>
   </div>
 
@@ -47,6 +48,7 @@
           <h1>Round selection</h1>
           <%= simple_form_for([@tournament, Earning.new]) do |f| %>
             <%= f.input :forecast_amount, label: "What will be your forcasted prize money?", placeholder: "Forcesated prize money" %>
+            <%= f.hidden_field :tournament_id, value: @tournament.id %>
             <%= f.submit "Add tournament", class: "add-tournament-btn", method: :post  %>
           <% end %>
         </div>
