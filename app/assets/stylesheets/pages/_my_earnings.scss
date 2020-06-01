@@ -2,9 +2,6 @@
   font-size: 20px;
 }
 
-.earning-container .tournament-card {
-  width: 50vw;
-}
 
 .earning-status i {
   font-size: 35px;
@@ -30,22 +27,37 @@
   align-items: center;
 }
 
+.filters {
+  padding: 20px;
+  padding-left: 38px;
+}
+
 .filter-btn {
-  background-color: $my-light-gray;
-  color: #FFD400;
-  border: 1px solid #FFD400;
+  display: inline-block;
+  background-color: white;
+  color: $my-dark-blue;
   border-radius: 30px;
   padding: 0 20px;
-  font-size: 14px;
+  font-size: 20px;
+  margin-right: 4px;
+  transition: 0.5s ease;
+  border: 1px solid $my-dark-blue;
+  min-width: 150px;
+  text-align: center;
+
+
   &:hover {
-    background-color: #fff;
+    background-color: $my-dark-blue;
+    color: white;
+    transition: 0.5s ease;
   }
 }
 
 .filters {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  .active {
+    background-color: $my-dark-blue;
+    color: white;
+ }
 }
 
 .waiting {
