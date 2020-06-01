@@ -17,7 +17,10 @@ class EarningsController < ApplicationController
     @tournament = Tournament.geocoded
     @tournament = @earning.tournament
 
-    @marker = { lat: @tournament.latitude, lng: @tournament.longitude }
+    @marker = { lat: @tournament.latitude,
+                lng: @tournament.longitude,
+                # infoWindow: render_to_string(partial: "info_window", locals: { hotel: hotel })
+              }
   end
 
   def new
