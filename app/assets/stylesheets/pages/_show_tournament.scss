@@ -31,9 +31,11 @@ em {
 .prize-money-choice {
   border-radius: 10px;
   cursor: pointer;
-  padding:10px;
+  padding:7px;
+  margin: 10px 15px;
+  position: relative;
   &:hover {
-    background-color: rgba(3,56,96,0.3);
+    border-color: $my-dark-blue !important;
   }
   &.active {
     background-color: $my-dark-blue;
@@ -42,5 +44,14 @@ em {
   & p {
     margin-bottom: 5px;
   }
+  & h3 {
+    margin: 10px 10px;
+  }
 }
 
+.atp-points {
+  font-size: 8px;
+  position: absolute;
+  bottom: -2px;
+  right: 6px;
+}
