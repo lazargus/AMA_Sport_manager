@@ -3,8 +3,20 @@
   <div class="d-flex justify-content-between">
     <div class="suggestions">
       <h5>Hotels suggestions</h5>
+      <p><em>Best offers around the stadium (3km)</em></p>
       <hr>
-      <h5>Flights suggestions</h5>
+        <div class="row mt-4">
+          <div
+          id="map"
+          class="container-map"
+          data-markers="<%= @marker.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-amadeus-id="<%= ENV['AMADEUS_ID'] %>"
+          data-amadeus-secret="<%= ENV['AMADEUS_SECRET'] %>"
+          >
+          </div>
+        </div>
+      <h5 class="mt-5">Flights suggestions</h5>
       <hr>
     </div>
     <div class="card-expense p-3" id="expense-booking-form">

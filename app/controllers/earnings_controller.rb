@@ -14,7 +14,10 @@ class EarningsController < ApplicationController
 
   def show
     @expense = Expense.new
+    @tournament = Tournament.geocoded
     @tournament = @earning.tournament
+
+    @marker = { lat: @tournament.latitude, lng: @tournament.longitude }
   end
 
   def new
@@ -25,7 +28,7 @@ class EarningsController < ApplicationController
     @earning = Earning.new(earning_params)
     @earning.user = current_user
     if @earning.save
-      if earning.tournament
+      if @earning.tournament
         redirect_to earning_path(@earning)
       else
         redirect_to earnings_path
