@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :earnings, except: [:destroy]
+  resources :earnings, except: :destroy
 
   resources :expenses, except: :destroy
 
-  resources :my_tournaments, only: [:index, :create]
-  get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense
+  # get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense
 end

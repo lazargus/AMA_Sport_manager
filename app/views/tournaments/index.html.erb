@@ -1,8 +1,4 @@
-<div class="d-flex justify-content-between">
-  <h1>All tournaments</h1>
-  <%= link_to "ADD TOURNAMENT", tournaments_path, class: "add-tournament-btn" %>
-</div>
-
+<h1>All tournaments</h1>
 <div class="card-container mt-3">
      <% @tournaments.each do |tournament| %>
        <%= link_to tournament_path(tournament) do %>
