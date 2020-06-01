@@ -31,6 +31,7 @@ import "../plugins/flatpickr"
 // import { initSelect2 } from '../components/init_select2';
 import { tournamentsCardsHover } from "../components/tournaments_cards_hover";
 import { fullcalendar } from "../components/fullcalendar";
+import { initChart } from "../components/chart";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,6 +39,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   tournamentsCardsHover();
   fullcalendar();
+  initChart();
 });
-
 
