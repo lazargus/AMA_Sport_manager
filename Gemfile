@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
 gem 'ferrum'
+gem 'oauth2'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
