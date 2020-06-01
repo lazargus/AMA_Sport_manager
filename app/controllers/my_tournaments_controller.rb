@@ -10,7 +10,6 @@ class MyTournamentsController < ApplicationController
                 else
                   current_user.tournaments
                 end
-
   end
 
   def create

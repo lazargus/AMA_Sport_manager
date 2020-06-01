@@ -21,7 +21,7 @@
       </div>
       <div class="earning-status">
         <% if tournament.end_date < Date.today %>
-          <%= link_to "#", class:'validate' do  %>
+          <%= link_to tournament_path(tournament), class:'validate' do  %>
             <p><%= tournament.name%> is finished since <%= tournament.end_date.strftime("%d/%m/%Y")%>. <br>Please <strong>validate your result</strong> in order to calculate associated tournament!</p>
             <i class="fas fa-arrow-right"></i>
           <% end %>
