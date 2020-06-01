@@ -33,7 +33,7 @@
           <div class="row justify-content-center">
             <% data = JSON.parse(@tournament.data) %>
             <% data.keys.each do |element| %>
-              <div class="col-5 m-1 border">
+              <div class="col-5 m-1 border prize-money-choice">
                 <p><strong><%= element %></strong></p>
                 <p><em>ATP Points: </em><%= data[element].values[0] %></p>
                 <p><em>Prize Money: </em><%= data[element].values[1] %></p>
