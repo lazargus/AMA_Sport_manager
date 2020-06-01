@@ -20,6 +20,8 @@ class TournamentsController < ApplicationController
                       Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,6,30), Date.new(2020,9,30)).all.to_a.reject { |item| @tournament_user.include? item }
                     elsif params[:format] == "fourth_trimester"
                       Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,9,30), Date.new(2020,12,31)).all.to_a.reject { |item| @tournament_user.include? item }
+                    else
+                      Tournament.all.to_a.reject { |item| @tournament_user.include? item }
                     end
   end
 
