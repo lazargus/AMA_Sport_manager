@@ -3,18 +3,32 @@ class EarningsController < ApplicationController
   before_action :set_earning, only: [ :show, :edit, :update]
 
   def index
-    @earnings = if params[:only_past_earnings] == 'true'
+    respond_to do |format| 
+      format.html do 
+        @earnings = if params[:only_past_earnings] == 'true'
                   current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today)
                 elsif params[:only_past_earnings] == 'false'
                   current_user.earnings.joins(:tournament).where('tournaments.end_date >?', Date.today)
                 else
                   current_user.earnings.joins(:tournament)
                 end
+      end
+      format.json do
+        render json: format_data(current_user.earnings).as_json
+      end
+    end
+
   end
 
   def show
     @expense = Expense.new
+    @tournament = Tournament.geocoded
     @tournament = @earning.tournament
+
+    @marker = { lat: @tournament.latitude,
+                lng: @tournament.longitude,
+                # infoWindow: render_to_string(partial: "info_window", locals: { hotel: hotel })
+              }
   end
 
   def new
@@ -54,6 +68,24 @@ class EarningsController < ApplicationController
 
   def earning_params
     params.require(:earning).permit(:date, :forecast_amount, :title, :category, :tournament_id)
+  end
+
+  def format_data(data)
+    formatted_data = data.group_by {|e| e.date.beginning_of_month}
+                        .transform_values {|v| v.pluck(:forecast_amount).reduce(:+)}
+                        .to_a
+                        .sort_by(&:first)
+                        .last(12)
+    {
+      labels: formatted_data.map(&:first),
+      datasets: [{
+        label: "Forecasted amounts vs. Perceived amounts",
+        data: formatted_data.map(&:second),
+        backgroundColor: [
+          "#033860"
+        ]
+      }]
+    }
   end
 
 end

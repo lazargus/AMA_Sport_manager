@@ -1,44 +1,58 @@
-  <div id="sidebar">
-    <%= link_to (image_tag "ama-new-blue.png", alt: "logo", width: 160, class: 'mt-3 mb-5 mx-auto d-block'), root_path %>
-    <div class="infos">
-      <div class="main mb-5 ml-4">
-        <h6 class='mb-3'>MAIN</h6>
-          <%= link_to earnings_path, class: "#{'active' if current_page?(earnings_path)}" do %>
-            <p><i class="far fa-calendar-alt mr-1"></i>Tournaments</p>
+<div id="sidebar">
+  <%= link_to (image_tag "ama-new-blue.png", alt: "logo", width: 160, class: 'mt-3 mb-5 mx-auto d-block'), root_path %>
+  <div class="infos">
+    <div class="main mb-5 ml-4">
+      <h6 class='mb-1'>MAIN</h6>
+        <%#= link_to earnings_path, class: "#{'active' if current_page?(earnings_path)}" do %>
+<!--             <p><i class="far fa-calendar-alt mr-1"></i>Tournaments</p>
+-->          <%# end %>
+        <p data-toggle="collapse"
+           data-target="#collapseTournament"
+           aria-expanded="false"
+           aria-controls="collapseExample"
+           class="<%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show') %>"><i class="far fa-calendar-alt mr <%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show')%>"></i>Tournaments</p>
+        <div class="collapse" id="collapseTournament">
+          <%= link_to earnings_path do  %>
+              My tournaments
           <% end %>
+          <%= link_to tournaments_path do  %>
+              All tournaments
           <%#= link_to 'Logistics' do %>
             <!-- <p><i class="fas fa-plane mr-1"></i>My budget</p> -->
-          <%# end %>
-          <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) %>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) %>"></i>My budget</p>
-          <div class="collapse" id="collapseBudget">
-            <%= link_to 'Dashboard' do  %>
-                Dashboard
-              <% end %>
-            <%= link_to new_earning_path, data: { turbolinks: false } do  %>
-                Add Fixed Earnings
-              <% end %>
-            <%= link_to new_expense_path, data: { turbolinks: false } do  %>
-                Add Fixed Expenses
-              <% end %>
-          </div>
+          <% end %>
+
       </div>
 
-      <div class="other mt-5 ml-4 mb-5">
-        <h6 class='mb-3'>OTHER</h6>
-          <%= link_to 'My profile', class: "#{'active' if current_page?('#')}" do %>
-            <p><i class="fas fa-cogs mr-1"></i>My profile</p>
+        <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
+        <div class="collapse" id="collapseBudget">
+          <%= link_to dashboard_index_path do  %>
+              Dashboard
           <% end %>
-          <%= link_to 'Contact', class: "#{'active' if current_page?('#')}" do %>
-            <p><i class="far fa-address-book mr-1"></i>Contact</p>
+          <%= link_to new_earning_path, data: { turbolinks: false } do  %>
+              Add Fixed Earnings
+          <% end %>
+          <%= link_to new_expense_path, data: { turbolinks: false } do  %>
+              Add Fixed Expenses
+          <% end %>
+        </div>
+    </div>
+
+    <div class="other mt-2 ml-4 mb-2">
+      <h6 class='mb-3'>OTHER</h6>
+        <%= link_to 'My profile', class: "#{'active' if current_page?('#')}" do %>
+          <p><i class="fas fa-cogs mr-1"></i>My profile</p>
         <% end %>
-      </div>
-      <% if user_signed_in? %>
-        <%= image_tag "stephane-robert.jpg", class: "avatar dropdown-toggle mb-3 mx-auto d-block" %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "ml-4 mt-2" do %>
-          <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
-        <% end %>
-      <% else %>
-        <%= link_to 'Login', new_user_session_path  %>
+        <%= link_to 'Contact', class: "#{'active' if current_page?('#')}" do %>
+          <p><i class="far fa-address-book mr-1"></i>Contact</p>
       <% end %>
     </div>
+    <% if user_signed_in? %>
+      <%= image_tag "stephane-robert.jpg", class: "avatar dropdown-toggle mb-3 mx-auto d-block" %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "ml-4 mt-2" do %>
+        <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
+      <% end %>
+    <% else %>
+      <%= link_to 'Login', new_user_session_path  %>
+    <% end %>
   </div>
+</div>

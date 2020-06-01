@@ -30,17 +30,21 @@ import "../plugins/flatpickr"
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { tournamentsCardsHover } from "../components/tournaments_cards_hover";
+
+import { initMapbox } from "../plugins/init_mapbox";
+
 import { tournamentShowPrizeMoney } from "../components/tournament_show_prize_money";
-import { fullcalendar } from "../components/fullcalendar";
+// import { fullcalendar } from "../components/fullcalendar";
+import { buildChart } from "../components/chart";
 
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  if (document.querySelector('#map')) initMapbox();
   tournamentsCardsHover();
-  fullcalendar();
+  // fullcalendar();
+  buildChart();
 });
 
 tournamentShowPrizeMoney();
-
-
