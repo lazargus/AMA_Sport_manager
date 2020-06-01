@@ -27,3 +27,20 @@ em {
   border-radius: 10px;
   padding: 0px 10px;
 }
+
+.prize-money-choice {
+  border-radius: 10px;
+  cursor: pointer;
+  padding:10px;
+  &:hover {
+    background-color: rgba(3,56,96,0.3);
+  }
+  &.active {
+    background-color: $my-dark-blue;
+    color: white;
+  }
+  & p {
+    margin-bottom: 5px;
+  }
+}
+
