@@ -35,8 +35,13 @@
             <p><i class="far fa-address-book mr-1"></i>Contact</p>
         <% end %>
       </div>
-    <%= link_to destroy_user_session_path, method: :delete, class: " log-out ml-4 mt-5" do %>
-      <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= image_tag "stephane-robert.jpg", class: "avatar dropdown-toggle mb-3 mx-auto d-block" %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "ml-4 mt-2" do %>
+          <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
+        <% end %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path  %>
+      <% end %>
     </div>
   </div>
