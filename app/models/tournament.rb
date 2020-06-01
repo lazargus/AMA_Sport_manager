@@ -1,7 +1,4 @@
 class Tournament < ApplicationRecord
-  has_many :expenses
-  has_many :earnings
-
   has_one_attached :photo
   has_one_attached :logo
 
@@ -21,4 +18,8 @@ class Tournament < ApplicationRecord
       id: id
     }
   end
+
+  # def find_user_earning
+  #   Earning.find_by(tournament/tournament_id)
+  # end
 end

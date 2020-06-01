@@ -13,6 +13,8 @@ class EarningsController < ApplicationController
   end
 
   def show
+    @expense = Expense.new
+    @tournament = @earning.tournament
   end
 
   def new
@@ -22,13 +24,12 @@ class EarningsController < ApplicationController
   def create
     @earning = Earning.new(earning_params)
     @earning.user = current_user
-    @tournament = Tournament.find(params[:tournament_id])
-    @earning.tournament = @tournament
-    @expense = Expense.new
-    @expense.user = current_user
-    @expense.tournament = @tournament
-    if @earning.save && @expense.save
-      redirect_to my_tournaments_path
+    if @earning.save
+      if earning.tournament
+        redirect_to earning_path(@earning)
+      else
+        redirect_to earnings_path
+      end
     else
       render :new
     end
@@ -52,7 +53,7 @@ class EarningsController < ApplicationController
   end
 
   def earning_params
-    params.require(:earning).permit(:date, :forecast_amount, :title, :category)
+    params.require(:earning).permit(:date, :forecast_amount, :title, :category, :tournament_id)
   end
 
 end
