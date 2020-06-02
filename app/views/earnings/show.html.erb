@@ -56,8 +56,10 @@
     <div class="timeline">
       <div class="timeline-content left">
         <span class="timeline-icon"></span>
-        <span class="date"><%= @tournament.end_date.strftime("%b %d %Y") %></span>
-        <h2 class="title"><%= @tournament.name.capitalize %></h2>
+        <div>
+          <span class="date"><%= @tournament.end_date.strftime("%b %d %Y") %></span>
+          <h2 class="title"><%= @tournament.name.capitalize %></h2>
+        </div>
         <p class="description">
           Type: Earning
           <br>
@@ -69,8 +71,10 @@
       <div class="timeline">
         <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
           <span class="timeline-icon"></span>
-          <span class="date"><%= expense.created_at.strftime("%b %d %Y") %></span>
-          <h2 class="title"><%= expense.title.capitalize %></h2>
+          <div>
+            <span class="date"><%= expense.created_at.strftime("%b %d %Y") %></span>
+            <h2 class="title"><%= expense.title.capitalize %></h2>
+          </div>
           <p class="description">
             Type: Expense
             <br>
