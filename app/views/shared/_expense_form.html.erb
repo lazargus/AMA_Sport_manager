@@ -1,5 +1,5 @@
 <%= simple_form_for(expense) do |f| %>
-  <%= f.input :date,  as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", value: Date.today} %>
   <%= f.input :category, label: "Nature of your expense", collection: Expense::CATEGORY %>
   <%= f.input :amount, label: "What was the amount of your expense?", placeholder: "Enter amount" %>
   <%= f.input :title, label: "Description", placeholder: "Please briefly describe your expense" %>
