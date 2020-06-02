@@ -55,14 +55,11 @@ class ExpensesController < ApplicationController
                         .sort_by(&:first)
                         .last(12)
     {
-      labels: formatted_data.map(&:first),
-      datasets: [{
         label: "Expenses",
         data: formatted_data.map(&:second),
         backgroundColor: [
           "#FD1015"
         ]
-      }]
     }
   end
 
