@@ -13,7 +13,7 @@
               My tournaments
           <% end %>
           <%= link_to tournaments_path do  %>
-              All tournaments
+              Add a tournament
           <% end %>
       </div>
         <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
@@ -22,10 +22,10 @@
               Dashboard
           <% end %>
           <%= link_to new_earning_path, data: { turbolinks: false } do  %>
-              Add Fixed Earnings
+              Add a fixed earning
           <% end %>
           <%= link_to new_expense_path, data: { turbolinks: false } do  %>
-              Add Fixed Expenses
+              Add a fixed expense
           <% end %>
         </div>
     </div>

@@ -1,3 +1,72 @@
 #calendar-wrapper {
   height: 90vh;
 }
+
+#calendar {
+  .fc-widget-header {
+    font-family: $body-font;
+    font-weight: lighter;
+  }
+  .fc-prev-button {
+    background: $my-dark-blue;
+    &:hover {
+      opacity: 0.8;
+      transition: 0.3s ease;
+    }
+  }
+  .fc-next-button {
+    background: $my-dark-blue;
+    &:hover {
+      opacity: 0.8;
+      transition: 0.3s ease;
+    }
+  }
+  .fc-today-button:disabled {
+    background: $my-dark-blue;
+  }
+  .fc-today-button:not(:disabled) {
+    background: $my-dark-blue;
+    &:hover {
+      opacity: 0.8;
+      transition: 0.3s ease;
+    }
+  }
+  .fc-day-grid {
+    font-family: $body-font;
+    font-weight: lighter;
+  }
+  .fc-day-grid-event {
+    background: linear-gradient(153deg, rgba(3,56,96,1) 0%, rgba(5,80,136,0.8057598039215687) 50%, rgba(20,101,163,0.8169642857142857) 100%);
+    font-size: 18px;
+    padding-left: 10px;
+    border: none;
+    color: white;
+    transition: 0.5s ease;
+    &:hover {
+      opacity: 0.8;
+      transition: 0.5s ease;
+    }
+  }
+}
+
+.nav-link {
+  font-size: 30px;
+  color: $my-dark-blue;
+  &:hover {
+    transition: 0.5s ease;
+    color: $my-dark-blue;
+    background-color: white;
+
+  }
+}
+
+ .nav-tabs .nav-link.active {
+      color: $my-dark-blue;
+      background-color: white;
+  }
+
+
+.nav-item a {
+  color: $my-dark-blue;
+
+}

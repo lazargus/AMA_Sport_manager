@@ -56,8 +56,8 @@
 
 .manage-btn {
     padding: 15px;
-    background: linear-gradient(153deg, rgba(3,56,96,1) 0%, rgba(5,80,136,0.8057598039215687) 50%, rgba(20,101,163,0.8169642857142857) 100%);
-    color: white;
+    background: white;
+    color: $my-dark-blue;
     // font-weight: lighter;
       transition: 0.5s ease;
     &:hover {

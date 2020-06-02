@@ -12,7 +12,6 @@ const eventsTournaments = () => {
                     start  : tournament.dataset.startDate,
                     end    : tournament.dataset.endDate,
                     url    : tournament.dataset.url,
-                    backgroundColor: '#FFD400'
                   }
     events.push(event);
   })
@@ -24,8 +23,8 @@ const calendarEl = document.getElementById('calendar');
 
   const calendar = new Calendar(calendarEl, {
     plugins: [ dayGridPlugin ],
-    // aspectRatio: 1,
-    height: 'parent',
+    aspectRatio: 1,
+    height: "parent",
     events : eventsTournaments(),
     eventClick: function(info) {
       if (info.event.url) {
