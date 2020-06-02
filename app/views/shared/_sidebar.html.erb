@@ -20,29 +20,11 @@
           <%#= link_to 'Logistics' do %>
             <!-- <p><i class="fas fa-plane mr-1"></i>My budget</p> -->
           <% end %>
-          <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) %>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) %>"></i>My budget</p>
-          <div class="collapse" id="collapseBudget">
-            <%= link_to 'dashboard' do  %>
-                Dashboard
-              <% end %>
-            <%= link_to new_earning_path, data: { turbolinks: false } do  %>
-                Add Fixed Earnings
-              <% end %>
-            <%= link_to new_expense_path, data: { turbolinks: false } do  %>
-                Add Fixed Expenses
-              <% end %>
-          </div>
       </div>
 
-      <div class="other mt-5 ml-4 mb-5">
-        <h6 class='mb-3'>OTHER</h6>
-          <%= link_to 'My profile', class: "#{'active' if current_page?('#')}" do %>
-            <p><i class="fas fa-cogs mr-1"></i>My profile</p>
-          <% end %>
-        </div>
-        <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) %>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) %>"></i>My budget</p>
+        <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
         <div class="collapse" id="collapseBudget">
-          <%= link_to 'Dashboard' do  %>
+          <%= link_to dashboard_index_path do  %>
               Dashboard
           <% end %>
           <%= link_to new_earning_path, data: { turbolinks: false } do  %>
