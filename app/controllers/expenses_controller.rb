@@ -23,7 +23,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.user = current_user
-    @tournament = Tournament.find(params[:expense][:tournament])
+    @tournament = Tournament.find(params[:expense][:tournament_id])
     @earning = Earning.find(params[:expense][:earning])
     if @expense.save
       redirect_to earning_path(@earning)

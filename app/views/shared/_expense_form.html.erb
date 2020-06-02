@@ -3,7 +3,7 @@
   <%= f.input :category, label: "Nature of your expense", collection: Expense::CATEGORY %>
   <%= f.input :amount, label: "What was the amount of your expense?", placeholder: "Enter amount" %>
   <%= f.input :title, label: "Description", placeholder: "Please briefly describe your expense" %>
-  <%= f.input :tournament, as: :hidden, input_html: {value: @tournament.id} %>
+  <%= f.input :tournament_id, as: :hidden, input_html: {value: @tournament.id} %>
   <%= f.input :earning, as: :hidden, input_html: {value: @earning.id} %>
   <%= f.submit "Add expense", class: "add-tournament-btn " %>
 <% end %>
