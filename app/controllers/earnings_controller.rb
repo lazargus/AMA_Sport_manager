@@ -43,9 +43,9 @@ class EarningsController < ApplicationController
   def create
     @earning = Earning.new(earning_params)
     @earning.user = current_user
+    @earning.date = @earning.tournament.end_date if @earning.tournament
     if @earning.save
       if @earning.tournament
-        @earning.date = @earning.tournament.end_date
         redirect_to earning_path(@earning)
       else
         redirect_to earnings_path

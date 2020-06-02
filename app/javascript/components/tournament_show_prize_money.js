@@ -14,7 +14,6 @@ const tournamentShowPrizeMoney = () => {
     });
   });
 
-
 };
 
 export { tournamentShowPrizeMoney };

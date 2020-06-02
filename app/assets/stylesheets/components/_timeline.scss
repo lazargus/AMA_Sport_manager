@@ -1,0 +1,120 @@
+.main-timeline{
+    position: relative;
+    z-index: 1;
+}
+.main-timeline:before{
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: $my-dark-blue;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.main-timeline .timeline{
+    margin-bottom: 30px;
+    position: relative;
+}
+.main-timeline .timeline:before,
+.main-timeline .timeline:after{
+    content: "";
+    display: block;
+    width: 100%;
+    clear: both;
+}
+.main-timeline .timeline-content{
+    width: 48%;
+    padding: 0 20px;
+    transition: all 0.3s ease 0s;
+}
+.main-timeline .timeline-icon{
+    width: 16px;
+    height: 10px;
+    background: $my-yellow;
+    margin: 0 auto;
+    position: absolute;
+    top: 17px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+.main-timeline .timeline-icon:before{
+    content: "";
+    position: absolute;
+    border-bottom: 4px solid $my-yellow;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    top: -4px;
+    left: 0;
+}
+.main-timeline .timeline-icon:after{
+    content: "";
+    border-top: 4px solid $my-yellow;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+.main-timeline .date{
+    display: inline-block;
+    padding: 2px 5px;
+    background: $my-dark-blue;
+    font-size: 16px;
+    color: #fff;
+}
+.main-timeline .timeline-content.left .date{
+    margin-right: -4px;
+}
+.main-timeline .timeline-content.right .date{
+    margin-left: -4px;
+}
+.main-timeline .title{
+    display: inline-block;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 800;
+    color: $my-dark-blue;
+}
+.main-timeline .description{
+    padding: 20px;
+    background: rgb(254, 254, 254);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    color: $my-dark-blue;
+}
+.main-timeline .timeline-content.left{
+    text-align: right;
+}
+.main-timeline .timeline-content.right{
+    float: right;
+}
+.main-timeline .timeline-content.left .title{
+    box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+}
+.main-timeline .timeline-content.right .title{
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15)
+}
+@media screen and (max-width: 767px){
+    .main-timeline:before{
+        left: 0;
+        margin: 0;
+    }
+    .main-timeline .timeline-content{
+        width: 90%;
+        float: right;
+    }
+    .main-timeline .timeline-icon{
+        margin: 0;
+        left: -6px;
+    }
+    .main-timeline .timeline-content.left{
+        text-align: left;
+    }
+}
