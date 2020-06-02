@@ -4,7 +4,7 @@ import Amadeus from 'amadeus';
 const fitMapToMarkers = (map, marker) => {
   const bounds = new mapboxgl.LngLatBounds();
   bounds.extend([ marker.lng, marker.lat ]);
-  map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 });
+  map.fitBounds(bounds, { padding: 70, maxZoom: 12.5, duration: 0 });
 };
 
 
