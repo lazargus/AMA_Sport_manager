@@ -3,7 +3,14 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :update]
 
   def index
-    @tournaments = current_user.tournaments.where('tournaments.end_date >?', Date.today)
+    respond_to do |format| 
+      format.html do 
+        @tournaments = current_user.tournaments.where('tournaments.end_date >?', Date.today)
+      end
+      format.json do
+        render json: format_data(current_user.expenses).as_json
+      end
+    end
   end
 
   def show
@@ -40,5 +47,23 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit(:date, :amount, :title, :category, :done, :tournament_id)
   end
-end
 
+  def format_data(data)
+    formatted_data = data.group_by {|e| e.date.beginning_of_month}
+                        .transform_values {|v| v.pluck(:amount).reduce(:+)}
+                        .to_a
+                        .sort_by(&:first)
+                        .last(12)
+    {
+      labels: formatted_data.map(&:first),
+      datasets: [{
+        label: "Expenses",
+        data: formatted_data.map(&:second),
+        backgroundColor: [
+          "#FD1015"
+        ]
+      }]
+    }
+  end
+
+end

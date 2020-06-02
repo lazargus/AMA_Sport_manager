@@ -1,7 +1,7 @@
 import Chart from 'chart.js';
 
 const initChart = (data) => {
-  const ctx = document.getElementById("chartExpense")
+  const ctx = document.getElementById("chartEarnings")
   const chartExpense = new Chart(ctx, {
     type: 'line',
     data: data, 

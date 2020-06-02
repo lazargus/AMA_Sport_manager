@@ -72,14 +72,14 @@ class EarningsController < ApplicationController
 
   def format_data(data)
     formatted_data = data.group_by {|e| e.date.beginning_of_month}
-                        .transform_values {|v| v.pluck(:forecast_amount).reduce(:+)}
+                        .transform_values {|v| v.pluck(:real_amount).reduce(:+)}
                         .to_a
                         .sort_by(&:first)
                         .last(12)
     {
       labels: formatted_data.map(&:first),
       datasets: [{
-        label: "Forecasted amounts vs. Perceived amounts",
+        label: "Real Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
           "#033860"
