@@ -38,11 +38,9 @@
         <%= link_to 'Contact', class: "#{'active' if current_page?('#')}" do %>
           <p><i class="far fa-address-book mr-1"></i>Contact</p>
       <% end %>
-    </div>
-    <div class="log">
       <% if user_signed_in? %>
-        <%= image_tag "stephane-robert.jpg", class: "avatar dropdown-toggle mb-3 mx-auto d-block" %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "ml-4 mt-2" do %>
+        <%= image_tag "stephane-robert.jpg", class: "avatar mt-3 mb-3 ml-4 d-block" %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "mt-2" do %>
           <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
         <% end %>
       <% else %>
