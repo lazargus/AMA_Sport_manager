@@ -20,7 +20,7 @@ class EarningsController < ApplicationController
 
   end
 
-  
+
 
   def show
     @expense = Expense.new
@@ -30,7 +30,7 @@ class EarningsController < ApplicationController
     @marker = { lat: @tournament.latitude,
                 lng: @tournament.longitude,
               }
-    @flight = { arrival_city: @tournament.address,
+    @flight = { arrival_city: @tournament.address.split(',').first,
                 start_date: @tournament.start_date,
                 end_date: @tournament.end_date,
               }
