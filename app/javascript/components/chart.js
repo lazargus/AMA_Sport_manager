@@ -8,8 +8,12 @@ const initChart = (data) => {
     options: {
       scales: {
         yAxes: [{
+          gridLines: {
+            color: "rgba(0, 0, 0, 0)",
+        },
           ticks: {
             beginAtZero: true
+            
           }
         }]
       }
@@ -17,22 +21,22 @@ const initChart = (data) => {
   });
 }
 
-const initChart2 = (data) => {
-  const ctx = document.getElementById("chartForecasts")
-  const chartExpense = new Chart(ctx, {
-    type: 'line',
-    data: data,
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  });
-}
+// const initChart2 = (data) => {
+//   const ctx = document.getElementById("chartForecasts")
+//   const chartExpense = new Chart(ctx, {
+//     type: 'line',
+//     data: data,
+//     options: {
+//       scales: {
+//         yAxes: [{
+//           ticks: {
+//             beginAtZero: true
+//           }
+//         }]
+//       }
+//     }
+//   });
+// }
 
 const loadData = (url) => {
   return new Promise((resolve, reject) => {
