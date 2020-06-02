@@ -28,16 +28,15 @@ const initMapbox = () => {
       radiusUnit: 'KM',
     }).then(response => response.data.forEach((result) => {
       console.log(response);
-      const infoWindow = `<div class='card'>
-                            <div class='window-image'></div>
-                            <div class='details'>
-                              <ul><li>${result.hotel.name}</li>
-                              <li>${result.hotel.hotelDistance.distance}km from the stadium</li>
-                              <li>${result.hotel.rating}/5</li>
-                              <li>${result.offers[0].price.total} ${result.offers[0].price.currency} per night</li>
-                              </ul>
-                            </div>
-                          </div>`
+      const infoWindow = `  <div class='window-image'></div>
+                            <div class='details ml-3'>
+                              <div class='top mt-2'>
+                              <h5>${result.hotel.name}</h5>
+                              <p>${result.hotel.rating}/5</p>
+                              </div>
+                              <p>${result.hotel.hotelDistance.distance}km from the stadium</p>
+                              <p class="mt-2"><strong>${result.offers[0].price.total} ${result.offers[0].price.currency}</strong> per night</p>
+                            </div>`
       const popup = new mapboxgl.Popup().setHTML(infoWindow);
       new mapboxgl.Marker()
       .setLngLat([ result.hotel.longitude, result.hotel.latitude ])

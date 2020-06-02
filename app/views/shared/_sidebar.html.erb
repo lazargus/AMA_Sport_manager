@@ -3,9 +3,6 @@
   <div class="infos">
     <div class="main mb-5 ml-4">
       <h6 class='mb-1'>MAIN</h6>
-        <%#= link_to earnings_path, class: "#{'active' if current_page?(earnings_path)}" do %>
-<!--             <p><i class="far fa-calendar-alt mr-1"></i>Tournaments</p>
--->          <%# end %>
         <p data-toggle="collapse"
            data-target="#collapseTournament"
            aria-expanded="false"
@@ -17,12 +14,9 @@
           <% end %>
           <%= link_to tournaments_path do  %>
               All tournaments
-          <%#= link_to 'Logistics' do %>
-            <!-- <p><i class="fas fa-plane mr-1"></i>My budget</p> -->
           <% end %>
 
       </div>
-
         <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
         <div class="collapse" id="collapseBudget">
           <%= link_to dashboard_index_path do  %>
@@ -46,13 +40,15 @@
           <p><i class="far fa-address-book mr-1"></i>Contact</p>
       <% end %>
     </div>
-    <% if user_signed_in? %>
-      <%= image_tag "stephane-robert.jpg", class: "avatar dropdown-toggle mb-3 mx-auto d-block" %>
-      <%= link_to destroy_user_session_path, method: :delete, class: "ml-4 mt-2" do %>
-        <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
+    <div class="log">
+      <% if user_signed_in? %>
+        <%= image_tag "stephane-robert.jpg", class: "avatar dropdown-toggle mb-3 mx-auto d-block" %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "ml-4 mt-2" do %>
+          <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
+        <% end %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path  %>
       <% end %>
-    <% else %>
-      <%= link_to 'Login', new_user_session_path  %>
-    <% end %>
+    </div>
   </div>
 </div>

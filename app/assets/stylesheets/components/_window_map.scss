@@ -1,12 +1,32 @@
 .window-image {
   background-image: url("https://cdn.radiofrance.fr/s3/cruiser-production/2020/01/9154cc93-7e4e-4ec3-ae74-43f134749198/920x517_panneeu_hotel-c-bertlam.jpg");
-  background-size: cover;
-  width: 70px;
-  height: 70px;
+  background-size: contain;
+  width: 90px;
+  height: 80px;
 }
 
-.card {
+.mapboxgl-popup-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 8px;
+  h5 {
+    font-size: 13px !important;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  p {
+    margin-bottom: 0;
+    line-height: 15px;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    p {
+      color: $my-yellow;
+      font-weight: bold;
+    }
+  }
 }
