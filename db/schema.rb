@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_102229) do
+ActiveRecord::Schema.define(version: 2020_06_02_134348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_102229) do
     t.string "title"
     t.date "date"
     t.integer "forecast_amount"
-    t.integer "real_amount"
+    t.integer "real_amount", default: 0
     t.bigint "tournament_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
