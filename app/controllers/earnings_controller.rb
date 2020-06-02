@@ -20,6 +20,8 @@ class EarningsController < ApplicationController
 
   end
 
+  
+
   def show
     @expense = Expense.new
     @tournament = Tournament.geocoded
@@ -43,6 +45,7 @@ class EarningsController < ApplicationController
     @earning.user = current_user
     if @earning.save
       if @earning.tournament
+        @earning.date = @earning.tournament.end_date
         redirect_to earning_path(@earning)
       else
         redirect_to earnings_path
@@ -70,19 +73,19 @@ class EarningsController < ApplicationController
   end
 
   def earning_params
-    params.require(:earning).permit(:date, :forecast_amount, :title, :category, :tournament_id)
+    params.require(:earning).permit(:date, :forecast_amount, :real_amount, :title, :category, :tournament_id)
   end
 
   def format_data(data)
     formatted_data = data.group_by {|e| e.date.beginning_of_month}
-                        .transform_values {|v| v.pluck(:forecast_amount).reduce(:+)}
+                        .transform_values {|v| v.pluck(:real_amount).reduce(:+)}
                         .to_a
                         .sort_by(&:first)
                         .last(12)
     {
       labels: formatted_data.map(&:first),
       datasets: [{
-        label: "Forecasted amounts vs. Perceived amounts",
+        label: "Real Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
           "#033860"
