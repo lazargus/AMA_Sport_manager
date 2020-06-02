@@ -69,14 +69,13 @@
 }
 .main-timeline .date{
     display: inline-block;
-    padding: 2px 5px;
     // background: $my-dark-blue;
     font-size: 13px;
     color: $my-dark-blue;
 }
 
 .main-timeline .title{
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 800;
     color: $my-dark-blue;
     margin-bottom: 0;
@@ -109,3 +108,15 @@
         text-align: left;
     }
 }
+
+.loose-money {
+  color: #fd5e53 !important;
+  font-size: 20px !important;
+}
+
+.gain-money {
+  color: #21bf73 !important;
+  font-size: 20px !important;
+}
+
+

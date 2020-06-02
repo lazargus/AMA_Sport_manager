@@ -57,13 +57,13 @@
       <div class="timeline-content left">
         <span class="timeline-icon"></span>
         <div>
-          <span class="date"><%= @tournament.end_date.strftime("%b %d %Y") %></span>
+          <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
           <h2 class="title"><%= @tournament.name.capitalize %></h2>
         </div>
-        <p class="description">
-          Type: Earning
+        <p class="description gain-money">
+          Earning <i class="far fa-money-bill-alt gain-money"></i>
           <br>
-          Forecast amount: $<%= @earning.forecast_amount %>
+          Forecast amount: $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar gain-money"></i>
         </p>
       </div>
     </div>
@@ -72,13 +72,15 @@
         <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
           <span class="timeline-icon"></span>
           <div>
-            <span class="date"><%= expense.created_at.strftime("%b %d %Y") %></span>
+            <span class="date"><%= expense.created_at.strftime("%b %d, %Y") %></span>
             <h2 class="title"><%= expense.title.capitalize %></h2>
           </div>
-          <p class="description">
-            Type: Expense
+          <p class="description loose-money">
+            <i class="fas fa-receipt loose-money"></i> Expense
             <br>
-            Amount: $<%= expense.amount %>
+            <i class="fas fa-tag loose-money"></i> <%= expense.category %>
+            <br>
+            <i class="fas fa-dollar-sign loose-money"></i> -<%= expense.amount %>
           </p>
         </div>
       </div>
