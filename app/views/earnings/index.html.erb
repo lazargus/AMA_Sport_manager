@@ -1,33 +1,61 @@
-<div class="top">
-  <h1>My Tournaments</h1>
-  <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn', data: { turbolinks: false }  %>
-</div>
-<div class="filters">
-  <%= link_to 'All', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn" %>
-  <%= link_to 'Past', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
-  <%= link_to 'Next', earnings_path(only_past_earnings: false), class: "#{'active' if params[:only_past_earnings] == 'false'} filter-btn ml-3"  %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="my-tournaments-tab" data-toggle="tab" href="#my-tournaments" role="tab" aria-controls="my-tournaments" aria-selected="true">My Tournaments</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="full-calendar-tab" data-toggle="tab" href="#full-calendar" role="tab" aria-controls="full-calendar" aria-selected="false">Calendar</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="my-tournaments" role="tabpanel" aria-labelledby="my-tournaments-tab">
+    <div class="top">
+      <h1>My Tournaments</h1>
+      <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn', data: { turbolinks: false }  %>
+    </div>
+    <div class="filters">
+      <%= link_to 'All', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn" %>
+      <%= link_to 'Past', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
+      <%= link_to 'Next', earnings_path(only_past_earnings: false), class: "#{'active' if params[:only_past_earnings] == 'false'} filter-btn ml-3"  %>
+    </div>
+
+    <% @earnings.each do |earning| %>
+        <div class="earning-container">
+          <div class="my-tournament-card"
+          data-url="<%= "/earnings/#{earning.id}" %>"
+          data-name="<%= earning.tournament.name %>"
+          data-start-date="<%= earning.tournament.start_date %>"
+          data-end-date="<%= earning.tournament.end_date %>"
+          data-img-url="<%= cl_image_path earning.tournament.photo.key%>" style="background-image: linear-gradient(153deg, rgba(3,56,96,1) 0%, rgba(5,80,136,0.8057598039215687) 50%, rgba(20,101,163,0.8169642857142857) 100%), url('<%= cl_image_path earning.tournament.photo.key%>');" >
+            <div class="text">
+              <h1><%= earning.tournament.name %></h1>
+              <h2 class="animate-text"><%= earning.tournament.address %></h2>
+              <h2 class="animate-text"><%= earning.tournament.start_date.strftime("%A %B %d %Y") %></h2>
+            </div>
+          </div>
+          <div class="earning-status">
+            <% if earning.tournament.end_date < Date.today %>
+              <p><%= earning.tournament.name%> is finished since <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. <br>Please <strong>validate your result</strong> in order to calculate associated earning!</p>
+              <%= link_to "Manage Tournament", earning_path(earning), class: 'validate filter-btn manage-btn' %>
+            <% else %>
+              <p class='waiting'><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></p>
+              <p>Forecasted prize money: $<%= number_with_delimiter(earning.forecast_amount, :delimiter => ',') %></p>
+              <%= link_to "Manage Tournament", earning_path(earning), class: 'validate filter-btn manage-btn' %>
+            <% end %>
+          </div>
+        </div>
+      <hr>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="full-calendar" role="tabpanel" aria-labelledby="full-calendar-tab">
+    <div id="calendar-wrapper">
+      <div id='calendar'></div>
+    </div>
+  </div>
 </div>
 
-<% @earnings.each do |earning| %>
-    <div class="earning-container">
-      <div class="my-tournament-card" data-img-url="<%= cl_image_path earning.tournament.photo.key%>" style="background-image: linear-gradient(153deg, rgba(3,56,96,1) 0%, rgba(5,80,136,0.8057598039215687) 50%, rgba(20,101,163,0.8169642857142857) 100%), url('<%= cl_image_path earning.tournament.photo.key%>');" >
-        <div class="text">
-          <h1><%= earning.tournament.name %></h1>
-          <h2 class="animate-text"><%= earning.tournament.address %></h2>
-          <h2 class="animate-text"><%= earning.tournament.start_date.strftime("%A %B %d %Y") %></h2>
-        </div>
-      </div>
-      <div class="earning-status">
-        <% if earning.tournament.end_date < Date.today %>
-          <p><%= earning.tournament.name%> is finished since <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. <br>Please <strong>validate your result</strong> in order to calculate associated earning!</p>
-          <%= link_to "Manage Tournament", earning_path(earning), class: 'validate filter-btn manage-btn' %>
-        <% else %>
-          <p class='waiting'><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></p>
-          <p>Forecasted prize money: $<%= number_with_delimiter(earning.forecast_amount, :delimiter => ',') %></p>
-          <%= link_to "Manage Tournament", earning_path(earning), class: 'validate filter-btn manage-btn' %>
-        <% end %>
-      </div>
-    </div>
-  <hr>
-<% end %>
+
+
+
+
 

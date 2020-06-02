@@ -3,62 +3,40 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
 
-// const getEvents = () => {
-//   const tournamentCards = document.querySelectorAll('.calendar');
-//   const events = [...tournamentCards].map(card => {
-//     return {
-//       id:card.dataset.id,
-//       title:card.dataset.tournamentName,
-//       start:card.dataset.startDate,
-//       end:card.dataset.endDate
-//     }
-//   });
-//   return events;
-// }
-
-// const fetchTournament = (tournamentId) => {
-//   fetch(`/tournaments/${tournamentId}`,{
-//     headers: {
-//       "Accept": "application/json"
-//     }
-//   })
-//   .then(response => response.json())
-//   .then((data) => {
-
-
-//     return data.attachmentPartial;
-//   });
-// }
-
+const eventsTournaments = () => {
+  const tournaments = document.querySelectorAll(".my-tournament-card");
+  const events = [];
+  const tournamentsEvent = tournaments.forEach((tournament) => {
+     const event ={
+                    title  : tournament.dataset.name,
+                    start  : tournament.dataset.startDate,
+                    end    : tournament.dataset.endDate,
+                    url    : tournament.dataset.url,
+                    backgroundColor: '#FFD400'
+                  }
+    events.push(event);
+  })
+  return events;
+}
 
 const fullcalendar = () => {
-  const calendarEl = document.getElementById('calendar');
-  const tournaments = JSON.parse(calendarEl.dataset.tournaments);
+const calendarEl = document.getElementById('calendar');
+
   const calendar = new Calendar(calendarEl, {
     plugins: [ dayGridPlugin ],
-    events: tournaments,
+    // aspectRatio: 1,
+    height: 'parent',
+    events : eventsTournaments(),
     eventClick: function(info) {
-      const modal = document.getElementById("myModal");
-      const modalContainer = modal.querySelector(".modal-content");
-      fetch(`/tournaments/${info.event.id}`,{
-        headers: {
-          "Accept": "application/json"
-        }
-      })
-      .then(response => response.json())
-      .then((data) => {
-        modalContainer.innerHTML = data.attachmentPartial;
-      });
-      modal.style.display = "block";
-      const close = document.querySelector(".close");
-      close.addEventListener("click", (e) => {
-        modal.style.display = "none";
-        console.log(info);
-      });
+      if (info.event.url) {
+      window.open(info.event.url, "_self");
+      }
     }
   });
-  calendar.render();
+
   calendar.getEvents();
-}
+  calendar.render();
+};
+
 
 export { fullcalendar };

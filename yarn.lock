@@ -783,10 +783,10 @@
   resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.4.1.tgz#36e08c06a84712aab13514c3f40d883b2452a6c9"
   integrity sha512-MfDGrBHEEP3oJO8vgU3iL4RvDqGtK9DhaqCiR5tGEEvahY+4rfBtkJ/XN6JuiO09/QGgrfRGNlAeKC3FZwGoNg==
 
-"@fullcalendar/daygrid@^4.4.1":
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-4.4.1.tgz#9cb4395cca3dee2303a90fcdd98042f3d8b6390d"
-  integrity sha512-UWOg3Dl5dHqYwQElEgTQ97GMg7IZ7e7fZYhMisvGGa7Yi/d/8NRCYl2F+FR1QnSyht/RwAPTCvEunGHizQMv3w==
+"@fullcalendar/daygrid@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-4.4.2.tgz#568bfb3c7cc97f83b57cf3aef0fa3ed1bf6eda16"
+  integrity sha512-axjfMhxEXHShV3r2TZjf+2niJ1C6LdAxkHKmg7mVq4jXtUQHOldU5XsjV0v2lUAt1urJBFi2zajfK8798ukL3Q==
 
 "@mapbox/geojson-rewind@^0.5.0":
   version "0.5.0"
