@@ -18,44 +18,48 @@
   </div>
 
   <div class="container">
-    <div class="container">
-      <div class="show-tournament-card">
-        <div class="row px-3">
-          <% data = JSON.parse(@tournament.data) %>
-          <% data.keys.each do |element| %>
-            <div class="col-2 border prize-money-choice text-center">
-              <p><em><%= element %></em></p>
-              <hr class="mt-0 mb-0">
-              <h3>$<%= number_with_delimiter(data[element].values[1], :delimiter => ',') %></h3>
-              <p style="display: none"><%= data[element].values[1]%></p>
-              <div class="atp-points">
-                <p><em>ATP Points: </em><%= data[element].values[0] %></p>
-              </div>
+    <div class="show-tournament-card">
+      <div class="row px-3 justify-content-center">
+        <% data = JSON.parse(@tournament.data) %>
+        <% data.keys.each do |element| %>
+          <div class="col-2 border prize-money-choice text-center">
+            <p><em><%= element %></em></p>
+            <hr class="mt-0 mb-0">
+            <h3>$<%= number_with_delimiter(data[element].values[1], :delimiter => ',') %></h3>
+            <p style="display: none"><%= data[element].values[1]%></p>
+            <div class="atp-points">
+              <p><em>ATP Points: </em><%= data[element].values[0] %></p>
             </div>
-          <% end %>
-        </div>
-        <div class="d-flex justify-content-center">
-          <%= simple_form_for([@tournament, Earning.new]) do |f| %>
-            <%= f.hidden_field :forecast_amount, label: "What will be your forcasted prize money?", placeholder: "Forcesated prize money" %>
-            <%= f.hidden_field :tournament_id, value: @tournament.id %>
-            <%= f.submit "Add tournament", class: "add-tournament-btn", method: :post  %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= simple_form_for([@tournament, Earning.new]) do |f| %>
+          <%= f.hidden_field :forecast_amount, label: "What will be your forcasted prize money?", placeholder: "Forcesated prize money" %>
+          <%= f.hidden_field :tournament_id, value: @tournament.id %>
+          <%= f.submit "Add tournament", class: "add-tournament-btn", method: :post  %>
+        <% end %>
       </div>
     </div>
-
-    <div class="d-flex justify-content-between">
-      <div class="container col-7">
-        <div class="show-tournament-card">
-          <h5><em>Description</em></h5>
-          <hr>
-          <p><%= @tournament.description %></p>
+    <div class="container mt-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="col-5">
+          <div class="show-tournament-card">
+              <div>
+                <%= cl_image_tag @tournament.logo.key, alt: "alttext", class: "mx-auto d-block"%>
+              </div>
+              <hr>
+              <h5><em>Surface:</em> <%= @tournament.surface %></h5>
+              <h5><em>Number of participants:</em> <%= @tournament.participants %></h5>
+              <h5><em>Tournament category:</em> <%= @tournament.category %></h5>
+          </div>
         </div>
-      </div>
-      <div class="col-5">
-        <div class="show-tournament-card">
-          <%= cl_image_tag @tournament.logo.key, alt: "alttext", class: "tournament-logo" %>
-          <%= @tournament.participants %>
+        <div class="container col-7">
+          <div class="show-tournament-card">
+            <h5><em>Description</em></h5>
+            <hr>
+            <p><%= @tournament.description %></p>
+          </div>
         </div>
       </div>
     </div>
