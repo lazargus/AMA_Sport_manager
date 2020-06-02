@@ -32,6 +32,7 @@ import "../plugins/flatpickr"
 import { tournamentsCardsHover } from "../components/tournaments_cards_hover";
 
 import { initMapbox } from "../plugins/init_mapbox";
+import { amadeusFlights } from "../plugins/amadeus_flights";
 
 import { tournamentShowPrizeMoney } from "../components/tournament_show_prize_money";
 // import { fullcalendar } from "../components/fullcalendar";
@@ -45,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   tournamentsCardsHover();
   // fullcalendar();
   buildChart();
+  amadeusFlights();
 });
 
 tournamentShowPrizeMoney();
