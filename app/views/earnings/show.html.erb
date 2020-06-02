@@ -1,10 +1,64 @@
-  <h1 class='mb-5'>Add expenses for <strong><%= @tournament.name %></strong></h1>
+  <h1 class='mb-3'>Add expenses for <strong><%= @tournament.name %></strong></h1>
 
-  <div class="d-flex justify-content-between">
-    <div class="suggestions">
-      <h5>Hotels suggestions</h5>
-      <p><em>Best offers around the stadium (3km)</em></p>
-      <hr>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">Summary</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Expense</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="earning-tab" data-toggle="tab" href="#earning" role="tab" aria-controls="earning" aria-selected="false">Earning</a>
+    </li>
+  </ul>
+  <br>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+      <div class="container">
+        <div class="main-timeline">
+          <div class="timeline">
+            <div class="timeline-content left">
+              <span class="timeline-icon"></span>
+              <div>
+                <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
+                <h2 class="title"><%= @tournament.name.capitalize %></h2>
+              </div>
+              <p class="description gain-money">
+                Earning <i class="far fa-money-bill-alt gain-money"></i>
+                <br>
+                Forecast amount: $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar gain-money"></i>
+              </p>
+            </div>
+          </div>
+          <% @tournament.expenses.order(:created_at).each_with_index do |expense, index| %>
+            <div class="timeline">
+              <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
+                <span class="timeline-icon"></span>
+                <div>
+                  <span class="date"><%= expense.created_at.strftime("%b %d, %Y") %></span>
+                  <h2 class="title"><%= expense.title.capitalize %></h2>
+                </div>
+                <p class="description loose-money">
+                  <i class="fas fa-receipt loose-money"></i> Expense
+                  <br>
+                  <i class="fas fa-tag loose-money"></i> <%= expense.category %>
+                  <br>
+                  <i class="fas fa-dollar-sign loose-money"></i> -<%= expense.amount %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab">
+    <div class="d-flex justify-content-between">
+      <div class="suggestions">
+        <h5>Hotels suggestions</h5>
+        <p><em>Best offers around the stadium (3km)</em></p>
+        <hr>
         <div class="display-map mt-4">
           <div
           id="map"
@@ -16,9 +70,9 @@
           >
           </div>
         </div>
-      <h5 class="mt-5">Flights suggestions</h5>
-      <p><em>Best offers according to tournament dates</em></p>
-      <hr>
+        <h5 class="mt-5">Flights suggestions</h5>
+        <p><em>Best offers according to tournament dates</em></p>
+        <hr>
         <div
           id="flights"
           data-flight="<%= @flight.to_json %>"
@@ -29,84 +83,29 @@
         <div id="flights_results">
 
         </div>
-        <!-- <div class="flight-card bg-white rounded p-4 m-2 row text-center">
-          <div class="col-md-3">
-            <p>Heure de depart</p>
-          </div>
-          <div class="col-md-3">
-            <p>durée du vol</p>
-          </div>
-          <div class="col-md-3 border-right">
-            <p>Heure d'arrivéé</p>
-          </div>
-          <div class="col-md-3">
-            <p>Prix</p>
-          </div>
-        </div> -->
-    </div>
+          <!-- <div class="flight-card bg-white rounded p-4 m-2 row text-center">
+            <div class="col-md-3">
+              <p>Heure de depart</p>
+            </div>
+            <div class="col-md-3">
+              <p>durée du vol</p>
+            </div>
+            <div class="col-md-3 border-right">
+              <p>Heure d'arrivéé</p>
+            </div>
+            <div class="col-md-3">
+              <p>Prix</p>
+            </div>
+          </div> -->
+      </div>
 
-    <div class="card-expense p-3" id="expense-booking-form">
-      <h5 class="mt-2"><strong>Add new expense:</strong></h5>
-      <%= render "/shared/expense_form", expense: @expense, data: { turbolinks: false } %>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-  <div class="main-timeline">
-    <div class="timeline">
-      <div class="timeline-content left">
-        <span class="timeline-icon"></span>
-        <div>
-          <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
-          <h2 class="title"><%= @tournament.name.capitalize %></h2>
-        </div>
-        <p class="description gain-money">
-          Earning <i class="far fa-money-bill-alt gain-money"></i>
-          <br>
-          Forecast amount: $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar gain-money"></i>
-        </p>
+      <div class="card-expense p-3" id="expense-booking-form">
+        <h5 class="mt-2"><strong>Add new expense:</strong></h5>
+        <%= render "/shared/expense_form", expense: @expense, data: { turbolinks: false } %>
       </div>
     </div>
-    <% @tournament.expenses.order(:created_at).each_with_index do |expense, index| %>
-      <div class="timeline">
-        <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
-          <span class="timeline-icon"></span>
-          <div>
-            <span class="date"><%= expense.created_at.strftime("%b %d, %Y") %></span>
-            <h2 class="title"><%= expense.title.capitalize %></h2>
-          </div>
-          <p class="description loose-money">
-            <i class="fas fa-receipt loose-money"></i> Expense
-            <br>
-            <i class="fas fa-tag loose-money"></i> <%= expense.category %>
-            <br>
-            <i class="fas fa-dollar-sign loose-money"></i> -<%= expense.amount %>
-          </p>
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>
-
-
-
 
 
 
