@@ -83,12 +83,12 @@ class EarningsController < ApplicationController
                         .sort_by(&:first)
                         .last(12)
     {
-      labels: formatted_data.map(&:first),
+      labels: formatted_data.map(&:first).map{|e|Date.parse(e.to_s).strftime("%B")},
       datasets: [{
-        label: "Real Earnings",
+        label: "Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          "#033860"
+          'rgba(75, 195, 87, 0.4)'
         ]
       }]
     }
