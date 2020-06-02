@@ -33,3 +33,54 @@
       <%= render "/shared/expense_form", expense: @expense, data: { turbolinks: false } %>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="main-timeline">
+  <% @tournament.earnings.each do |earning| %>
+        <div class="timeline">
+            <div class="timeline-content left">
+                <span class="timeline-icon"></span>
+                <span class="date"><%= earning.created_at.strftime("Created on %m/%d/%Y at %I:%M%p") %></span>
+                <h2 class="title"><%= earning.tournament.name %></h2>
+                <p class="description">
+                  Type: Earning
+                  <br>
+                  Forecast amount: <%= @earning.forecast_amount %>
+                </p>
+            </div>
+        </div>
+  <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

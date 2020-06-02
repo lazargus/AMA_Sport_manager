@@ -3,8 +3,8 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :update]
 
   def index
-    respond_to do |format| 
-      format.html do 
+    respond_to do |format|
+      format.html do
         @tournaments = current_user.tournaments.where('tournaments.end_date >?', Date.today)
       end
       format.json do
@@ -23,8 +23,10 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.user = current_user
+    @tournament = Tournament.find(params[:expense][:tournament])
+    @earning = Earning.find(params[:expense][:earning])
     if @expense.save
-      redirect_to expense_path(@expense)
+      redirect_to earning_path(@earning)
     else
       render :new
     end
