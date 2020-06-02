@@ -3,8 +3,8 @@ class EarningsController < ApplicationController
   before_action :set_earning, only: [ :show, :edit, :update]
 
   def index
-    respond_to do |format| 
-      format.html do 
+    respond_to do |format|
+      format.html do
         @earnings = if params[:only_past_earnings] == 'true'
                   current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today)
                 elsif params[:only_past_earnings] == 'false'
@@ -27,7 +27,10 @@ class EarningsController < ApplicationController
 
     @marker = { lat: @tournament.latitude,
                 lng: @tournament.longitude,
-                # infoWindow: render_to_string(partial: "info_window", locals: { hotel: hotel })
+              }
+    @flight = { arrival_city: @tournament.address,
+                start_date: @tournament.start_date,
+                end_date: @tournament.end_date,
               }
   end
 
