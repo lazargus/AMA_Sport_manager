@@ -26,6 +26,23 @@
           data-amadeus-secret="<%= ENV['AMADEUS_SECRET'] %>"
           >
           </div>
+        <div id="flights_results">
+
+        </div>
+        <!-- <div class="flight-card bg-white rounded p-4 m-2 row text-center">
+          <div class="col-md-3">
+            <p>Heure de depart</p>
+          </div>
+          <div class="col-md-3">
+            <p>durée du vol</p>
+          </div>
+          <div class="col-md-3 border-right">
+            <p>Heure d'arrivéé</p>
+          </div>
+          <div class="col-md-3">
+            <p>Prix</p>
+          </div>
+        </div> -->
     </div>
 
     <div class="card-expense p-3" id="expense-booking-form">
@@ -33,3 +50,66 @@
       <%= render "/shared/expense_form", expense: @expense, data: { turbolinks: false } %>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="main-timeline">
+    <div class="timeline">
+      <div class="timeline-content left">
+        <span class="timeline-icon"></span>
+        <span class="date"><%= @tournament.end_date.strftime("%b %d %Y") %></span>
+        <h2 class="title"><%= @tournament.name.capitalize %></h2>
+        <p class="description">
+          Type: Earning
+          <br>
+          Forecast amount: $<%= @earning.forecast_amount %>
+        </p>
+      </div>
+    </div>
+    <% @tournament.expenses.order(:created_at).each_with_index do |expense, index| %>
+      <div class="timeline">
+        <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
+          <span class="timeline-icon"></span>
+          <span class="date"><%= expense.created_at.strftime("%b %d %Y") %></span>
+          <h2 class="title"><%= expense.title.capitalize %></h2>
+          <p class="description">
+            Type: Expense
+            <br>
+            Amount: $<%= expense.amount %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

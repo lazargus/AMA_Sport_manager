@@ -20,6 +20,8 @@ class EarningsController < ApplicationController
 
   end
 
+
+
   def show
     @expense = Expense.new
     @tournament = Tournament.geocoded
@@ -28,7 +30,7 @@ class EarningsController < ApplicationController
     @marker = { lat: @tournament.latitude,
                 lng: @tournament.longitude,
               }
-    @flight = { arrival_city: @tournament.address,
+    @flight = { arrival_city: @tournament.address.split(',').first,
                 start_date: @tournament.start_date,
                 end_date: @tournament.end_date,
               }
@@ -41,6 +43,7 @@ class EarningsController < ApplicationController
   def create
     @earning = Earning.new(earning_params)
     @earning.user = current_user
+    @earning.date = @earning.tournament.end_date if @earning.tournament
     if @earning.save
       if @earning.tournament
         redirect_to earning_path(@earning)
@@ -70,19 +73,19 @@ class EarningsController < ApplicationController
   end
 
   def earning_params
-    params.require(:earning).permit(:date, :forecast_amount, :title, :category, :tournament_id)
+    params.require(:earning).permit(:date, :forecast_amount, :real_amount, :title, :category, :tournament_id)
   end
 
   def format_data(data)
     formatted_data = data.group_by {|e| e.date.beginning_of_month}
-                        .transform_values {|v| v.pluck(:forecast_amount).reduce(:+)}
+                        .transform_values {|v| v.pluck(:real_amount).reduce(:+)}
                         .to_a
                         .sort_by(&:first)
                         .last(12)
     {
       labels: formatted_data.map(&:first),
       datasets: [{
-        label: "Forecasted amounts vs. Perceived amounts",
+        label: "Real Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
           "#033860"
