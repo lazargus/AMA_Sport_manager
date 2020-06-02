@@ -34,25 +34,29 @@ const buildCards = (offer) => {
   const timeStart = offer.itineraries[0].segments[0].departure.at.split('T');
   const timeEnd = offer.itineraries[0].segments[0].arrival.at.split('T');
   flightsResults.insertAdjacentHTML('beforeend', `
-        <div class="flight-card bg-white rounded p-4 m-2 row text-center">
+        <div class="flight-card bg-white p-4 m-2 row text-center">
           <div class="col-md-3">
-            <p><strong>Heure de depart</strong></p>
-            <p>${timeStart[0]}</p>
-            <p>${timeStart[1]}</p>
+            <h1><strong>Departure time</strong></h1>
+            <div class='flight-date'>
+              <p>${timeStart[0]}</p>
+              <p>${timeStart[1]}</p>
+            </div>
           </div>
           <div class="col-md-3">
-            <p><strong>Durée du vol</strong></p>
-            <p><hr></p>
-            <p>${offer.itineraries[0].duration.replace('PT', '')}</p>
+            <h1><strong>Flight duration</strong></h1>
+            <i class="fas fa-arrow-right"></i>
+            <p class='flight-duration'><em>${offer.itineraries[0].duration.replace('PT', '')}</em></p>
           </div>
           <div class="col-md-3 border-right">
-            <p><strong>Heure d'arrivée</strong></p>
-            <p>${timeEnd[0]}</p>
-            <p>${timeEnd[1]}</p>
+            <h1><strong>Arrival time</strong></h1>
+            <div class='flight-date'>
+              <p>${timeEnd[0]}</p>
+              <p>${timeEnd[1]}</p>
+            </div>
           </div>
           <div class="col-md-3">
-            <p><strong>Prix</strong></p>
-            <p>${offer.price.total} ${offer.price.currency}</p>
+            <h1><strong>Price</strong></h1>
+            <p class='mt-3'>${offer.price.total} ${offer.price.currency}</p>
           </div>
         </div>`
 

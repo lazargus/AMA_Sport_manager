@@ -1,0 +1,22 @@
+.flight-card {
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  h1 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.flight-date {
+  p {
+    margin: 0;
+  }
+}
+
+.flight-duration {
+  p {
+    font-size: 9px;
+  }
+}
