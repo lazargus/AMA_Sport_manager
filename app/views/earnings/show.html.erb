@@ -111,16 +111,23 @@
         </div>
       </div>
 
-      <div class="card-expense p-3" id="expense-booking-form">
+      <div class="card-expense p-3" id="expense-booking-form" data-controller="expense-form">
         <h5 class="mt-2"><strong>Add new expense:</strong></h5>
-          <%= simple_form_for current_user, url: earning_create_multiple_expenses_path(@earning) do |f| %>
+          <%= simple_form_for current_user,
+            url: earning_create_multiple_expenses_path(@earning),
+            html: {data: {action: 'submit->expense-form#handleSubmit'} } do |f| %>
             <!-- Hide this -->
-            <%= render 'shared/expense_fields', f: f, type: 'Hotel' %>
-            <%= render 'shared/expense_fields', f: f, type: 'Flight' %>
+
+            <div data-target="expense-form.fields">
+              <%= render 'shared/expense_fields', f: f, type: 'Hotel' %>
+            </div>
+            <div data-target="expense-form.fields">
+              <%= render 'shared/expense_fields', f: f, type: 'Flight' %>
+            </div>
             <!-- Insert cart here -->
             <div id="hotel-card"></div>
             <div id="flight-card"></div>
-            <%= f.submit "Add expenses", class: "add-tournament-btn " %>
+            <%= f.submit "Add expenses", class: "add-tournament-btn" %>
           <% end %>
       </div>
     </div>

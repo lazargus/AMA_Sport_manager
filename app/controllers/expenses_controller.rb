@@ -55,6 +55,9 @@ class ExpensesController < ApplicationController
   end
 
   def create_multiple
+    if multiple_expenses_params[:expenses_attributes]["1"]
+      current_user.expense_amount = multiple_expenses_params[:expenses_attributes]["1"][:amount]
+    end
     @earning = Earning.find(params[:earning_id])
     current_user.update!(multiple_expenses_params)
     redirect_to earning_path(@earning)

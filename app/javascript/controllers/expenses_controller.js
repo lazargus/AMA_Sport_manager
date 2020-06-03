@@ -13,8 +13,8 @@ export default class extends Controller {
   static targets = [ "hotel", "hotelPrice", 'flightPrice' ]
 
   fillHotelForm() {
-    const amount = document.getElementById(`user_expenses_attributes_0_amount`);
-    const description = document.getElementById(`user_expenses_attributes_0_title`);
+    const amount = document.getElementById(`HotelAmount`);
+    const description = document.getElementById(`HotelDesc`);
     const duration = Number.parseInt(document.getElementById('map').dataset.duration);
     const amountValue = Number.parseInt(this.hotelPriceTarget.innerText) * duration;
     const descriptionValue = `${duration} days at ${this.hotelTarget.innerText}`;
@@ -24,9 +24,11 @@ export default class extends Controller {
   }
 
   fillFlightForm() {
-    const amount = document.getElementById(`user_expenses_attributes_1_amount`);
+    const amount = document.getElementById(`FlightAmount`);
     const amountValue = Number.parseInt(this.flightPriceTarget.innerText);
+    console.log(amount.value);
     amount.value = amountValue;
+    console.log(amount.value);
     this.fillFlightInfo(amountValue)
   }
 
