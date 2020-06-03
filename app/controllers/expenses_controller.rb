@@ -13,6 +13,14 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def donut
+    respond_to do |format|
+      format.json do
+        render json: format_data_donut(current_user.expenses).as_json
+      end
+    end
+  end
+
   def show
   end
 
@@ -66,9 +74,26 @@ class ExpensesController < ApplicationController
         label: "Expenses",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(222, 23, 23, 0.5)'
+          'rgba(253, 94, 83, 0.6)'
         ]
     }
   end
 
+  def format_data_donut(data)
+    formatted_data = data.group_by {|e| e.category}
+                        .transform_values {|v| v.pluck(:amount).reduce(:+)}
+                        .to_a
+                        .sort_by(&:first)
+
+    {
+      labels: formatted_data.map(&:first),
+        datasets: [{
+        label: "Categories",
+        data: formatted_data.map(&:second),
+        backgroundColor: [
+          'rgba(253, 94, 83, 0.6)'
+        ]
+      }]
+    }
+  end
 end

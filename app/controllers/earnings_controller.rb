@@ -17,10 +17,7 @@ class EarningsController < ApplicationController
         render json: format_data(current_user.earnings).as_json
       end
     end
-
   end
-
-
 
   def show
     @expense = Expense.new
@@ -88,7 +85,7 @@ class EarningsController < ApplicationController
         label: "Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(75, 195, 87, 0.4)'
+          'rgba(33, 191, 115, 0.5)'
         ]
       }]
     }

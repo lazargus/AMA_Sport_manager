@@ -1,0 +1,38 @@
+.container-graph {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 10px 0px 15px 4px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.season-balance {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px 15px 20px;
+  margin-top: 5px;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.income {
+  text-align: center;
+  color: $my-green;
+}
+
+.expense {
+  text-align: center;
+  color: $my-red;
+}
+
+.graphs-container {
+  display: flex;
+  background-color: white;
+  // border-radius: 10px;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // padding: 10px 0px 15px 4px;
+  // margin-top: 20px;
+  // font-weight: bold;
+}
