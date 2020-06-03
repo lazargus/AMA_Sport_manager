@@ -9,7 +9,7 @@
            aria-controls="collapseExample"
            class="<%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show') %>"><i class="far fa-calendar-alt mr <%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show')%>"></i>Tournaments</p>
         <div class="collapse" id="collapseTournament">
-          <%= link_to earnings_path do  %>
+          <%= link_to earnings_path(only_past_earnings: false) do  %>
               My tournaments
           <% end %>
           <%= link_to tournaments_path do  %>
