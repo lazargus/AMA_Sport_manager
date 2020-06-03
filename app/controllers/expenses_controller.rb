@@ -41,7 +41,6 @@ class ExpensesController < ApplicationController
       else
         redirect_to dashboard_index_path
       end
->>>>>>> master
     else
       render :new
     end

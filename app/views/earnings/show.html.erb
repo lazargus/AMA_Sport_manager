@@ -107,7 +107,8 @@
             <%= render 'shared/expense_fields', f: f, type: 'Hotel' %>
             <%= render 'shared/expense_fields', f: f, type: 'Flight' %>
             <!-- Insert cart here -->
-
+            <div id="hotel-card"></div>
+            <div id="flight-card"></div>
             <%= f.submit "Add expenses", class: "add-tournament-btn " %>
           <% end %>
       </div>

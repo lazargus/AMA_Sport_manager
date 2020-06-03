@@ -31,10 +31,23 @@ export default class extends Controller {
   }
 
   fillHotelInfo(description, price) {
-
+    const hotelCard = document.getElementById('hotel-card');
+    hotelCard.insertAdjacentHTML('beforeend',`
+      <div class='d-flex justify-content-between'>
+        <p>${description}</p>
+        <p><strong>${price}€</strong></p>
+      </div>
+      `)
   }
 
   fillFlightInfo(price) {
+    const flightCard = document.getElementById('flight-card');
+    flightCard.insertAdjacentHTML('beforeend', `
+      <div class='d-flex justify-content-between'>
+        <p>Flight to the tournament city</p>
+        <p><strong>${price}€</strong></p>
+      </div>
+      `)
 
   }
 }
