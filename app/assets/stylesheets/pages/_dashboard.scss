@@ -4,7 +4,7 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   padding: 5px 5px 5px 5px;
   margin-top: 20px;
-  font-weight: bold;
+  // font-weight: bold;
   position: relative;
 }
 
@@ -13,33 +13,50 @@
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   padding: 10px 20px 15px 20px;
-  font-weight: bold;
+  // font-weight: bold;
   width: 350px;
-  h4 {
-  text-align: center;
-  }
+
 }
 
 .income {
   text-align: center;
   color: $my-green;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .expense {
   text-align: center;
   color: $my-red;
-  font-size: 22px;
+  font-size: 20px;
 }
+
+// .balance {
+//   text-align: center;
+//   color: $my-blue;
+//   font-size: 1px;
+// }
 
 .graphs-container {
   display: flex;
   justify-content: space-between;
+  h7 {
+    text-align: center !important;
+    color: $my-dark-blue;
+    font-size: 20px;
+    display: block;
+  }
 }
 
 .donut.season-balance {
   position: relative;
-  height: 39vh;
+  height: 45vh;
   width: 50vw;
 }
 
+h4 {
+  text-align: center;
+  font-size: 16px;
+  font-family: Poppins;
+  margin-bottom: auto;
+
+  }
