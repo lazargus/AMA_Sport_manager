@@ -16,6 +16,15 @@ class User < ApplicationRecord
     Tournament.where id: tournament_ids
   end
 
+  def total_earnings
+    return 0 if earnings.empty?
+    earnings.where('date >= ?', 6.months.ago).pluck(:real_amount).sum
+  end
+
+  def total_expenses
+    return 0 if expenses.empty?
+    expenses.where('date >= ?', 6.months.ago).pluck(:amount).sum
+  end
 
   private
 

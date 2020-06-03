@@ -5,4 +5,5 @@ class Earning < ApplicationRecord
 
   validates :category, presence: true
   validates :category, inclusion: { in: CATEGORY }
+
 end
