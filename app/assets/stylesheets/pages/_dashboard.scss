@@ -29,10 +29,10 @@
 
 .graphs-container {
   display: flex;
-  background-color: white;
-  // border-radius: 10px;
-  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  // padding: 10px 0px 15px 4px;
-  // margin-top: 20px;
-  // font-weight: bold;
+  justify-content: space-between;
 }
+
+// #chartExpenses {
+//   width: 100% !important;
+//   height: 100% !important;
+// }

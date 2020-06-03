@@ -9,7 +9,7 @@ const initChart = (data) => {
       scales: {
         yAxes: [{
           gridLines: {
-            color: "rgba(0, 0, 0, 0)",
+            display: false
           },
           ticks: {
             beginAtZero: true
@@ -20,7 +20,6 @@ const initChart = (data) => {
     }
   });
 }
-
 
 const loadData = (url) => {
   return new Promise((resolve, reject) => {
@@ -46,8 +45,6 @@ const buildChart = () => {
         })
     })
 
-
-
 }
 
 const initDonut = (data) => {
@@ -61,9 +58,13 @@ const initDonut = (data) => {
         data: data,
         options: {
           scales: {
-            yAxes: [{
+            xAxes: [{
+              gridLines: {
+                display: false
+              },
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                display: false
               }
             }]
           }
