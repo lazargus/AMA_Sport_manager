@@ -9,7 +9,7 @@
   border: 4px solid white;
   margin: 37px 50px 0px 0px;
   width: 480px;
-  
+
   h1 {
     text-align: center;
     font-weight: bold;
@@ -46,4 +46,13 @@
     border: 1px solid #FFD400;
     }
   }
+}
+.form-control:valid:focus {
+  border-color: #ffd400;
+  box-shadow: 0 0 0 0.2rem rgba(255, 212, 0, 0.1);
+}
+
+.form-control.is-valid {
+  background: none;
+  border-color: gray;
 }
