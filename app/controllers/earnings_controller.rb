@@ -88,7 +88,7 @@ class EarningsController < ApplicationController
         label: "Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(75, 195, 87, 0.4)'
+          'rgba(33, 191, 115, 0.5)'
         ]
       }]
     }

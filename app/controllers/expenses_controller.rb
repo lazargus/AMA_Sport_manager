@@ -60,7 +60,7 @@ class ExpensesController < ApplicationController
         label: "Expenses",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(222, 23, 23, 0.5)'
+          'rgba(253, 94, 83, 0.6)'
         ]
     }
   end
