@@ -7,28 +7,15 @@
     <hr>
     <p> Total earnings </p>
     <div class="income">
-      <p> +$<%= @earnings.group_by {|e| e.date.beginning_of_month}
-      .transform_values {|v| v.pluck(:real_amount).reduce(:+)}
-      .to_a
-      .sort_by(&:first)
-      .last(12)
-      .map(&:second)
-      .reduce(:+) 
-      .to_s(:delimited) %> </p>
+      <p> +$<%= current_user.total_earnings.to_s(:delimited) %> </p>
     </div>
 
     <hr>
 
     <p> Total expenses </p>
     <div class="expense">
-      <p> -$<%= @expenses.group_by {|e| e.date.beginning_of_month}
-        .transform_values {|v| v.pluck(:amount).reduce(:+)}
-        .to_a
-        .sort_by(&:first)
-        .last(12)
-        .map(&:second)
-        .reduce(:+) 
-        .to_s(:delimited) %> </p>
+      <p> -$<%= current_user.total_expenses.to_s(:delimited) %>
+       </p>
     </div>
 
   </div>
