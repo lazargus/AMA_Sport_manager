@@ -86,9 +86,24 @@
 }
 .main-timeline .timeline-content.left{
     text-align: right;
+
+    .loose-money {
+      flex-direction: row-reverse;
+
+      i {
+        margin-left: 5px;
+      }
+    }
 }
 .main-timeline .timeline-content.right{
     float: right;
+
+
+    .loose-money {
+      i {
+        margin-right: 5px;
+      }
+    }
 }
 
 @media screen and (max-width: 767px){
@@ -111,11 +126,27 @@
 
 .loose-money {
   color: #fd5e53 !important;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  i {
+    color: #fd5e53;
+
+  }
   font-size: 20px !important;
 }
 
+
+
+
 .gain-money {
   color: #21bf73 !important;
+  font-size: 20px !important;
+}
+
+.forecast-money {
+  color: #F9C80E !important;
   font-size: 20px !important;
 }
 

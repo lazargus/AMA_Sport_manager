@@ -1,5 +1,11 @@
 #calendar-wrapper {
   height: 80vh;
+  position: relative;
+  .add-tournament-btn {
+    position: absolute;
+    top: -11px;
+    right: 176px;
+  }
 }
 
 #calendar {

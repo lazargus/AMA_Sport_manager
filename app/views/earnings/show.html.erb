@@ -1,23 +1,43 @@
-  <h1 class='mb-3'>Add expenses for <strong><%= @tournament.name %></strong></h1>
+<%= link_to earnings_path do %>
+  <i class="fas fa-history"></i> Back to my tournaments
+<% end %>
 
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">Summary</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Expense</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="earning-tab" data-toggle="tab" href="#earning" role="tab" aria-controls="earning" aria-selected="false">Earning</a>
-    </li>
-  </ul>
-  <br>
+<h1 class='mb-3'>Manage budget for <strong><%= @tournament.name %></strong></h1>
 
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
-      <div class="container">
-        <div class="main-timeline">
-          <div class="timeline">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">Summary</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Add Expense</a>
+  </li>
+  <% if @earning.real_amount == 0 %>
+    <li class="nav-item">
+      <a class="nav-link" id="earning-tab" data-toggle="tab" href="#earning" role="tab" aria-controls="earning" aria-selected="false">Validate Earning</a>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+    <div class="container">
+      <div class="main-timeline">
+        <div class="timeline">
+          <% if @earning.real_amount == 0 %>
+            <div class="timeline-content left">
+              <span class="timeline-icon"></span>
+              <div>
+                <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
+                <h2 class="title"><%= @tournament.name.capitalize %></h2>
+              </div>
+              <p class="description forecast-money">
+                Earning <i class="far fa-money-bill-alt forecast-money"></i>
+                <br>
+                Forecast amount: $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar forecast-money"></i>
+              </p>
+            </div>
+          <% else %>
             <div class="timeline-content left">
               <span class="timeline-icon"></span>
               <div>
@@ -27,33 +47,36 @@
               <p class="description gain-money">
                 Earning <i class="far fa-money-bill-alt gain-money"></i>
                 <br>
-                Forecast amount: $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar gain-money"></i>
+                Gainings: $<%= number_with_delimiter(@earning.real_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar gain-money"></i>
               </p>
-            </div>
-          </div>
-          <% @tournament.expenses.order(:created_at).each_with_index do |expense, index| %>
-            <div class="timeline">
-              <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
-                <span class="timeline-icon"></span>
-                <div>
-                  <span class="date"><%= expense.created_at.strftime("%b %d, %Y") %></span>
-                  <h2 class="title"><%= expense.title.capitalize %></h2>
-                </div>
-                <p class="description loose-money">
-                  <i class="fas fa-receipt loose-money"></i> Expense
-                  <br>
-                  <i class="fas fa-tag loose-money"></i> <%= expense.category %>
-                  <br>
-                  <i class="fas fa-dollar-sign loose-money"></i> -<%= expense.amount %>
-                </p>
-              </div>
             </div>
           <% end %>
         </div>
+        <% @tournament.expenses.order(:created_at).each_with_index do |expense, index| %>
+          <div class="timeline">
+            <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
+              <span class="timeline-icon"></span>
+              <div>
+                <span class="date"><%= expense.created_at.strftime("%b %d, %Y") %></span>
+                <h2 class="title"><%= expense.title.capitalize %></h2>
+              </div>
+              <p class="description loose-money">
+                <i class="fas fa-receipt"></i> Expense
+              </p>
+              <p class="description loose-money">
+                <i class="fas fa-tag"></i> <%= expense.category %>
+              </p>
+              <p class="description loose-money">
+                <i class="fas fa-dollar-sign"></i> -<%= expense.amount %>
+              </p>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
+  </div>
 
-    <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab">
+  <div class="tab-pane fade" id="expense" role="tabpanel" aria-labelledby="expense-tab">
     <div class="d-flex justify-content-between">
       <div class="suggestions">
         <h5>Hotels suggestions</h5>
@@ -80,24 +103,10 @@
           data-amadeus-id="<%= ENV['AMADEUS_ID'] %>"
           data-amadeus-secret="<%= ENV['AMADEUS_SECRET'] %>"
           >
-          </div>
+        </div>
         <div id="flights_results">
 
         </div>
-          <!-- <div class="flight-card bg-white rounded p-4 m-2 row text-center">
-            <div class="col-md-3">
-              <p>Heure de depart</p>
-            </div>
-            <div class="col-md-3">
-              <p>durée du vol</p>
-            </div>
-            <div class="col-md-3 border-right">
-              <p>Heure d'arrivéé</p>
-            </div>
-            <div class="col-md-3">
-              <p>Prix</p>
-            </div>
-          </div> -->
       </div>
 
       <div class="card-expense p-3" id="expense-booking-form">
@@ -114,10 +123,26 @@
       </div>
     </div>
   </div>
+
+
+  <div class="tab-pane fade" id="earning" role="tabpanel" aria-labelledby="earning-tab">
+    <div class="col-xs-12 col-sm-6 offset-sm-3">
+      <div class="form-post mt-0">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3><%= @earning.tournament.name %></h3>
+            <p><em><%= @earning.tournament.end_date.strftime("%A %B %d %Y") %></em></p>
+            <p>Your forecasted gainings:</p>
+            <h4 class="text-center"><i class="fas fa-funnel-dollar"></i> $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %></h4>
+            <hr class="my-4">
+            <h3>Final tournament earning: </h3>
+            <%= render "/shared/earning_form", earning: @earning %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
 
 
 
