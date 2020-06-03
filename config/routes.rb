@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   end
 
 
-  resources :earnings, except: :destroy
+  resources :earnings, except: :destroy do
+    patch :create_multiple_expenses, to: 'expenses#create_multiple', as: 'create_multiple_expenses'
+  end
 
   resources :expenses, except: :destroy
 
-  resources :dashboard, only: :index
 
-  # get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense
+  resources :dashboard, only: :index
 end
+  # get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense

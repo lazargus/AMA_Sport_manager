@@ -26,7 +26,7 @@ class ExpensesController < ApplicationController
     @tournament = Tournament.find(params[:expense][:tournament_id])
     @earning = Earning.find(params[:expense][:earning])
     if @expense.save
-      redirect_to earning_path(@earning)
+      redirect_to '#expense'
     else
       render :new
     end
@@ -40,6 +40,12 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def create_multiple
+    @earning = Earning.find(params[:earning_id])
+    current_user.update!(multiple_expenses_params)
+    redirect_to earning_path(@earning)
+  end
+
   private
 
   def set_expense
@@ -48,6 +54,10 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.require(:expense).permit(:date, :amount, :title, :category, :done, :tournament_id)
+  end
+
+  def multiple_expenses_params
+    params.require(:user).permit(expenses_attributes: [:date, :amount, :title, :category, :done, :tournament_id, :user_id])
   end
 
   def format_data(data)

@@ -34,7 +34,7 @@ const buildCards = (offer) => {
   const timeStart = offer.itineraries[0].segments[0].departure.at.split('T');
   const timeEnd = offer.itineraries[0].segments[0].arrival.at.split('T');
   flightsResults.insertAdjacentHTML('beforeend', `
-        <div class="flight-card bg-white p-4 m-2 row text-center">
+        <div class="flight-card bg-white p-4 m-2 row text-center" data-controller="expenses">
           <div class="col-md-3">
             <h1><strong>Departure time</strong></h1>
             <div class='flight-date'>
@@ -56,7 +56,8 @@ const buildCards = (offer) => {
           </div>
           <div class="col-md-3">
             <h1><strong>Price</strong></h1>
-            <p class='mt-3'>${offer.price.total} ${offer.price.currency}</p>
+            <p class='mt-3'><strong data-target='expenses.flightPrice'>${offer.price.total}</strong>€</p>
+            <button class='add-tournament-btn' data-action='click->expenses#fillFlightForm'>Select</button>
           </div>
         </div>`
 

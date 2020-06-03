@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import "../plugins/flatpickr"
+import "controllers"
 
 
 // Internal imports, e.g:
@@ -57,3 +58,4 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 tournamentShowPrizeMoney();
+
