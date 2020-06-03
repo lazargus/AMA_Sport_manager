@@ -4,4 +4,5 @@ class Expense < ApplicationRecord
   belongs_to :user
 
   validates :date, :amount, :title, :category, presence: true, unless: -> {tournament}
+  validates :title, presence: true
 end
