@@ -9,34 +9,17 @@ const initChart = (data) => {
       scales: {
         yAxes: [{
           gridLines: {
-            color: "rgba(0, 0, 0, 0)",
-        },
+            display: false
+          },
           ticks: {
             beginAtZero: true
-            
+
           }
         }]
       }
     }
   });
 }
-
-// const initChart2 = (data) => {
-//   const ctx = document.getElementById("chartForecasts")
-//   const chartExpense = new Chart(ctx, {
-//     type: 'line',
-//     data: data,
-//     options: {
-//       scales: {
-//         yAxes: [{
-//           ticks: {
-//             beginAtZero: true
-//           }
-//         }]
-//       }
-//     }
-//   });
-// }
 
 const loadData = (url) => {
   return new Promise((resolve, reject) => {
@@ -46,6 +29,7 @@ const loadData = (url) => {
         resolve(data)
       });
   });
+
 }
 
 const buildChart = () => {
@@ -57,9 +41,39 @@ const buildChart = () => {
         .then(data => {
           earningData.datasets.push(data)
           initChart(earningData);
-          initChart2(earningData);
+          // initChart2(earningData);
         })
     })
+
 }
 
-export { buildChart }
+const initDonut = (data) => {
+  const ctx = document.getElementById("chartExpenses")
+  if (ctx) {
+    fetch("/expenses/donut.json")
+    .then(response => response.json())
+    .then(data => {
+      const chartExpense = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: {
+          scales: {
+            xAxes: [{
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                beginAtZero: true,
+                display: false
+              }
+            }]
+          }
+        }
+      });
+    });
+  }
+}
+
+export { buildChart, initDonut }
+
+

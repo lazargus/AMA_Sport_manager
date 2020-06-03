@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index'
   devise_for :users
   root to: 'pages#home'
 
@@ -14,8 +13,11 @@ Rails.application.routes.draw do
     patch :create_multiple_expenses, to: 'expenses#create_multiple', as: 'create_multiple_expenses'
   end
 
-  resources :expenses, except: :destroy
-
+  resources :expenses, except: :destroy do
+    collection do
+      get :donut
+    end
+  end
 
   resources :dashboard, only: :index
 end

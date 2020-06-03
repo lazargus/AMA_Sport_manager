@@ -13,6 +13,14 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def donut
+    respond_to do |format|
+      format.json do
+        render json: format_data_donut(current_user.expenses).as_json
+      end
+    end
+  end
+
   def show
   end
 
@@ -23,10 +31,17 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.user = current_user
-    @tournament = Tournament.find(params[:expense][:tournament_id])
-    @earning = Earning.find(params[:expense][:earning])
+    if @expense.tournament
+      @tournament = Tournament.find(params[:expense][:tournament_id])
+      @earning = Earning.find(params[:expense][:earning])
+    end
     if @expense.save
-      redirect_to '#expense'
+      if @expense.tournament
+        redirect_to '#expense'
+      else
+        redirect_to dashboard_index_path
+      end
+>>>>>>> master
     else
       render :new
     end
@@ -70,9 +85,28 @@ class ExpensesController < ApplicationController
         label: "Expenses",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(222, 23, 23, 0.5)'
+          'rgba(253, 94, 83, 0.6)'
         ]
     }
   end
 
+  def format_data_donut(data)
+    formatted_data = data.group_by {|e| e.category}
+                        .transform_values {|v| v.pluck(:amount).reduce(:+)}
+                        .to_a
+                        .sort_by(&:first)
+
+    {
+      labels: formatted_data.map(&:first),
+        datasets: [{
+        label: "Categories",
+        data: formatted_data.map(&:second),
+        backgroundColor: [
+          'rgba(253, 94, 83, 0.6)',
+          'rgba(253, 94, 83, 0.6)',
+          'rgba(253, 94, 83, 0.6)'
+        ]
+      }]
+    }
+  end
 end
