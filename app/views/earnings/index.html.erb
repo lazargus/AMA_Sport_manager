@@ -32,16 +32,24 @@
           </div>
           <div class="earning-status">
             <% if earning.tournament.end_date < Date.today %>
-              <p><%= earning.tournament.name%> is finished since <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>. <br>Please <strong>validate your result</strong> in order to calculate associated earning!</p>
-              <%= link_to "Manage Tournament", earning_path(earning), class: 'validate filter-btn manage-btn', data: { turbolinks: false } %>
+              <p><em>Tournament finished since <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>.</em><br>Please <strong>validate your result</strong> in order to calculate associated earning!</p>
+              <div class="d-flex justify-content-end">
+                <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
+                  <span> Manage Tournament
+                <% end %>
+              </div>
             <% else %>
-              <p class='waiting'><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></p>
+              <p class='waiting'><em><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
               <p>Forecasted prize money: $<%= number_with_delimiter(earning.forecast_amount, :delimiter => ',') %></p>
-              <%= link_to "Manage Tournament", earning_path(earning), class: 'validate filter-btn manage-btn', data: { turbolinks: false } %>
+              <div class="d-flex justify-content-end">
+                <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
+                  <span> Manage Tournament
+                <% end %>
+              </div>
             <% end %>
           </div>
         </div>
-      <hr>
+      <hr class="mt-1 mb-3">
     <% end %>
   </div>
   <div class="tab-pane fade" id="full-calendar" role="tabpanel" aria-labelledby="full-calendar-tab">
