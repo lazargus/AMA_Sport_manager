@@ -17,10 +17,7 @@ class EarningsController < ApplicationController
         render json: format_data(current_user.earnings).as_json
       end
     end
-
   end
-
-
 
   def show
     @expense = Expense.new

@@ -11,9 +11,12 @@ Rails.application.routes.draw do
 
   resources :earnings, except: :destroy
 
-  resources :expenses, except: :destroy
+  resources :expenses, except: :destroy do
+    collection do
+      get :donut
+    end
+  end
 
   resources :dashboard, only: :index
 
-  # get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense
 end

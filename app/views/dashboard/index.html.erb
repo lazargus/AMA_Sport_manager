@@ -1,37 +1,44 @@
 <!-- <h1>Dashboard</h1> -->
 
-<div class="container-total">
+<div class="graphs-container">
 
-  <h3>Season balance</h3>
-
-  <hr>
-
-  <p> Total earnings </p>
-  <div class="income">
-    <p> +$<%= @earnings.group_by {|e| e.date.beginning_of_month}
-    .transform_values {|v| v.pluck(:real_amount).reduce(:+)}
-    .to_a
-    .sort_by(&:first)
-    .last(12)
-    .map(&:second)
-    .reduce(:+) 
-    .to_s(:delimited) %> </p>
-  </div>
-
-  <hr>
-
-  <p> Total expenses </p>
-  <div class="expense">
-    <p> -$<%= @expenses.group_by {|e| e.date.beginning_of_month}
-      .transform_values {|v| v.pluck(:amount).reduce(:+)}
+  <div class="season-balance">
+    <h3>Season balance</h3>
+    <hr>
+    <p> Total earnings </p>
+    <div class="income">
+      <p> +$<%= @earnings.group_by {|e| e.date.beginning_of_month}
+      .transform_values {|v| v.pluck(:real_amount).reduce(:+)}
       .to_a
       .sort_by(&:first)
       .last(12)
       .map(&:second)
       .reduce(:+) 
       .to_s(:delimited) %> </p>
+    </div>
+
+    <hr>
+
+    <p> Total expenses </p>
+    <div class="expense">
+      <p> -$<%= @expenses.group_by {|e| e.date.beginning_of_month}
+        .transform_values {|v| v.pluck(:amount).reduce(:+)}
+        .to_a
+        .sort_by(&:first)
+        .last(12)
+        .map(&:second)
+        .reduce(:+) 
+        .to_s(:delimited) %> </p>
+    </div>
+
+
+
   </div>
 
+  <div class="donut">
+    <canvas id="chartExpenses" width="900" height="300">
+    </canvas>
+  </div>
 </div>
 
 <div class="container-graph">
@@ -41,12 +48,4 @@
   <canvas id="chartEarnings" width="900" height="300">
 
   </canvas>
-</div>
-
-<div class="container-graph">
-
-  <canvas id="chartEarnings" width="900" height="300">
-
-  </canvas>
-
 </div>
