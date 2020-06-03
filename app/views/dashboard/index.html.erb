@@ -1,34 +1,36 @@
-<!-- <h1>Dashboard</h1> -->
-
 <div class="graphs-container">
 
   <div class="season-balance">
-    <h4>Season balance</h4>
-    <hr>
     <p> Total earnings </p>
     <div class="income">
-      <p> +$<%= current_user.total_earnings.to_s(:delimited) %> </p>
+      <p> <strong>+<%= current_user.total_earnings.to_s(:delimited) %>$</p></strong>
     </div>
 
     <hr>
 
     <p> Total expenses </p>
     <div class="expense">
-      <p> -$<%= current_user.total_expenses.to_s(:delimited) %>
-       </p>
+      <p> <strong> -<%= current_user.total_expenses.to_s(:delimited) %>$</strong>
+      </p>
     </div>
+    <hr>
+    <p> Season balance </p>
+   <strong> <h7> <%= (current_user.total_earnings - current_user.total_expenses).to_s(:delimited) %>$</h7></strong>
+    
+</div>
 
+<div class="donut season-balance">
+  <div class="text-2xl text-center">
+    <h4>Repartition of the expenses ($)</h4>
   </div>
-
-  <div class="donut season-balance">
-    <canvas id="chartExpenses" width="600" height="300">
-    </canvas>
-  </div>
+  <canvas id="chartExpenses" width="600" height="300">
+  </canvas>
+</div>
 </div>
 
 <div class="container-graph">
   <div class="text-2xl text-center">
-    Evolution of the monthly results over the season in dollars ($)
+    <h4>Evolution of the monthly results over the season ($)</h4>
   </div>
   <div>
     <canvas id="chartEarnings" width="900" height="300">
