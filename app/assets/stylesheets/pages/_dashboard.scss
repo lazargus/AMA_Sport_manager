@@ -2,9 +2,10 @@
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 10px 0px 15px 4px;
-  margin-top: 20px;
+  padding: 5px 5px 5px 5px;
+  margin-top: 15px;
   font-weight: bold;
+  position: relative;
 }
 
 .season-balance {
@@ -12,19 +13,23 @@
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px 20px 15px 20px;
-  margin-top: 5px;
   font-weight: bold;
-  width: fit-content;
+  width: 350px;
+  h4 {
+  text-align: center;
+  }
 }
 
 .income {
   text-align: center;
   color: $my-green;
+  font-size: 22px;
 }
 
 .expense {
   text-align: center;
   color: $my-red;
+  font-size: 22px;
 }
 
 .graphs-container {
@@ -32,7 +37,8 @@
   justify-content: space-between;
 }
 
-// #chartExpenses {
-//   width: 100% !important;
-//   height: 100% !important;
-// }
+.donut.season-balance {
+  position: relative;
+  height: 39vh;
+  width: 48vw;
+}
