@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :earnings, except: :destroy do
     patch :create_multiple_expenses, to: 'expenses#create_multiple', as: 'create_multiple_expenses'
+
+    collection do
+      get :my_earnings
+    end
   end
 
   resources :expenses, except: :destroy do
