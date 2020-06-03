@@ -13,10 +13,12 @@ const initChart = (data) => {
           },
           ticks: {
             beginAtZero: true
-
           }
         }]
-      }
+      },
+      responsive: true,
+      aspectRatio: 1,
+      maintainAspectRatio: false
     }
   });
 }
@@ -51,29 +53,30 @@ const initDonut = (data) => {
   const ctx = document.getElementById("chartExpenses")
   if (ctx) {
     fetch("/expenses/donut.json")
-    .then(response => response.json())
-    .then(data => {
-      const chartExpense = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: {
-          scales: {
-            xAxes: [{
-              gridLines: {
-                display: false
-              },
-              ticks: {
-                beginAtZero: true,
-                display: false
-              }
-            }]
+      .then(response => response.json())
+      .then(data => {
+        const chartExpense = new Chart(ctx, {
+          type: 'doughnut',
+          data: data,
+          options: {
+            scales: {
+              xAxes: [{
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  beginAtZero: true,
+                  display: false
+                }
+              }]
+            },
+            responsive: true,
+            aspectRatio: 1,
+            maintainAspectRatio: false
           }
-        }
+        });
       });
-    });
   }
 }
 
 export { buildChart, initDonut }
-
-
