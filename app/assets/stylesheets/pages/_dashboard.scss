@@ -1,9 +1,9 @@
 .container-graph {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
   padding: 5px 5px 5px 5px;
-  margin-top: 15px;
+  margin-top: 20px;
   font-weight: bold;
   position: relative;
 }
@@ -11,7 +11,7 @@
 .season-balance {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   padding: 10px 20px 15px 20px;
   font-weight: bold;
   width: 350px;
@@ -40,5 +40,6 @@
 .donut.season-balance {
   position: relative;
   height: 39vh;
-  width: 48vw;
+  width: 50vw;
 }
+

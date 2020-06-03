@@ -10,9 +10,9 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="my-tournaments" role="tabpanel" aria-labelledby="my-tournaments-tab">
     <div class="filters d-flex align-items-center">
-      <%= link_to 'All', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn" %>
+      <%= link_to 'Upcoming', earnings_path(only_past_earnings: false), class: "#{'active' if params[:only_past_earnings] == 'false'} filter-btn"  %>
       <%= link_to 'Finished', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
-      <%= link_to 'Upcoming', earnings_path(only_past_earnings: false), class: "#{'active' if params[:only_past_earnings] == 'false'} filter-btn ml-3"  %>
+      <%= link_to 'All', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn ml-3" %>
       <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn mt-0', data: { turbolinks: false }  %>
     </div>
 

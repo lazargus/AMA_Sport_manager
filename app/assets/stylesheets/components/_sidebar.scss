@@ -93,4 +93,12 @@ i.active {
   color: $my-dark-blue;
 }
 
-
+.user-name {
+  position: absolute;
+  bottom: 30px;
+  left:10px;
+  em {
+    opacity: 1;
+    font-size: 14px;
+  }
+}

@@ -9,7 +9,7 @@
            aria-controls="collapseExample"
            class="<%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show') %>"><i class="far fa-calendar-alt mr <%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show')%>"></i>Tournaments</p>
         <div class="collapse" id="collapseTournament">
-          <%= link_to earnings_path do  %>
+          <%= link_to earnings_path(only_past_earnings: false) do  %>
               My tournaments
           <% end %>
           <%= link_to tournaments_path do  %>
@@ -39,13 +39,17 @@
           <p><i class="far fa-address-book mr-1"></i>Contact</p>
       <% end %>
       <% if user_signed_in? %>
-        <%= image_tag "stephane-robert.jpg", class: "avatar mt-3 mb-3 ml-4 d-block" %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "mt-2" do %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
           <p><i class="fas fa-sign-out-alt"></i>Log Out</p>
         <% end %>
+          </div>
+        <div class="d-flex align-items-center flex-end user-name">
+          <%= image_tag "stephane-robert.jpg", class: "avatar" %>
+          <p class="mb-0 ml-2"><em><%= current_user.first_name %> <%= current_user.last_name %> </em></p>
+        </div>
       <% else %>
         <%= link_to 'Login', new_user_session_path  %>
+          </div>
       <% end %>
-    </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<%= link_to earnings_path do %>
+<%= link_to earnings_path(only_past_earnings: false) do %>
   <i class="fas fa-history"></i> Back to my tournaments
 <% end %>
 
@@ -8,10 +8,12 @@
   <li class="nav-item">
     <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">Summary</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Add Expense</a>
-  </li>
-  <% if @earning.real_amount == 0 %>
+  <% if Date.today < @earning.tournament.start_date %>
+    <li class="nav-item">
+      <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Add Expense</a>
+    </li>
+  <% end %>
+  <% if (Date.today > @earning.tournament.end_date) && (@earning.real_amount == 0)  %>
     <li class="nav-item">
       <a class="nav-link" id="earning-tab" data-toggle="tab" href="#earning" role="tab" aria-controls="earning" aria-selected="false">Validate Earning</a>
     </li>
@@ -109,16 +111,23 @@
         </div>
       </div>
 
-      <div class="card-expense p-3" id="expense-booking-form">
+      <div class="card-expense p-3" id="expense-booking-form" data-controller="expense-form">
         <h5 class="mt-2"><strong>Add new expense:</strong></h5>
-          <%= simple_form_for current_user, url: earning_create_multiple_expenses_path(@earning) do |f| %>
+          <%= simple_form_for current_user,
+            url: earning_create_multiple_expenses_path(@earning),
+            html: {data: {action: 'submit->expense-form#handleSubmit'} } do |f| %>
             <!-- Hide this -->
-            <%= render 'shared/expense_fields', f: f, type: 'Hotel' %>
-            <%= render 'shared/expense_fields', f: f, type: 'Flight' %>
+
+            <div data-target="expense-form.fields">
+              <%= render 'shared/expense_fields', f: f, type: 'Hotel' %>
+            </div>
+            <div data-target="expense-form.fields">
+              <%= render 'shared/expense_fields', f: f, type: 'Flight' %>
+            </div>
             <!-- Insert cart here -->
             <div id="hotel-card"></div>
             <div id="flight-card"></div>
-            <%= f.submit "Add expenses", class: "add-tournament-btn " %>
+            <%= f.submit "Add expenses", class: "add-tournament-btn" %>
           <% end %>
       </div>
     </div>
