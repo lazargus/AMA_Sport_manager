@@ -5,15 +5,15 @@
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="full-calendar-tab" data-toggle="tab" href="#full-calendar" role="tab" aria-controls="full-calendar" aria-selected="false">Calendar</a>
   </li>
-    <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn', data: { turbolinks: false }  %>
 </ul>
 
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="my-tournaments" role="tabpanel" aria-labelledby="my-tournaments-tab">
-    <div class="filters">
+    <div class="filters d-flex align-items-center">
       <%= link_to 'All', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn" %>
       <%= link_to 'Past', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
       <%= link_to 'Next', earnings_path(only_past_earnings: false), class: "#{'active' if params[:only_past_earnings] == 'false'} filter-btn ml-3"  %>
+      <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn mt-0', data: { turbolinks: false }  %>
     </div>
 
     <% @earnings.each do |earning| %>
@@ -46,6 +46,7 @@
   </div>
   <div class="tab-pane fade" id="full-calendar" role="tabpanel" aria-labelledby="full-calendar-tab">
     <div id="calendar-wrapper">
+      <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn', data: { turbolinks: false }  %>
       <div id='calendar'></div>
     </div>
   </div>

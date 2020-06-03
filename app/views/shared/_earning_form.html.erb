@@ -1,0 +1,8 @@
+
+<%= simple_form_for(@earning) do |f| %>
+  <%= f.input :date, label: "Date:" , as: :string, input_html: {class: "datepicker"} %>
+  <%= f.input :forecast_amount, label: "Forcasted amount:" %>
+  <%= f.input :real_amount, label: "Enter your actual earnings:", input_html: {value: ""} %>
+  <%= f.input :category, label: "Category:" %>
+  <%= f.submit "Validate earning", class: "btn btn-primary" %>
+<% end %>

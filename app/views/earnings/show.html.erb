@@ -5,10 +5,10 @@
       <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab" aria-controls="summary" aria-selected="true">Summary</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Expense</a>
+      <a class="nav-link" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="false">Add Expense</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="earning-tab" data-toggle="tab" href="#earning" role="tab" aria-controls="earning" aria-selected="false">Earning</a>
+      <a class="nav-link" id="earning-tab" data-toggle="tab" href="#earning" role="tab" aria-controls="earning" aria-selected="false">Validate Earning</a>
     </li>
   </ul>
   <br>
@@ -105,10 +105,21 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="tab-pane fade" id="earning" role="tabpanel" aria-labelledby="earning-tab">
+    <div class="col-xs-12 col-sm-6 offset-sm-3">
+      <div class="form-post mt-0">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render "/shared/earning_form", earning: @earning %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
 
 
 
