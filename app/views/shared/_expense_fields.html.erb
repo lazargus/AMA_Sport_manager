@@ -1,11 +1,13 @@
 <div class="d-none">
   <%= f.simple_fields_for :expenses do |exp| %>
-    <%= exp.input :date, as: :string, required: false, input_html: {class: "datepicker", value: Date.today} %>
-    <%= exp.hidden_field :category, value: type %>
-    <%= exp.input :amount, label: "What was the amount of your expense?", placeholder: "Enter amount" %>
-    <%= exp.hidden_field :title, value: ("Flight Paris-#{@tournament.address.split(', ').first}" if type == "Flight") %>
-    <%= exp.input :tournament_id, as: :hidden, input_html: {value: @tournament.id} %>
-    <%= exp.input :earning, as: :hidden, input_html: {value: @earning.id} %>
-    <%= exp.hidden_field :user_id, value: current_user.id %>
+    <% unless exp.object.persisted? %>
+      <%= exp.input :date, as: :string, required: false, input_html: {class: "datepicker", value: Date.today} %>
+      <%= exp.hidden_field :category, value: type %>
+      <%= exp.input :amount, input_html: {class: "offer_amount", id: "#{type}Amount"} %>
+      <%= exp.hidden_field :title, value: ("Flight Paris-#{@tournament.address.split(', ').first}" if type == "Flight"), id: "#{type}Desc" %>
+      <%= exp.input :tournament_id, as: :hidden, input_html: {value: @tournament.id} %>
+      <%= exp.input :earning, as: :hidden, input_html: {value: @earning.id} %>
+      <%= exp.hidden_field :user_id, value: current_user.id %>
+    <% end %>
   <% end %>
 </div>
