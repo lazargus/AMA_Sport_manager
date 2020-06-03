@@ -23,6 +23,7 @@ class EarningsController < ApplicationController
     @expense = Expense.new
     @tournament = Tournament.geocoded
     @tournament = @earning.tournament
+    current_user.expenses.build
 
     @marker = { lat: @tournament.latitude,
                 lng: @tournament.longitude,

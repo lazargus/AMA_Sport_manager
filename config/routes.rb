@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :earnings, except: :destroy
+  resources :earnings, except: :destroy do
+    patch :create_multiple_expenses, to: 'expenses#create_multiple', as: 'create_multiple_expenses'
+  end
 
   resources :expenses, except: :destroy do
     collection do
@@ -18,5 +20,5 @@ Rails.application.routes.draw do
   end
 
   resources :dashboard, only: :index
-
 end
+  # get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense

@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import Amadeus from 'amadeus';
+import fillExpenseForm from '../components/fill_expense_form';
 
 const fitMapToMarkers = (map, marker) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -28,13 +29,14 @@ const initMapbox = () => {
       radiusUnit: 'KM',
     }).then(response => response.data.forEach((result) => {
       const infoWindow = `  <div class='window-image'></div>
-                            <div class='details ml-3'>
+                            <div class='details ml-3' data-controller="expenses">
                               <div class='top mt-2'>
-                              <h5>${result.hotel.name}</h5>
+                              <h5 data-target="expenses.hotel">${result.hotel.name}</h5>
                               <p>${result.hotel.rating}/5</p>
                               </div>
                               <p>${result.hotel.hotelDistance.distance}km from the stadium</p>
-                              <p class="mt-2"><strong>${result.offers[0].price.total} ${result.offers[0].price.currency}</strong> per night</p>
+                              <p class="mt-2"><strong data-target="expenses.hotelPrice">${result.offers[0].price.total}</strong>€ per night</p>
+                              <button class='add-tournament-btn' data-action="click->expenses#fillHotelForm">Select</button>
                             </div>`
       const element = document.createElement('div');
       element.className = 'marker';
@@ -42,6 +44,8 @@ const initMapbox = () => {
       element.style.backgroundSize = 'contain';
       element.style.width = '25px';
       element.style.height = '25px';
+
+
       const popup = new mapboxgl.Popup().setHTML(infoWindow);
       new mapboxgl.Marker(element)
       .setLngLat([ result.hotel.longitude, result.hotel.latitude ])

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   # has_many :tournaments, through: :expenses
   validates :first_name, :last_name, presence: true
 
+  accepts_nested_attributes_for :expenses, reject_if: :all_blank
+
   def tournaments
     Tournament.where id: tournament_ids
   end
