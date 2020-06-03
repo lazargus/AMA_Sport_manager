@@ -34,7 +34,7 @@ const initMapbox = () => {
                               <p>${result.hotel.rating}/5</p>
                               </div>
                               <p>${result.hotel.hotelDistance.distance}km from the stadium</p>
-                              <p class="mt-2"><strong>${result.offers[0].price.total} ${result.offers[0].price.currency}</strong> per night</p>
+                              <p class="mt-2"><strong>${result.offers[0].price.total}  ${result.offers[0].price.currency}</strong> per night</p>
                             </div>`
       const element = document.createElement('div');
       element.className = 'marker';
