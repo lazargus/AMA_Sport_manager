@@ -69,7 +69,7 @@ class EarningsController < ApplicationController
     if @earning.update(earning_params)
       redirect_to earning_path(@earning), notice: 'Gaining was successfully validated.'
     else
-      render :edit
+      redirect_to earning_path(@earning, validate: true)
     end
   end
 
