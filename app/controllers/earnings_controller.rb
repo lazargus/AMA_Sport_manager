@@ -6,11 +6,11 @@ class EarningsController < ApplicationController
     respond_to do |format|
       format.html do
         @earnings = if params[:only_past_earnings] == 'true'
-                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).order(date: :desc)
+                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).order(date: :desc).where('earnings.real_amount <=?', 0)
                 elsif params[:only_past_earnings] == 'false'
                   current_user.earnings.joins(:tournament).where('tournaments.end_date >?', Date.today).order(date: :desc)
                 else
-                  current_user.earnings.joins(:tournament).order(date: :desc)
+                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).order(date: :desc).where('earnings.real_amount >?', 0)
                 end
       end
       format.json do

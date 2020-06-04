@@ -11,8 +11,8 @@
   <div class="tab-pane fade show active" id="my-tournaments" role="tabpanel" aria-labelledby="my-tournaments-tab">
     <div class="filters d-flex align-items-center">
       <%= link_to 'Upcoming', earnings_path(only_past_earnings: false), class: "#{'active' if params[:only_past_earnings] == 'false'} filter-btn"  %>
-      <%= link_to 'Finished', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
-      <%= link_to 'All', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn ml-3" %>
+      <%= link_to 'To be validated', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
+      <%= link_to 'Finished', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn ml-3" %>
       <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn mt-0', data: { turbolinks: false }  %>
     </div>
 
@@ -26,14 +26,20 @@
             </div>
           </div>
           <div class="earning-status">
-              <p class='waiting'><em><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
-              <div class="d-flex justify-content-end">
+              <div class="d-flex justify-content-end flex-column">
                 <% if !earning.collected? && earning.tournament.finished? %>
+                  <p class='waiting'><em><%= earning.tournament.name%> finished on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
                   <%= link_to earning_path(earning, validate: true), class: 'validate-btn', data: { turbolinks: false } do %>
                     <span> Validate Earnings
                   <% end %>
-                <% else %>
+                <% elsif earning.tournament.finished? %>
+                  <p class='waiting'><em>Your total earnings for <%= earning.tournament.name %> is $<%= number_with_delimiter(earning.real_amount, :delimiter => ',') %></em></p>
                   <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
+                    <span> Tournament Summary
+                  <% end %>
+                <% else %>
+                  <p class='waiting'><em><%= earning.tournament.name%> will start on <%= earning.tournament.start_date.strftime("%d/%m/%Y")%></em></p>
+                  <%= link_to earning_path(earning), class: 'validate-btn', data: { turbolinks: false } do %>
                     <span> Manage Tournament
                   <% end %>
                 <% end %>
