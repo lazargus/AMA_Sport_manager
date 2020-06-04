@@ -13,7 +13,6 @@
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   padding: 10px 20px 15px 20px;
-  // font-weight: bold;
   width: 350px;
 
 }
@@ -29,12 +28,6 @@
   color: $my-red;
   font-size: 20px;
 }
-
-// .balance {
-//   text-align: center;
-//   color: $my-blue;
-//   font-size: 1px;
-// }
 
 .graphs-container {
   display: flex;
@@ -59,4 +52,16 @@ h4 {
   font-family: Poppins;
   margin-bottom: auto;
 
+  }
+
+  p {
+    font-family: Poppins;
+  }
+
+  #chartExpenses {
+    cursor: pointer;
+  }
+
+  #chartEarnings {
+    cursor: pointer;
   }
