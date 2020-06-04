@@ -36,7 +36,6 @@ import { initMapbox } from "../plugins/init_mapbox";
 import { amadeusFlights } from "../plugins/amadeus_flights";
 
 import { tournamentShowPrizeMoney } from "../components/tournament_show_prize_money";
-import { fullcalendar } from "../components/fullcalendar";
 import { handleCalendarBug } from "../components/handle_calendar_bug";
 import { buildChart, initDonut } from "../components/chart";
 import { handleMapBug } from "../components/handle_map_bug";
@@ -53,9 +52,13 @@ document.addEventListener('turbolinks:load', () => {
     handleMapBug();
   }
   tournamentsCardsHover();
-  buildChart();
+  if (document.getElementById("chartEarnings")) {
+    buildChart();
+  }
   initDonut();
-  amadeusFlights();
+  if (document.getElementById('flights')) {
+    amadeusFlights();
+  }
 });
 
 tournamentShowPrizeMoney();
