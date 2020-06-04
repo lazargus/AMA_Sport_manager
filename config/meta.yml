@@ -1,5 +1,5 @@
 meta_product_name: "AMA"
 meta_title: "AMA Sport Manager - You perform, we manage"
 meta_description: "A website designed to help tennis professionals to better manage their career by focusing on sports only, rather than administrative tasks."
-meta_image: "ama.png" # should exist in `app/assets/images/`
+meta_image: "ogimage.png" # should exist in `app/assets/images/`
 twitter_account: "@ama"   # required for Twitter Cards
