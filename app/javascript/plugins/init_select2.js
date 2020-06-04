@@ -7,7 +7,7 @@ const initSelect2 = () => {
     minimumResultsForSearch: -1,
     width: "100%",
     height: "50px",
-    placeholder: "Select a choice",
+    placeholder: "Select a category",
   });
 }
 

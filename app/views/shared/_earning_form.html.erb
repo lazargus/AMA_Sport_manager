@@ -4,7 +4,7 @@
   <% if @earning.forecast_amount == 0 %>
       <%= f.input :real_amount, label: false, placeholder: "Enter amount", input_html: { value: "" } %>
   <% else %>
-    <%= f.input :real_amount, label: false, collection: @earning.collection_for_simple_form, input_html: { class: "select2" } %>
+    <%= f.input :real_amount, label: false, collection: @earning.collection_for_simple_form, input_html: { class: "select2" }, placeholder: "Enter amount" %>
   <% end %>
   <%= f.submit "Validate earning", class: "btn btn-primary" %>
 <% end %>
