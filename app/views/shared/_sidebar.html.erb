@@ -1,4 +1,4 @@
-<div id="sidebar">
+<div id="sidebar" data-controller="sidebar">
   <%= link_to (image_tag "ama-new-blue.png", alt: "logo", width: 160, class: 'mt-3 mb-5 mx-auto d-block'), root_path %>
   <div class="infos">
     <div class="main mb-5 ml-4">
@@ -16,12 +16,12 @@
               Add a tournament
           <% end %>
       </div>
-        <p data-toggle="collapse" data-target="#collapseBudget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
-        <div class="collapse" id="collapseBudget">
+        <p data-toggle="collapse" data-target="#collapseBudget, sidebar.budget" aria-expanded="false" aria-controls="collapseExample" class="<%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
+        <div class="collapse" data-target="sidebar.budgetCollapse" id="collapseBudget">
           <%= link_to dashboard_index_path do  %>
               Dashboard
           <% end %>
-          <%= link_to new_earning_path, data: { turbolinks: false } do  %>
+          <%= link_to new_earning_path, data: { turbolinks: false, target: "sidebar.earning" } do  %>
               Add a fixed earning
           <% end %>
           <%= link_to new_expense_path, data: { turbolinks: false } do  %>
