@@ -39,6 +39,7 @@ import { tournamentShowPrizeMoney } from "../components/tournament_show_prize_mo
 import { handleCalendarBug } from "../components/handle_calendar_bug";
 import { buildChart, initDonut } from "../components/chart";
 import { handleMapBug } from "../components/handle_map_bug";
+import { initSelect2 } from '../plugins/init_select2';
 
 
 
@@ -59,6 +60,7 @@ document.addEventListener('turbolinks:load', () => {
   if (document.getElementById('flights')) {
     amadeusFlights();
   }
+  initSelect2();
 });
 
 tournamentShowPrizeMoney();

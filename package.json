@@ -8,6 +8,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
+    "@ttskch/select2-bootstrap4-theme": "^1.4.0",
     "amadeus": "^5.0.0",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
@@ -15,6 +16,9 @@
     "jquery": "^3.5.1",
     "mapbox-gl": "^1.10.1",
     "popper.js": "^1.16.1",
+    "select2": "^4.0.13",
+    "select2-bootstrap-theme": "^0.1.0-beta.10",
+    "select2-theme-bootstrap4": "^0.2.0-beta.6",
     "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },
