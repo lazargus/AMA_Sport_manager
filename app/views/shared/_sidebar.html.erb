@@ -35,7 +35,7 @@
         <%= link_to user_path(current_user), class: "#{'active' if current_page?('#')}" do %>
           <p><i class="fas fa-cogs mr-1"></i>My profile</p>
         <% end %>
-        <%= link_to 'Contact', class: "#{'active' if current_page?('#')}" do %>
+        <%= link_to contacts_path, class: "#{'active' if current_page?('#')}" do %>
           <p><i class="far fa-address-book mr-1"></i>Contact</p>
       <% end %>
       <% if user_signed_in? %>

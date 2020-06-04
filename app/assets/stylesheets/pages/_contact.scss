@@ -1,0 +1,14 @@
+.photos {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.contact {
+  margin-top: 33vh;
+}
