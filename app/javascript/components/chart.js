@@ -12,7 +12,19 @@ const initChart = (data) => {
             display: false
           },
           ticks: {
-            beginAtZero: true
+            beginAtZero: true,
+            fontColor: "#033860",
+            fontSize: 11
+          }
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            beginAtZero: true,
+            fontColor: "#033860",
+            fontSize: 11
           }
         }]
       },
@@ -43,7 +55,6 @@ const buildChart = () => {
         .then(data => {
           earningData.datasets.push(data)
           initChart(earningData);
-          // initChart2(earningData);
         })
     })
 
@@ -59,6 +70,9 @@ const initDonut = (data) => {
           type: 'doughnut',
           data: data,
           options: {
+            legend: {
+              position: "right",
+            },
             scales: {
               xAxes: [{
                 gridLines: {
@@ -73,7 +87,7 @@ const initDonut = (data) => {
             responsive: true,
             aspectRatio: 1,
             maintainAspectRatio: false
-          }
+          },
         });
       });
   }
