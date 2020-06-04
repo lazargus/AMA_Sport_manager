@@ -55,7 +55,7 @@ class EarningsController < ApplicationController
       if @earning.tournament
         redirect_to earning_path(@earning)
       else
-        redirect_to earnings_path
+        redirect_to dashboard_index_path
       end
     else
       render :new
@@ -95,8 +95,13 @@ class EarningsController < ApplicationController
         label: "Earnings",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(33, 191, 115, 0.5)'
-        ]
+          'rgba(33, 191, 115, 0.6)'
+        ],
+        pointBackgroundColor: 
+        'rgba(33, 191, 115, 0.6)',
+        pointHoverBorderWidth: 4,
+        pointRadius: 3,
+        pointHitRadius: 10
       }]
     }
   end

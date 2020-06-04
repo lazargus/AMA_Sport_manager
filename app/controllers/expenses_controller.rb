@@ -88,7 +88,12 @@ class ExpensesController < ApplicationController
         data: formatted_data.map(&:second),
         backgroundColor: [
           'rgba(253, 94, 83, 0.6)'
-        ]
+        ],
+        pointBackgroundColor: 
+        'rgba(253, 94, 83, 0.6)',
+        pointHoverBorderWidth: 4,
+        pointRadius: 3,
+        pointHitRadius: 10
     }
   end
 
@@ -108,8 +113,8 @@ class ExpensesController < ApplicationController
           'rgba(89, 46, 131, 0.9)',
           'rgba(223, 178, 244, 0.9)',
           'rgba(242, 245, 255, 0.9)'
-        ]
-      }]
+        ],
+      }],
     }
   end
 end
