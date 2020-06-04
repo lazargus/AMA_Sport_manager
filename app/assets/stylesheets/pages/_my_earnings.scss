@@ -36,7 +36,7 @@
 
 .filter-btn {
   display: inline-block;
-  background-color: white;
+  background-color: transparent;
   color: $my-dark-blue;
   border-radius: 30px;
   padding: 4px 20px;
@@ -78,42 +78,6 @@
 
 .waiting {
   color: gray;
-}
-
-.manage-btn {
-  border-radius: 10px;
-  border: none;
-  color: $my-dark-blue;
+  font-size: 18px !important;
   text-align: center;
-  font-size: 16px;
-  padding: 10px;
-  cursor: pointer;
-  margin: 0px 40px;
-  background: white;
-  border: 1px solid;
-    &:hover {
-      color: $my-dark-blue;
-      text-decoration: none;
-      background: white;
-    }
- }
- .manage-btn span {
-   cursor: pointer;
-   display: inline-block;
-   position: relative;
- }
- .manage-btn span:after {
-   content: '\00bb';
-   position: absolute;
-   opacity: 0;
-   top: 0;
-   right: -20px;
-   transition: 0.5s;
- }
- .manage-btn:hover span {
-   padding-right: 25px;
- }
- .manage-btn:hover span:after {
-   opacity: 1;
-   right: 0;
- }
+}

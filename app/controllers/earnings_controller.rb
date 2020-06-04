@@ -6,11 +6,11 @@ class EarningsController < ApplicationController
     respond_to do |format|
       format.html do
         @earnings = if params[:only_past_earnings] == 'true'
-                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).order(date: :desc).where('earnings.real_amount <=?', 0)
+                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).where('earnings.real_amount <=?', 0).order(date: :desc)
                 elsif params[:only_past_earnings] == 'false'
                   current_user.earnings.joins(:tournament).where('tournaments.end_date >?', Date.today).order(date: :desc)
                 else
-                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).order(date: :desc).where('earnings.real_amount >?', 0)
+                  current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).where('earnings.real_amount >?', 0).order(date: :desc)
                 end
       end
       format.json do
@@ -97,7 +97,7 @@ class EarningsController < ApplicationController
         backgroundColor: [
           'rgba(33, 191, 115, 0.6)'
         ],
-        pointBackgroundColor: 
+        pointBackgroundColor:
         'rgba(33, 191, 115, 0.6)',
         pointHoverBorderWidth: 4,
         pointRadius: 3,
