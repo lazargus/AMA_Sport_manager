@@ -5,6 +5,8 @@ class Earning < ApplicationRecord
 
   validates :category, presence: true
   validates :category, inclusion: { in: CATEGORY }
+  validates :forecast_amount, numericality: { only_integer: true }
+  validates :real_amount, numericality: { only_integer: true }
 
   def collection_for_simple_form
     return [] if tournament.nil?

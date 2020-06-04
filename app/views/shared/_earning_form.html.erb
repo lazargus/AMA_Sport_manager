@@ -1,6 +1,10 @@
 
 <%= simple_form_for(@earning) do |f| %>
   <% data = JSON.parse(@earning.tournament.data) %>
-  <%= f.input :real_amount, label: "Enter your round earning:", collection: @earning.collection_for_simple_form, input_html: { class: "select2" } %>
+  <% if @earning.forecast_amount == 0 %>
+      <%= f.input :real_amount, label: false, placeholder: "Enter amount", input_html: { value: "" } %>
+  <% else %>
+    <%= f.input :real_amount, label: false, collection: @earning.collection_for_simple_form, input_html: { class: "select2" } %>
+  <% end %>
   <%= f.submit "Validate earning", class: "btn btn-primary" %>
 <% end %>
