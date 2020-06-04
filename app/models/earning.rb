@@ -15,4 +15,8 @@ class Earning < ApplicationRecord
     return result
   end
 
+  def collected?
+    real_amount > 0
+  end
+
 end

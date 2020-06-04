@@ -18,12 +18,7 @@
 
     <% @earnings.each do |earning| %>
         <div class="earning-container">
-          <div class="my-tournament-card"
-          data-url="<%= "/earnings/#{earning.id}" %>"
-          data-name="<%= earning.tournament.name %>"
-          data-start-date="<%= earning.tournament.start_date %>"
-          data-end-date="<%= earning.tournament.end_date %>"
-          data-img-url="<%= cl_image_path earning.tournament.photo.key%>" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
+          <div class="my-tournament-card" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
             <div class="text">
               <h1><%= earning.tournament.name %></h1>
               <h2 class="animate-text"><%= earning.tournament.address %></h2>
@@ -31,22 +26,18 @@
             </div>
           </div>
           <div class="earning-status">
-            <% if earning.tournament.end_date < Date.today %>
-              <p><em>Tournament finished since <%= earning.tournament.end_date.strftime("%d/%m/%Y")%>.</em><br>Please <strong>validate your result</strong> in order to calculate associated earning!</p>
-              <div class="d-flex justify-content-end">
-                <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
-                  <span> Manage Tournament
-                <% end %>
-              </div>
-            <% else %>
               <p class='waiting'><em><%= earning.tournament.name%> will finish on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
-              <p>Forecasted prize money: $<%= number_with_delimiter(earning.forecast_amount, :delimiter => ',') %></p>
               <div class="d-flex justify-content-end">
-                <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
-                  <span> Manage Tournament
+                <% if !earning.collected? && earning.tournament.finished? %>
+                  <%= link_to earning_path(earning, validate: true), class: 'validate-btn', data: { turbolinks: false } do %>
+                    <span> Validate Earnings
+                  <% end %>
+                <% else %>
+                  <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
+                    <span> Manage Tournament
+                  <% end %>
                 <% end %>
               </div>
-            <% end %>
           </div>
         </div>
       <hr class="mt-1 mb-3">
