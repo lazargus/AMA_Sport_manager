@@ -3,7 +3,7 @@
   <div class="infos">
     <div class="main mb-0 ml-4">
       <p class="m-0 <%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show') %>"><i class="far fa-calendar-alt mr <%= 'active' if current_page?(earnings_path) || (params[:controller] == 'earnings' && params[:action] == 'show') || current_page?(tournaments_path) || (params[:controller] == 'tournaments' && params[:action] == 'show')%>"></i> Tournaments</p>
-      <div id="collapseTournament">
+      <div class="collapseBudget">
         <%= link_to earnings_path(only_past_earnings: false) do  %>
             My tournaments
         <% end %>
@@ -12,7 +12,7 @@
         <% end %>
       </div>
       <p class="mt-2 mb-0 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path)%>"><i class="fas fa-money-bill-wave mr-1 <%= 'active' if current_page?(new_earning_path) || current_page?(new_earning_path) || current_page?(new_expense_path) || current_page?(dashboard_index_path) %>"></i>My budget</p>
-      <div id="collapseBudget">
+      <div class="collapseBudget">
         <%= link_to dashboard_index_path do  %>
             Dashboard
         <% end %>
