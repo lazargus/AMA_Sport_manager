@@ -13,13 +13,13 @@ class TournamentsController < ApplicationController
     # @tournaments = Tournament.all.to_a.reject { |item| @tournament_user.include? item }
     @tournaments =
                     if params[:format] == "first_trimester"
-                      Tournament.where('end_date <?', Date.new(2020,3,31)).all.to_a.reject { |item| @tournament_user.include? item }
+                      Tournament.where('end_date <?', Date.new(2020,3,31)).all.order(start_date: :asc).to_a.reject { |item| @tournament_user.include? item }
                     elsif params[:format] == "second_trimester"
-                      Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,3,31), Date.new(2020,6,30)).all.to_a.reject { |item| @tournament_user.include? item }
+                      Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,3,31), Date.new(2020,6,30)).all.order(start_date: :asc).to_a.reject { |item| @tournament_user.include? item }
                     elsif params[:format] == "third_trimester"
-                      Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,6,30), Date.new(2020,9,30)).all.to_a.reject { |item| @tournament_user.include? item }
+                      Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,6,30), Date.new(2020,9,30)).all.order(start_date: :asc).to_a.reject { |item| @tournament_user.include? item }
                     elsif params[:format] == "fourth_trimester"
-                      Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,9,30), Date.new(2020,12,31)).all.to_a.reject { |item| @tournament_user.include? item }
+                      Tournament.where('start_date BETWEEN ? AND ?', Date.new(2020,9,30), Date.new(2020,12,31)).all.order(start_date: :asc).to_a.reject { |item| @tournament_user.include? item }
                     else
                       Tournament.all.to_a.reject { |item| @tournament_user.include? item }
                     end
