@@ -26,51 +26,43 @@
     <div class="container">
       <div class="main-timeline">
         <div class="timeline">
+            <div class="timeline-content left">
+              <span class="timeline-icon"></span>
+              <div class="mb-1">
+                <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
+                <h3 class="title"><%= @tournament.name.capitalize %></h3>
+              </div>
+                <p class="gain-money mb-3"><span class="badge badge-success"><i class="far fa-money-bill-alt"></i> Earning</span></p>
           <% if @earning.real_amount == 0 %>
-            <div class="timeline-content left">
-              <span class="timeline-icon"></span>
-              <div>
-                <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
-                <h2 class="title"><%= @tournament.name.capitalize %></h2>
-              </div>
-              <p class="description forecast-money">
-                Earning <i class="far fa-money-bill-alt forecast-money"></i>
-                <br>
-                Forecast amount: $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar forecast-money"></i>
-              </p>
-            </div>
+                <div class="forecast-money mb-0">
+                  <p>Forecasted amount <i class="fas fa-hourglass-start"></i></p>
+                  <h3>$<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %></h3>
+                </div>
           <% else %>
-            <div class="timeline-content left">
-              <span class="timeline-icon"></span>
-              <div>
-                <span class="date"><%= @tournament.end_date.strftime("%b %d, %Y") %></span>
-                <h2 class="title"><%= @tournament.name.capitalize %></h2>
-              </div>
-              <p class="description gain-money">
-                Earning <i class="far fa-money-bill-alt gain-money"></i>
-                <br>
-                Gainings: $<%= number_with_delimiter(@earning.real_amount, :delimiter => ',') %> <i class="fas fa-funnel-dollar gain-money"></i>
-              </p>
-            </div>
+                <div class="descritpion gain-money mb-0">
+                  <p>Gainings <i class="fas fa-money-check"></i></p>
+                  <h3>$<%= number_with_delimiter(@earning.real_amount, :delimiter => ',') %></h3>
+                </div>
           <% end %>
+            </div>
         </div>
         <% @tournament.expenses.order(:created_at).each_with_index do |expense, index| %>
           <div class="timeline">
             <div class="timeline-content <%= index.odd? ? 'left' : 'right' %>" >
               <span class="timeline-icon"></span>
-              <div>
+              <div class="mb-2">
                 <span class="date"><%= expense.created_at.strftime("%b %d, %Y") %></span>
-                <h2 class="title"><%= expense.title.capitalize %></h2>
+                <h3 class="title"><%= expense.title.capitalize %></h3>
               </div>
-              <p class="description loose-money">
-                <i class="fas fa-receipt"></i> Expense
-              </p>
-              <p class="description loose-money">
-                <i class="fas fa-tag"></i> <%= expense.category %>
-              </p>
-              <p class="description loose-money">
-                <i class="fas fa-dollar-sign"></i> -<%= expense.amount %>
-              </p>
+              <p class="loose-money mb-3"><span class="badge badge-danger"><i class="fas fa-receipt"></i>Expense</span></p>
+              <% if expense.category == "Flight" %>
+                <p class="loose-money"><i class="fas fa-plane-departure"></i> <%= expense.category %></p>
+              <% elsif expense.category == "Hotel" %>
+                <p class="loose-money"><i class="fas fa-hotel"></i> <%= expense.category %></p>
+              <% else %>
+                <p class="loose-money"><i class="fas fa-tag"></i> <%= expense.category %></p>
+              <% end %>
+              <h3 class="loose-money"> $<%= number_with_delimiter(expense.amount, :delimiter => ',') %></h3>
             </div>
           </div>
         <% end %>

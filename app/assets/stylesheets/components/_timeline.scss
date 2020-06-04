@@ -80,10 +80,7 @@
     color: $my-dark-blue;
     margin-bottom: 0;
 }
-.main-timeline .description{
-    font-size: 14px;
-    color: $my-dark-blue;
-}
+
 .main-timeline .timeline-content.left{
     text-align: right;
 
@@ -125,29 +122,68 @@
 }
 
 .loose-money {
-  color: #fd5e53 !important;
+  color: $my-red !important;
   margin-bottom: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  i {
-    color: #fd5e53;
-
+  font-size: 20px;
+  .badge-danger {
+    background-color: $my-red;
+    i {
+      color: white;
+    }
   }
-  font-size: 20px !important;
+  i {
+    color: $my-red;
+  }
 }
 
-
-
+h3.loose-money {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 30px;
+  }
 
 .gain-money {
-  color: #21bf73 !important;
+  color: $my-green;
   font-size: 20px !important;
+  i {
+    color: $my-green;
+  }
+  .badge-success {
+    background-color: $my-green;
+    color: white;
+    i {
+      color: white;
+    }
+  }
+  h3 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 30px;
+  }
+  p {
+    margin-bottom: 2px;
+  }
 }
 
 .forecast-money {
-  color: #F9C80E !important;
+  color: $my-yellow-2;
   font-size: 20px !important;
+  i {
+    color: $my-yellow-2;
+  }
+  h3 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 30px;
+  }
+  p {
+    margin-bottom: 2px;
+  }
 }
+
+
 
 
