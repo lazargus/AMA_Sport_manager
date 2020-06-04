@@ -25,5 +25,6 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: :index
   resources :users, only: [:show, :edit, :update]
+  resources :contacts, only: :index
 end
   # get 'tournament/:tournament_id/expenses/new', to: 'tournament_expenses#new', as: :new_tournament_expense
