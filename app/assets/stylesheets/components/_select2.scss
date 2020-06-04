@@ -1,8 +1,29 @@
 .select2-results__option {
   color: $my-dark-blue;
-  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  padding: 9px;
   &:hover {
     background: $my-dark-blue;
     color: white;
+    cursor: pointer;
   }
+}
+
+.select2-selection__rendered {
+    line-height: 36px !important;
+}
+.select2-container .select2-selection--single {
+    height: 40px !important;
+}
+.select2-selection__arrow {
+    height: 39px !important;
+}
+
+.form-control {
+  border-radius: 4px;
+  border-color: #b59c9c;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #797272;
 }
