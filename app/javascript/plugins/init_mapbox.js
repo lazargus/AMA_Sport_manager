@@ -35,7 +35,7 @@ const initMapbox = () => {
                               <p>${result.hotel.rating}/5</p>
                               </div>
                               <p>${result.hotel.hotelDistance.distance}km from the stadium</p>
-                              <p class="mt-2"><strong data-target="expenses.hotelPrice">${result.offers[0].price.total}</strong>€ per night</p>
+                              <p class="mt-2">$<strong data-target="expenses.hotelPrice">${result.offers[0].price.total}</strong> per night</p>
                               <button class='add-tournament-btn' data-action="click->expenses#fillHotelForm">Select</button>
                             </div>`
       const element = document.createElement('div');
@@ -44,19 +44,21 @@ const initMapbox = () => {
       element.style.backgroundSize = 'contain';
       element.style.width = '25px';
       element.style.height = '25px';
-
-
       const popup = new mapboxgl.Popup().setHTML(infoWindow);
+
       new mapboxgl.Marker(element)
       .setLngLat([ result.hotel.longitude, result.hotel.latitude ])
       .setPopup(popup)
       .addTo(map);
+      if ( document.querySelectorAll('.marker').length > 2 ) {
+        document.querySelector('.overlay').remove();
+      }
     }));
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
     fitMapToMarkers(map, marker);
-  }
+  };
 };
 
 

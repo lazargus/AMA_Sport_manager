@@ -13,7 +13,6 @@ export default class extends Controller {
   static targets = [ "fields", 'form' ]
 
   connect() {
-    console.log('coucou')
   }
 
   handleSubmit(event) {

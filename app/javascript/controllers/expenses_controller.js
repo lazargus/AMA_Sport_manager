@@ -37,7 +37,7 @@ export default class extends Controller {
     hotelCard.insertAdjacentHTML('beforeend',`
       <div class='d-flex justify-content-between'>
         <p>${description}</p>
-        <p><strong>${price}€</strong></p>
+        <p><strong>$${price}</strong></p>
       </div>
       `)
   }
@@ -47,7 +47,7 @@ export default class extends Controller {
     flightCard.insertAdjacentHTML('beforeend', `
       <div class='d-flex justify-content-between'>
         <p>Flight to the tournament city</p>
-        <p><strong>${price}€</strong></p>
+        <p><strong>$${price}</strong></p>
       </div>
       `)
 
