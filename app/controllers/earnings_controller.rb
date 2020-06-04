@@ -1,5 +1,4 @@
 class EarningsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_earning, only: [ :show, :edit, :update]
 
   def index

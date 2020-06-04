@@ -41,20 +41,20 @@ a:hover {
 .infos {
   display: flex;
   flex-direction: column;
-  a, p[data-toggle="collapse"] {
+  a, p {
     padding: 10px;
     margin-bottom: 0;
-    color: $my-yellow;
+    color: white;
     font-size: 15px;
-    cursor: pointer;
     p {
       margin-bottom: 0;
+      color: white;
       i {
         width: 20px;
         text-align: center;
       }
     }
-    &.active, p[data-toggle="collapse"].active {
+    &.active, p.active {
       background: $my-light-gray;
       border-radius: 10px 0 0 10px;
       color: $my-dark-blue;
@@ -72,6 +72,7 @@ a:hover {
     font-style: italic;
     display: block;
     padding: 5px 10px;
+    color: $my-light-gray2;
   }
   #collapseTournament a {
     margin-left: 27px;
@@ -79,6 +80,7 @@ a:hover {
     font-style: italic;
     display: block;
     padding: 5px 10px;
+    color: $my-light-gray2;
   }
 }
 
@@ -97,5 +99,7 @@ i.active {
   em {
     opacity: 1;
     font-size: 14px;
+    color: white;
   }
 }
+

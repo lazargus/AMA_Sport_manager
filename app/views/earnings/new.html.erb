@@ -10,8 +10,8 @@ style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(h
         <div class="row">
           <div class="col-sm-12">
             <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", value: Date.today} %>
-            <%= f.input :real_amount, label: "What was the amount of your earning?", placeholder: "Enter amount" %>
-            <%= f.input :category, label: "Nature of your earning", collection: Earning::CATEGORY %>
+            <%= f.input :category, label: "Nature of your earning", collection: Earning::CATEGORY, input_html: { class: "select2" } %>
+            <%= f.input :real_amount, label: "What was the amount of your earning?", placeholder: "Enter amount", input_html: { value: "" } %>
             <%= f.input :title, label: "Description", placeholder: "Please briefly describe your earning" %>
           </div>
 
