@@ -1,4 +1,5 @@
 import Chart from 'chart.js';
+import 'chartjs-plugin-labels';
 
 const initChart = (data) => {
   const ctx = document.getElementById("chartEarnings")
@@ -70,8 +71,16 @@ const initDonut = (data) => {
           type: 'doughnut',
           data: data,
           options: {
+            plugins: {
+              labels: {
+                // render 'label', 'value', 'percentage', 'image' or custom function, default is 'percentage'
+                render: 'percentage',
+                fontSize: 12,
+                fontColor: "#F7FBFF",
+              }
+            },
             legend: {
-              position: "right",
+              position: "right"
             },
             scales: {
               xAxes: [{

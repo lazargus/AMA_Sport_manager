@@ -109,10 +109,10 @@ class ExpensesController < ApplicationController
         label: "Categories",
         data: formatted_data.map(&:second),
         backgroundColor: [
-          'rgba(255, 212, 0, 0.9)',
-          'rgba(89, 46, 131, 0.9)',
-          'rgba(223, 178, 244, 0.9)',
-          'rgba(242, 245, 255, 0.9)'
+          'rgba(255, 212, 0, 0.85)',
+          'rgba(89, 46, 131, 0.85)',
+          'rgba(223, 178, 244, 0.85)',
+          'rgba(238, 132, 52, 0.85)'
         ],
       }],
     }
