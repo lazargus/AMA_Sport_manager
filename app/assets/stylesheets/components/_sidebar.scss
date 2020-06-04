@@ -34,7 +34,7 @@ h6 {
 }
 
 a:hover {
-    color: #b39400;
+    color: $my-yellow !important;
     text-decoration: none;
 }
 
@@ -45,7 +45,7 @@ a:hover {
     padding: 10px;
     margin-bottom: 0;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     p {
       margin-bottom: 0;
       color: white;
@@ -66,18 +66,9 @@ a:hover {
       }
     }
   }
-  #collapseBudget a {
-    margin-left: 27px;
-    font-size: 13px;
-    font-style: italic;
-    display: block;
-    padding: 5px 10px;
-    color: $my-light-gray2;
-  }
-  #collapseTournament a {
-    margin-left: 27px;
-    font-size: 13px;
-    font-style: italic;
+  .collapseBudget a {
+    margin-left: 13px;
+    font-size:14px;
     display: block;
     padding: 5px 10px;
     color: $my-light-gray2;
