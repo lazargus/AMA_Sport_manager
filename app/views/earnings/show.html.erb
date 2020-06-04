@@ -1,6 +1,17 @@
-<%= link_to earnings_path(only_past_earnings: false) do %>
+<% if @earning.tournament.finished? && @earning.collected?   %>
+  <%= link_to earnings_path do %>
   <i class="fas fa-history"></i> Back to my tournaments
+  <% end %>
+<% elsif @earning.tournament.finished? %>
+  <%= link_to earnings_path(only_past_earnings: true) do %>
+  <i class="fas fa-history"></i> Back to my tournaments
+  <% end %>
+<% else %>
+  <%= link_to earnings_path(only_past_earnings: false) do %>
+  <i class="fas fa-history"></i> Back to my tournaments
+  <% end %>
 <% end %>
+
 
 <h1 class='mb-3'>Manage budget for <strong><%= @tournament.name %></strong></h1>
 

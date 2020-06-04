@@ -30,11 +30,11 @@
                 <% if !earning.collected? && earning.tournament.finished? %>
                   <p class='waiting'><em><%= earning.tournament.name%> finished on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
                   <%= link_to earning_path(earning, validate: true), class: 'validate-btn', data: { turbolinks: false } do %>
-                    <span> Validate Earnings
+                    <span> Validate Earnings </span>
                   <% end %>
                 <% elsif earning.tournament.finished? %>
                   <p class='waiting'><em>Your total earnings for <%= earning.tournament.name %> is $<%= number_with_delimiter(earning.real_amount, :delimiter => ',') %></em></p>
-                  <%= link_to earning_path(earning), class: 'manage-btn', data: { turbolinks: false } do %>
+                  <%= link_to earning_path(earning), class: 'validate-btn', data: { turbolinks: false } do %>
                     <span> Tournament Summary
                   <% end %>
                 <% else %>
