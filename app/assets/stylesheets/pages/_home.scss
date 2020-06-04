@@ -3,6 +3,14 @@
   color: $my-light-gray;
 }
 
+#pages-home .container {
+  display: contents;
+}
+
+.bouton {
+  margin-top: 40px;
+}
+
 #pages-home .content-wrapper {
   width: 100vw;
   height: 100vh;
@@ -27,7 +35,7 @@
 .banner-home {
   background-size: cover;
   background-position: center;
-  padding: 130px 200px;
+  padding: 75px 230px;
 }
 
 .banner-home h1 {
@@ -44,8 +52,6 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
-
-
 
 // .form-post-home {
 //   background: #F7FBFF;
