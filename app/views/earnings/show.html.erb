@@ -153,12 +153,10 @@
       <div class="form-post mt-0">
         <div class="row">
           <div class="col-sm-12">
-            <h3><%= @earning.tournament.name %></h3>
-            <p><em><%= @earning.tournament.end_date.strftime("%A %B %d %Y") %></em></p>
-            <p>Your forecasted gainings:</p>
+            <h4 class="text-center mb-3">Your forecasted gainings:</h4>
             <h4 class="text-center"><i class="fas fa-funnel-dollar"></i> $<%= number_with_delimiter(@earning.forecast_amount, :delimiter => ',') %></h4>
             <hr class="my-4">
-            <h3>Final tournament earning: </h3>
+            <h3 class="mb-3">Final tournament earning: </h3>
             <%= render "/shared/earning_form", earning: @earning %>
           </div>
         </div>
