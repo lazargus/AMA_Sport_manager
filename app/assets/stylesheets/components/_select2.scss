@@ -1,7 +1,8 @@
 .select2-results__option {
-  color: black;
+  color: $my-dark-blue;
+  border-top: 1px solid #dee2e6;
   &:hover {
-    background: #157af6;
+    background: $my-dark-blue;
     color: white;
   }
 }
