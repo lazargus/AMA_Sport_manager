@@ -56,7 +56,7 @@ const buildCards = (offer) => {
           </div>
           <div class="col-md-3">
             <h1><strong>Price</strong></h1>
-            <p class='mt-3'><strong data-target='expenses.flightPrice'>${offer.price.total}</strong>€</p>
+            <p class='mt-3'>$<strong data-target='expenses.flightPrice'>${offer.price.total}</strong></p>
             <button class='add-tournament-btn' data-action='click->expenses#fillFlightForm'>Select</button>
           </div>
         </div>`

@@ -86,6 +86,14 @@
           data-amadeus-id="<%= ENV['AMADEUS_ID'] %>"
           data-amadeus-secret="<%= ENV['AMADEUS_SECRET'] %>"
           >
+          <div class="overlay">
+             <div class="overlay__inner">
+                <div class="overlay__content">
+                  <%= image_tag "house.gif", alt: "alttext" %>
+                  <h4 class="text-blue">Waiting for hotel offers...</h4>
+                </div>
+             </div>
+          </div>
           </div>
         </div>
         <h5 class="mt-5">Flights suggestions</h5>
@@ -104,7 +112,10 @@
       </div>
 
       <div class="card-expense p-3" id="expense-booking-form" data-controller="expense-form">
-        <h5 class="mt-2"><strong>Add new expense:</strong></h5>
+        <div class="title-card">
+            <h5 class="mt-2 mb-3"><strong>Add new expenses</strong></h5>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
           <%= simple_form_for current_user,
             url: earning_create_multiple_expenses_path(@earning),
             html: {data: {action: 'submit->expense-form#handleSubmit'} } do |f| %>
@@ -119,7 +130,7 @@
             <!-- Insert cart here -->
             <div id="hotel-card"></div>
             <div id="flight-card"></div>
-            <%= f.submit "Add expenses", class: "add-tournament-btn" %>
+            <%= f.submit "Add expenses", class: "add-tournament-btn", id: 'expense-card' %>
           <% end %>
       </div>
     </div>

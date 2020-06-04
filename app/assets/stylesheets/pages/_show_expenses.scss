@@ -1,15 +1,19 @@
 #expense-booking-form {
-  height: 470px;
-  position: sticky;
-  top: 50px;
+  height: 280px;
   width: 30vw;
 }
 
-.card-expense {
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 10px;
+#expense {
+  .card-expense {
+    top: 30px !important;
+    position: sticky !important;
+    position: -webkit-sticky !important;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+  }
 }
+
 
 .suggestions {
   display: block;
@@ -31,3 +35,17 @@ hr {
   margin: 0;
 }
 
+#expense-card {
+  position: absolute;
+  bottom: 25px;
+}
+
+.title-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  i {
+    font-size: 20px;
+    color: $my-dark-blue;
+  }
+}
