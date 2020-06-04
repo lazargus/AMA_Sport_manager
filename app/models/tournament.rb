@@ -20,6 +20,10 @@ class Tournament < ApplicationRecord
     }
   end
 
+  def finished?
+    end_date < Date.today
+  end
+
   # def find_user_earning
   #   Earning.find_by(tournament/tournament_id)
   # end
