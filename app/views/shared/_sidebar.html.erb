@@ -32,7 +32,7 @@
 
     <div class="other mt-2 ml-4 mb-2">
       <h6 class='mb-3'>OTHER</h6>
-        <%= link_to 'My profile', class: "#{'active' if current_page?('#')}" do %>
+        <%= link_to user_path(current_user), class: "#{'active' if current_page?('#')}" do %>
           <p><i class="fas fa-cogs mr-1"></i>My profile</p>
         <% end %>
         <%= link_to 'Contact', class: "#{'active' if current_page?('#')}" do %>
