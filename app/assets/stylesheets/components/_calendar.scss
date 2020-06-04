@@ -42,8 +42,10 @@
     background: rgba(3,56,96,0.9);
     border: none;
     &:hover {
-      background: #164f84;
+      background: white;
       transition: 0.3s ease;
+      border: 1px solid $my-dark-blue;
+      color: $my-dark-blue;
     }
   }
   .fc-day-grid {
@@ -58,8 +60,10 @@
     color: white;
     transition: 0.5s ease;
     &:hover {
-      transition: 0.5s ease;
-      background: #164f84;
+      background: white;
+      transition: 0.3s ease;
+      border: 1px solid $my-dark-blue;
+      color: $my-dark-blue;
     }
   }
 }
