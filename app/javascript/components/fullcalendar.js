@@ -25,6 +25,11 @@ const fullcalendar = (events) => {
 const calendarEl = document.getElementById('calendar');
   const calendar = new Calendar(calendarEl, {
     plugins: [ dayGridPlugin ],
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: ''
+    },
     aspectRatio: 1,
     height: "parent",
     events : events,
