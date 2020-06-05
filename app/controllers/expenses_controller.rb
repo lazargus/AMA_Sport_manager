@@ -39,7 +39,7 @@ class ExpensesController < ApplicationController
       if @expense.tournament
         redirect_to '#expense'
       else
-        redirect_to dashboard_index_path
+        redirect_to dashboard_index_path,  notice: 'Expense was successfully added.'
       end
     else
       render :new
@@ -89,7 +89,7 @@ class ExpensesController < ApplicationController
         backgroundColor: [
           'rgba(253, 94, 83, 0.6)'
         ],
-        pointBackgroundColor: 
+        pointBackgroundColor:
         'rgba(253, 94, 83, 0.6)',
         pointHoverBorderWidth: 4,
         pointRadius: 3,
