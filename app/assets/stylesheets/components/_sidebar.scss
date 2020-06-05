@@ -34,7 +34,6 @@ h6 {
 }
 
 a:hover {
-    color: $my-yellow !important;
     text-decoration: none;
 }
 
@@ -72,6 +71,9 @@ a:hover {
     display: block;
     padding: 5px 10px;
     color: $my-light-gray2;
+  }
+  a:hover {
+    color: $my-yellow;
   }
 }
 
