@@ -1,6 +1,6 @@
-<div class="graphs-container">
+<div class="graphs-container d-flex justify-content-around">
 
-  <div class="season-balance">
+  <div class="season-balance flex-fill mr-3">
     <p> Total earnings </p>
     <div class="income">
       <p> + $<%= current_user.total_earnings.to_s(:delimited) %></p>
@@ -15,7 +15,7 @@
     </div>
     <hr>
     <p> Season balance </p>
-    <% 
+    <%
     if current_user.total_earnings != 0 && current_user.total_expenses != 0
     balance = (current_user.total_earnings - current_user.total_expenses).abs
     sign = (current_user.total_earnings - current_user.total_expenses) / balance
@@ -25,7 +25,7 @@
 
      %>
     <h7> <%= result %></h7>
-    
+
 </div>
 
 <div class="donut season-balance">
