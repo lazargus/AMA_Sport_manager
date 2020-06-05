@@ -54,7 +54,7 @@ class EarningsController < ApplicationController
       if @earning.tournament
         redirect_to earning_path(@earning)
       else
-        redirect_to dashboard_index_path
+        redirect_to dashboard_index_path, notice: 'Fixed Earning was successfully added.'
       end
     else
       render :new
