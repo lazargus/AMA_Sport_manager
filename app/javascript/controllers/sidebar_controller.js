@@ -5,19 +5,19 @@ export default class extends Controller {
 
   connect() {
     const location = window.location.pathname;
-    if (location === "/earnings/new") {
+    if (location.includes("/earnings/new")) {
       this.keepEarningOpen()
     }
-    else if (location === "/expenses/new") {
+    else if (location.includes("/expenses/new")) {
       this.keepExpenseOpen()
     }
-    else if (location === "/dashboard") {
+    else if (location.includes("/dashboard")) {
       this.keepDashboardOpen()
     }
-    else if (location === "/earnings") {
+    else if (location.includes("/earnings")) {
       this.keepEarningsOpen()
     }
-    else if (location === "/tournaments") {
+    else if (location.includes("/tournaments")) {
       this.keepTournamentsOpen()
     }
   }
