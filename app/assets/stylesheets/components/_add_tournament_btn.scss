@@ -25,6 +25,9 @@
     color: $my-dark-blue;
     border: 1px solid #FFD400;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 .tournament-btn-secondary {
