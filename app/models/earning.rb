@@ -21,4 +21,10 @@ class Earning < ApplicationRecord
     real_amount > 0
   end
 
+  def forecast_ranking
+    "" if forecast_amount.nil? || tournament.data.nil?
+    rank = JSON.parse(tournament.data).select {|k, v| v["prize_money"] == forecast_amount }
+    rank.keys.first unless rank.blank?
+  end
+
 end

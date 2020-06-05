@@ -75,6 +75,12 @@ a:hover {
   a:hover {
     color: $my-yellow;
   }
+  a:active {
+    color: $my-dark-blue;
+    a.hover {
+      color: $my-dark-blue;
+    }
+  }
 }
 
 i {
