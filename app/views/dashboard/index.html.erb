@@ -16,9 +16,12 @@
     <hr>
     <p> Season balance </p>
     <% 
+    if current_user.total_earnings != 0 && current_user.total_expenses != 0
     balance = (current_user.total_earnings - current_user.total_expenses).abs
     sign = (current_user.total_earnings - current_user.total_expenses) / balance
     result = "#{sign.to_s[0..-2]} $#{balance.to_s(:delimited)}"
+    else result = 0
+    end
 
      %>
     <h7> <%= result %></h7>
