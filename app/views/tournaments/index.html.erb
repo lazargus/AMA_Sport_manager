@@ -1,9 +1,9 @@
 <h1>Add a tournament</h1>
 <div class="filters">
-  <%= link_to 'First Quarter', tournaments_path(:first_trimester), class: "#{'active' if params[:format] == "first_trimester"} filter-btn" %>
-  <%= link_to 'Second Quarter', tournaments_path(:second_trimester), class: "#{'active' if params[:format] == "second_trimester"} filter-btn ml-3"  %>
-  <%= link_to 'Third Quarter', tournaments_path(:third_trimester), class: "#{'active' if params[:format] == "third_trimester"} filter-btn ml-3"  %>
-  <%= link_to 'Fourth Quarter', tournaments_path(:fourth_trimester), class: "#{'active' if params[:format] == "fourth_trimester"} filter-btn ml-3"  %>
+  <%= link_to 'First Quarter', tournaments_path(first_trimester: true), class: "#{'active' if params[:format] == "first_trimester"} filter-btn" %>
+  <%= link_to 'Second Quarter', tournaments_path(second_trimester: true), class: "#{'active' if params[:format] == "second_trimester"} filter-btn ml-3"  %>
+  <%= link_to 'Third Quarter', tournaments_path(third_trimester: true), class: "#{'active' if params[:format] == "third_trimester"} filter-btn ml-3"  %>
+  <%= link_to 'Fourth Quarter', tournaments_path(fourth_trimester: true), class: "#{'active' if params[:format] == "fourth_trimester"} filter-btn ml-3"  %>
 </div>
 <div class="card-container mt-3">
      <% @tournaments.each do |tournament| %>

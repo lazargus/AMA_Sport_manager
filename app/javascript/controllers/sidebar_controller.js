@@ -1,18 +1,40 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "budget", "budgetCollapse", "earning" ]
+  static targets = [ "earnings", "tournaments", "earning", "expense", "dashboard" ]
 
   connect() {
     const location = window.location.pathname;
     if (location === "/earnings/new") {
       this.keepEarningOpen()
     }
+    else if (location === "/expenses/new") {
+      this.keepExpenseOpen()
+    }
+    else if (location === "/dashboard") {
+      this.keepDashboardOpen()
+    }
+    else if (location === "/earnings") {
+      this.keepEarningsOpen()
+    }
+    else if (location === "/tournaments") {
+      this.keepTournamentsOpen()
+    }
   }
   keepEarningOpen() {
-    this.budgetTarget.setAttribute("aria-expanded", "true");
-    console.log(this.budgetCollapseTarget);
-    this.budgetCollapseTarget.classList.add("show");
     this.earningTarget.classList.add("active");
   }
+  keepExpenseOpen() {
+    this.expenseTarget.classList.add("active");
+  }
+  keepDashboardOpen() {
+    this.dashboardTarget.classList.add("active");
+  }
+  keepEarningsOpen() {
+    this.earningsTarget.classList.add("active");
+  }
+  keepTournamentsOpen() {
+    this.tournamentsTarget.classList.add("active");
+  }
+
 }
