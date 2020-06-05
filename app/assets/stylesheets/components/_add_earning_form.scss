@@ -21,7 +21,7 @@
   .btn {
   width: 75%;
   background: #FFD400;
-  color: #fff;
+  color: $my-dark-blue;
   display: inline-block;
   font: 400 14px Poppins,sans-serif;
   border: 1px solid transparent;
@@ -42,7 +42,7 @@
   transition: all .4s ease-in-out;
   &:hover {
     background-color: #fff;
-    color: #FFD400;
+    color: $my-dark-blue;
     border: 1px solid #FFD400;
     }
   }

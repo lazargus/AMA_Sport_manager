@@ -1,7 +1,7 @@
 .add-tournament-btn {
   margin-left: auto;
   background: #FFD400;
-  color: white;
+  color: $my-dark-blue;
   display: inline-block;
   font: 400 14px Poppins,sans-serif;
   border: 1px solid transparent;
@@ -21,8 +21,8 @@
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
   &:hover {
-    background-color: #fff;
-    color: #FFD400;
+    background-color: transparent;
+    color: $my-dark-blue;
     border: 1px solid #FFD400;
   }
 }

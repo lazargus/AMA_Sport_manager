@@ -1,140 +1,69 @@
-// Specific CSS for your home-page
-.container-image-home {
-  color: $my-light-gray;
-}
 
-#pages-home .container {
-  display: contents;
-}
-
-.bouton {
-  margin-top: 40px;
-}
-
-#pages-home .content-wrapper {
-  width: 100vw;
+#pages-home {
+  background-color: $my-dark-blue;
   height: 100vh;
-  padding: 0;
-  background-color: $my-blue;
+  overflow: hidden;
+  .content-wrapper {
+    padding: 20px 0 0 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
-.logo-ama {
-  vertical-align: middle;
-  border-style: none;
-  height: 80px;
-  opacity: 0.95;
+
+.taglines {
+  // padding: 30px 0 40px 100px;
+}
+.catch-phrase {
+  border-radius: 10px;
+  background-color: #F7FBFF;
+  width: 63vw;
+  height: 38vh;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  .add-tournament-btn {
+    background-color: #707070;
+    color: white;
+    display: block;
+    width: 15vw;
+    margin: 0;
+    font-size: 25px;
+    padding: 20px auto !important;
+    text-transform: capitalize;
+    &:hover {
+      border: solid 1px #707070;
+      background-color: transparent;
+      color: #707070;
+    }
+  }
 }
 
-.container-image {
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  padding-top: 15px;
+.functionalities {
+  border-radius: 10px;
+  background-color: #FFD400;
+  width: 45vw;
+  height: 44vh;
+  margin-top: -50px;
 }
 
-.banner-home {
-  background-size: cover;
-  background-position: center;
-  padding: 75px 230px;
+
+.blocks {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  flex-direction: column;
+  align-items: baseline;
+  margin-top: 45px;
+  position: relative;
 }
 
-.banner-home h1 {
-  margin-bottom: 20px;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+.roger {
+  position: absolute;
+  bottom: 0px;
+  left: 288px;
 }
-
-.banner-home p {
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-// .form-post-home {
-//   background: #F7FBFF;
-//   padding: 11px 27px 3px;
-//   border-radius: 6px;
-//   width: 210px;
-//   margin-top: 50px;
-//   margin-left: 119px;
-//   opacity: 0.88;
-//   cursor: pointer;
-//   transition: all 0.4s ease-out;
-//   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.24);
-//   overflow: hidden;
-//   color: white;
-
-//   h1 {
-//     text-align: center;
-//     font-size: 20px;
-//     color: #033860;
-//     margin-bottom: 15px;
-//     margin-top: 10px;
-//   }
-
-//   p {
-//     text-align: center;
-//     font-size: 12px;
-//     color: #033860;
-//   }
-// }
-
-// .form-post-home:hover {
-//   box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.34);
-//   transform:scale(1.05);
-// }
-
-// .nom-de-ta-classe {
-//   height: 60px;
-//   padding-top: 5px;
-//   padding-bottom: 5px;
-// }
-
-// .d-flex {
-//   display: flex !important;
-//   justify-content: space-evenly;
-// }
-
-// .d-flex #bottom-card {
-//   display: flex !important;
-//   justify-content: center;
-// }
-
-// .form-post-home-bottom {
-//   background: #F7FBFF;
-//   padding: 8px 25px 0px;
-//   border-radius: 6px;
-//   width: 210px;
-//   margin-top: 56px;
-//   margin-left: 91px;
-//   opacity: 0.88;
-//   cursor: pointer;
-//   transition: all 0.4s ease-out;
-//   box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.24);
-//   overflow: hidden;
-//   color: white;
-
-//   h1 {
-//     text-align: center;
-//     font-size: 20px;
-//     color: #033860;
-//     margin-bottom: 15px;
-//     margin-top: 10px;
-//   }
-
-//   p {
-//     text-align: center;
-//     font-size: 12px;
-//     color: #033860;
-//   }
-// }
-
-// .form-post-home-bottom:hover {
-//   box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.34);
-//   transform:scale(1.05);
-// }
-
-
