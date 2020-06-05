@@ -19,12 +19,11 @@ class EarningsController < ApplicationController
   end
 
   def my_earnings
-    respond_to do |format|
-      format.json do
-        render json: current_user.earnings.as_json(include: :tournament)
-        # render json: current_user.earnings.map{ |earning| earning.tournament}.as_json
+      respond_to do |format|
+        format.json do
+          render json: current_user.earnings.select{|earning| earning.tournament}.as_json(include: :tournament)
+        end
       end
-    end
   end
 
   def show
