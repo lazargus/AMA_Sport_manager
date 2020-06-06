@@ -14,6 +14,11 @@
       <%= link_to 'To be validated', earnings_path(only_past_earnings: true), class: "#{'active' if params[:only_past_earnings] == 'true'} filter-btn ml-3"  %>
       <%= link_to 'Finished', earnings_path, class: "#{'active' if !params[:only_past_earnings]} filter-btn ml-3" %>
       <%= link_to 'Add Tournaments', tournaments_path, class:'add-tournament-btn mt-0', data: { turbolinks: false }  %>
+      <% if current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).where('earnings.real_amount <=?', 0).count > 0 %>
+        <div class="notif">
+          <%= current_user.earnings.joins(:tournament).where('tournaments.end_date <?', Date.today).where('earnings.real_amount <=?', 0).count %>
+        </div>
+      <% end %>
     </div>
 
     <% @earnings.each do |earning| %>
