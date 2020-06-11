@@ -67,3 +67,54 @@
   bottom: 0px;
   left: 288px;
 }
+
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+  .roger {
+    position: absolute;
+    bottom: -90px;
+    left: 112px;
+  }
+  .functionalities {
+    height: 38vh;
+  }
+  .catch-phrase{
+    width: 74vw;
+  }
+  .catch-phrase .add-tournament-btn {
+    width: 30vw;
+  }
+}
+
+
+@media (max-width: 576px) {
+ .roger {
+  display: none;
+ }
+ h1 {
+    font-size: 1.2rem;
+ }
+ h3 {
+    font-size: 1.2rem;
+ }
+ .functionalities {
+    width: 85vw;
+    height: 36vh;
+    margin-top: -25px;
+    margin-bottom: 90px;
+  }
+
+  .catch-phrase {
+    width: 93vw;
+  }
+
+  .catch-phrase .add-tournament-btn {
+    width: 70vw;
+    margin-bottom: 30px;
+  }
+}
