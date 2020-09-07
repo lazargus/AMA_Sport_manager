@@ -38,6 +38,7 @@ gem 'geocoder'
 gem 'ferrum'
 gem 'oauth2'
 gem 'jquery-rails'
+gem 'stripe', '~> 1.43'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
