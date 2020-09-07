@@ -103,14 +103,24 @@
     font-size: 1.2rem;
  }
  .functionalities {
-    width: 85vw;
-    height: 36vh;
-    margin-top: -25px;
-    margin-bottom: 90px;
+    width: 100vw;
+    height: 25vh;
+    margin-top: -10px;
+    margin-bottom: 25vh;
+
+    .functionnality {
+      margin-top: 18px !important;
+    }
   }
 
   .catch-phrase {
-    width: 93vw;
+    width: 100vw;
+    height: 25vh;
+    margin-bottom: 40px;
+
+    .taglines {
+      margin-top: 3vh;
+    }
   }
 
   .catch-phrase .add-tournament-btn {
@@ -118,3 +128,18 @@
     margin-bottom: 30px;
   }
 }
+
+// @media (max-width: 1200px) {
+
+// }
+// @media (max-width: 992px) {
+
+// }
+// @media (max-width: 768px) {
+
+// }
+
+
+// @media (max-width: 576px) {
+// }
+

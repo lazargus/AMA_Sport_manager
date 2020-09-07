@@ -37,3 +37,35 @@ body {
   height: 100%;
   padding-top: 66px;
 }
+
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+
+
+@media (max-width: 576px) {
+  .content-wrapper {
+   padding: 0 !important;
+   width: 100vw;
+  }
+
+  .earning-container {
+    display: block;
+  }
+
+  .container-image {
+    padding-top: 0px;
+    height: 100vh;
+
+    .form-post-mobile {
+      height: 100vh;
+      border-radius: 0%;
+    }
+  }
+}
