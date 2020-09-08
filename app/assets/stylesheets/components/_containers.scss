@@ -45,7 +45,30 @@ body {
 
 }
 @media (max-width: 768px) {
+  .content-wrapper {
+   padding: 0 !important;
+   width: 100vw;
+  }
 
+  .earning-container {
+    display: block;
+  }
+
+  .container-image {
+    .form-post-mobile {
+      margin: 37px 0px 0px 0px;
+
+      .btn {
+        margin-left: 30px;
+        padding-left: 14%;
+      }
+    }
+  }
+
+  .fa-history-mobile {
+    padding: 18px 10% 15px 10%;
+    display: inline-block;
+  }
 }
 
 
@@ -66,6 +89,12 @@ body {
     .form-post-mobile {
       height: 100vh;
       border-radius: 0%;
+      margin-top: 0;
+
+      .btn {
+        padding-left: 40px;
+        margin-left: 40px;
+      }
     }
   }
 
