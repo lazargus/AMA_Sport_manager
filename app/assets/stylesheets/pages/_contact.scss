@@ -12,3 +12,27 @@
 .contact {
   margin-top: 33vh;
 }
+
+// @media (max-width: 1200px) {
+
+// }
+// @media (max-width: 992px) {
+
+// }
+// @media (max-width: 768px) {
+
+// }
+
+
+@media (max-width: 576px) {
+  .photos {
+    .avatar {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .contact {
+    margin-top: 25vh;
+  }
+}

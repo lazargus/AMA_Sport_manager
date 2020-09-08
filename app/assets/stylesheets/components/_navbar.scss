@@ -16,6 +16,8 @@
 @media (max-width: 576px) {
   .mobile-navbar {
     display: flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
     width: 100%;
     background-color: $my-dark-blue;

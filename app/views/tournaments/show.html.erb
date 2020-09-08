@@ -1,7 +1,7 @@
 
 <div class="container">
   <%= link_to tournaments_path, method: :get  do %>
-    <i class="fas fa-history"></i> Back to tournaments
+    <i class="fas fa-history fa-history-mobile"></i> Back to tournaments
   <% end %>
   <div class="banner mt-1 mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
     <div class="container-banner d-flex flex-column justify-content-start text-left pt-0">
