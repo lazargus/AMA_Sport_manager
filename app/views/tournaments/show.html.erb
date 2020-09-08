@@ -22,7 +22,7 @@
       <div class="row px-3 justify-content-center">
         <% data = JSON.parse(@tournament.data) %>
         <% data.keys.each do |element| %>
-          <div class="col-12 col-md-2 border prize-money-choice text-center">
+          <div class="col-12 col-sm-12 col-md-4 col-xl-2 border prize-money-choice text-center">
             <p><em><%= element %></em></p>
             <hr class="mt-0 mb-0">
             <h3>$<%= number_with_delimiter(data[element].values[1], :delimiter => ',') %></h3>
