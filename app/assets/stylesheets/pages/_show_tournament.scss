@@ -58,3 +58,30 @@ em {
   bottom: -2px;
   right: 6px;
 }
+
+
+// @media (max-width: 1200px) {
+
+// }
+// @media (max-width: 992px) {
+
+// }
+// @media (max-width: 768px) {
+
+// }
+
+
+@media (max-width: 576px) {
+  .tournament-show-infos {
+    flex-direction: column !important;
+  }
+
+  .reponsive-tournament-show-item {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  .reponsive-container-tournament-show {
+    padding: 0 !important;
+  }
+}

@@ -56,3 +56,25 @@
   background: none;
   border-color: gray;
 }
+
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+
+
+@media (max-width: 576px) {
+  .form-post {
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    width: 100vw;
+    padding: 10%;
+  }
+}

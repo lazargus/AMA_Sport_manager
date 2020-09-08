@@ -1,15 +1,45 @@
-.navbar-lewagon {
-  justify-content: flex-end;
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  right: 0;
+.mobile-navbar {
+  display: none;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+// @media (max-width: 1200px) {
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+// }
+// @media (max-width: 992px) {
+
+// }
+// @media (max-width: 768px) {
+
+// }
+
+
+@media (max-width: 576px) {
+  .mobile-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 100%;
+    background-color: $my-dark-blue;
+
+    img{
+      height: 44px;
+    }
+
+    .navbar-menu-btn {
+      background-color: #033860;
+      border: none;
+
+      &:focus {
+        background-color: #033860 !important;
+        outline-style: none !important;
+        box-shadow: none !important;
+        border-color: transparent !important;
+      }
+
+      &:active {
+        background-color: #033860 !important;
+      }
+    }
+  }
 }
