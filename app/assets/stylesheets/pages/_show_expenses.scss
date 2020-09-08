@@ -35,10 +35,10 @@ hr {
   margin: 0;
 }
 
-#expense-card {
-  position: absolute;
-  bottom: 25px;
-}
+// #expense-card {
+//   position: absolute;
+//   bottom: 25px;
+// }
 
 .title-card {
   display: flex;
@@ -47,5 +47,100 @@ hr {
   i {
     font-size: 20px;
     color: $my-dark-blue;
+  }
+}
+
+
+// @media (max-width: 1200px) {
+
+// }
+
+@media (max-width: 992px) {
+  .validate-earning-responsive {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tournament-name-mobile {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .hotel-plane-responsive {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+
+    .suggestions {
+      width: 90vw;
+    }
+
+    .card-expense {
+      display: flex;
+      flex-direction: column;
+      width: 90vw !important;
+      margin-bottom: 30px !important;
+      min-height: 150px;
+      height:auto !important;
+      height: 150px;
+      padding-bottom: 6% !important;
+      margin-top: 20px;
+      padding-bottom: 20px !important;
+    }
+
+    .flight-card {
+      margin-top: 20px !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .tournament-name-mobile {
+    text-align: center;
+    padding: 0 10px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .hotel-plane-responsive {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+
+    .suggestions {
+      width: 90vw;
+    }
+
+    .card-expense {
+      display: flex;
+      flex-direction: column;
+      width: 90vw !important;
+      margin-bottom: 30px !important;
+      min-height: 150px;
+      height:auto !important;
+      height: 150px;
+      padding-bottom: 6% !important;
+      margin-top: 20px;
+      padding-bottom: 20px !important;
+    }
+
+    .flight-card {
+      margin-top: 20px !important;
+    }
+  }
+
+  #expense-card {
+    position: initial;
+  }
+
+  .forecasted-mobile {
+    width: 100%;
+    margin-top: -40px !important;
+  }
+
+  .tournament-name-mobile {
+    text-align: center;
+    padding: 0 10px;
   }
 }

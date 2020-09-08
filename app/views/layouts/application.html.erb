@@ -25,7 +25,7 @@
   <%= csp_meta_tag %>
   <%= favicon_link_tag 'favicon.ico'%>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
@@ -37,9 +37,12 @@
 
   <div class="container-fluid">
     <% unless current_page?(root_path) %>
-    <%= render 'shared/sidebar' %>
+      <%= render 'shared/sidebar' %>
     <% end %>
     <div class="content-wrapper">
+      <% unless current_page?(root_path) %>
+        <%= render 'shared/navbar' %>
+      <% end %>
       <%= yield %>
       <script> </script>
     </div>

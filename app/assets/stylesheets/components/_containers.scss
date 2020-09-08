@@ -37,3 +37,90 @@ body {
   height: 100%;
   padding-top: 66px;
 }
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+  .content-wrapper {
+   padding: 0 !important;
+   width: 100vw;
+  }
+
+  .container-image {
+    .form-post-mobile {
+      margin: 37px 0px 0px 0px;
+
+      .btn {
+        margin-left: 30px;
+        padding-left: 14%;
+      }
+    }
+  }
+
+  .fa-history-mobile {
+    padding: 20px 1% 15px 2%;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+   padding: 0 !important;
+   width: 100vw;
+  }
+
+  .earning-container {
+    display: block;
+  }
+
+  .container-image {
+    .form-post-mobile {
+      margin: 37px 0px 0px 0px;
+
+      .btn {
+        margin-left: 30px;
+        padding-left: 14%;
+      }
+    }
+  }
+
+  .fa-history-mobile {
+    padding: 20px 1% 15px 2%;
+    display: inline-block;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .content-wrapper {
+   padding: 0 !important;
+   width: 100vw;
+  }
+
+  .earning-container {
+    display: block;
+  }
+
+  .container-image {
+    padding-top: 0px;
+    height: 100vh;
+
+    .form-post-mobile {
+      height: 100vh;
+      border-radius: 0%;
+      margin-top: 0;
+
+      .btn {
+        padding-left: 40px;
+        margin-left: 40px;
+      }
+    }
+  }
+
+  .fa-history-mobile {
+    padding: 18px 0% 15px 20%;
+    display: inline-block;
+  }
+}

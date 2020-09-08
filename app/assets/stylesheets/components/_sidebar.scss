@@ -99,3 +99,26 @@ i.active {
   }
 }
 
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+  #sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    display: none;
+  }
+}
+
+
+@media (max-width: 576px) {
+  #sidebar {
+    display: none;
+  }
+}
+

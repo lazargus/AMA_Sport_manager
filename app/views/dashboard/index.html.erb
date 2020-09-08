@@ -1,40 +1,40 @@
 <div class="graphs-container d-flex justify-content-around">
+  <div class="row d-flex justify-content-center w-100">
+    <div class="season-balance graph-responsive flex-fill mr-3 col-12 col-sm-12 col-md-12 col-xl-5">
+      <p> Total earnings </p>
+      <div class="income">
+        <p> + $<%= current_user.total_earnings.to_s(:delimited) %></p>
+      </div>
 
-  <div class="season-balance flex-fill mr-3">
-    <p> Total earnings </p>
-    <div class="income">
-      <p> + $<%= current_user.total_earnings.to_s(:delimited) %></p>
+      <hr>
+
+      <p> Total expenses </p>
+      <div class="expense">
+        <p>  - $<%= current_user.total_expenses.to_s(:delimited) %>
+        </p>
+      </div>
+      <hr>
+      <p> Season balance </p>
+      <%
+      if current_user.total_earnings != 0 && current_user.total_expenses != 0
+      balance = (current_user.total_earnings - current_user.total_expenses).abs
+      sign = (current_user.total_earnings - current_user.total_expenses) / balance
+      result = "#{sign.to_s[0..-2]} $#{balance.to_s(:delimited)}"
+      else result = 0
+      end
+
+       %>
+      <h6> <%= result %></h6>
     </div>
 
-    <hr>
-
-    <p> Total expenses </p>
-    <div class="expense">
-      <p>  - $<%= current_user.total_expenses.to_s(:delimited) %>
-      </p>
+    <div class="donut season-balance col-12 col-sm-12 col-md-12 col-xl-7">
+      <div class="text-2xl text-end">
+        <h5>Repartition of the expenses ($)</h5>
+      </div>
+      <canvas id="chartExpenses" width="600" height="300">
+      </canvas>
     </div>
-    <hr>
-    <p> Season balance </p>
-    <%
-    if current_user.total_earnings != 0 && current_user.total_expenses != 0
-    balance = (current_user.total_earnings - current_user.total_expenses).abs
-    sign = (current_user.total_earnings - current_user.total_expenses) / balance
-    result = "#{sign.to_s[0..-2]} $#{balance.to_s(:delimited)}"
-    else result = 0
-    end
-
-     %>
-    <h7> <%= result %></h7>
-
-</div>
-
-<div class="donut season-balance">
-  <div class="text-2xl text-end">
-    <h5>Repartition of the expenses ($)</h5>
   </div>
-  <canvas id="chartExpenses" width="600" height="300">
-  </canvas>
-</div>
 </div>
 
 <div class="container-graph">

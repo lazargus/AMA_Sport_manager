@@ -1,28 +1,28 @@
 
 <div class="container">
   <%= link_to tournaments_path, method: :get  do %>
-    <i class="fas fa-history"></i> Back to tournaments
+    <i class="fas fa-history fa-history-mobile"></i> Back to tournaments
   <% end %>
   <div class="banner mt-1 mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path @tournament.photo.key%>');" >
     <div class="container-banner d-flex flex-column justify-content-start text-left pt-0">
-      <div class="my-3">
-        <h1><%= @tournament.name %></h1>
-      </div>
-      <div class="ml-4">
+        <h1 class="tournament-name"><%= @tournament.name %></h1>
+      <div class="tournament-infos ml-4">
         <h5 class="mb-3"><i class="fas fa-money-bill-wave"></i> <%= @tournament.total_prize_money %></h5>
         <h5 class="mb-3"><i class="fas fa-globe-europe"></i> <%= @tournament.address %></h5>
         <h5><i class="fas fa-calendar-alt"></i> <%= @tournament.start_date.strftime("%A %B %d") %> to <%= @tournament.end_date.strftime("%A %B %d") %></h5>
       </div>
-        <%= link_to "Official website", @tournament.official_link, target: "_blank", class:"tournament-btn-secondary" %>
+        <%= link_to "Official website", @tournament.official_link, target: "_blank", class: "tournament-btn-secondary official-website" %>
     </div>
   </div>
+
+  <%= link_to "Official website", @tournament.official_link, target: "_blank", class: "tournament-btn-secondary responsive-official-website" %>
 
   <div class="container">
     <div class="show-tournament-card">
       <div class="row px-3 justify-content-center">
         <% data = JSON.parse(@tournament.data) %>
         <% data.keys.each do |element| %>
-          <div class="col-2 border prize-money-choice text-center">
+          <div class="col-12 col-sm-12 col-md-4 col-xl-2 border prize-money-choice text-center">
             <p><em><%= element %></em></p>
             <hr class="mt-0 mb-0">
             <h3>$<%= number_with_delimiter(data[element].values[1], :delimiter => ',') %></h3>
@@ -41,9 +41,9 @@
         <% end %>
       </div>
     </div>
-    <div class="container mt-3">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="col-5">
+    <div class="container reponsive-container-tournament-show mt-3">
+      <div class="d-flex justify-content-between align-items-center tournament-show-infos">
+        <div class="col-sm-12 col-md-5 reponsive-tournament-show-item">
           <div class="show-tournament-card">
               <div class="mb-4">
                 <%= cl_image_tag @tournament.logo.key, alt: "alttext", class: "mx-auto d-block"%>
@@ -54,7 +54,7 @@
               <h5><em>Tournament category:</em> <%= @tournament.category %></h5>
           </div>
         </div>
-        <div class="container col-7">
+        <div class="container col-sm-12 col-md-7 reponsive-tournament-show-item">
           <div class="show-tournament-card">
             <h5><em>Description</em></h5>
             <hr>

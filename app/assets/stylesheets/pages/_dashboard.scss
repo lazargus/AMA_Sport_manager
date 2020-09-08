@@ -19,6 +19,7 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   padding: 10px 20px 15px 20px;
   width: 350px;
+
   h5 {
     text-align: end;
     font-size: 16px;
@@ -42,7 +43,8 @@
 .graphs-container {
   display: flex;
   justify-content: space-between;
-  h7 {
+
+  h6 {
     text-align: center !important;
     color: $my-dark-blue;
     font-size: 20px;
@@ -52,7 +54,7 @@
 
 .donut.season-balance {
   position: relative;
-  height: 45vh;
+  max-height: 45vh;
   width: 50vw;
 }
 
@@ -70,3 +72,89 @@
   #chartEarnings {
     cursor: pointer;
   }
+
+
+  // @media (max-width: 1200px) {
+
+  // }
+
+  @media (max-width: 992px) {
+    .graphs-container {
+      padding: 30px;
+    }
+
+    .season-balance {
+      margin-right: 0 !important;
+      margin-bottom: 30px
+    }
+
+    .donut {
+      margin-bottom: 15px;
+    }
+
+    .container-graph {
+      margin: 0 30px;
+      margin-bottom: 34px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .graphs-container {
+      padding: 30px;
+    }
+
+    .season-balance {
+      margin-right: 0 !important;
+      margin-bottom: 30px
+    }
+
+    .donut {
+      margin-bottom: 15px;
+    }
+
+    .container-graph {
+      margin: 0 30px;
+      margin-bottom: 34px;
+    }
+  }
+
+
+@media (max-width: 576px) {
+  .graphs-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+
+    .row {
+      flex-direction: column !important;
+      justify-content: center !important;
+    }
+
+  }
+    .season-balance {
+      padding: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .graph-responsive {
+      width: 90vw !important;
+      flex: none !important;
+      margin-right: 0 !important;
+      margin-top: 30px;
+      padding: 10px !important;
+      text-align: center;
+    }
+
+    .donut {
+      width: 90vw !important;
+      margin-top: 30px;
+    }
+
+    .container-graph {
+      margin: 30px 15px 0px 15px;
+    }
+
+    #chartExpenses {
+      height: 280px;
+    }
+}

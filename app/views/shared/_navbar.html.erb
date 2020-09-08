@@ -1,0 +1,49 @@
+<div class="mobile-navbar">
+  <div class="dropdown">
+    <button class="navbar-menu-btn btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      MENU
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <h6 class="dropdown-header"><i class="far fa-calendar-alt mr"></i> Tournaments</h6>
+      <%= link_to earnings_path(only_past_earnings: false), data: { turbolinks: false, target: "sidebar.earnings" }, class: "dropdown-item" do  %>
+          My tournaments
+      <% end %>
+      <%= link_to tournaments_path, data: { turbolinks: false, target: "sidebar.tournaments" }, class: "dropdown-item" do  %>
+          Add a tournament
+      <% end %>
+      <div class="dropdown-divider"></div>
+      <h6 class="dropdown-header"><i class="fas fa-money-bill-wave mr-1"></i>My budget</h6>
+      <%= link_to dashboard_index_path, data: { turbolinks: false, target: "sidebar.dashboard" }, class: "dropdown-item" do  %>
+          Dashboard
+      <% end %>
+      <%= link_to new_earning_path, data: { turbolinks: false, target: "sidebar.earning" }, class: "dropdown-item" do  %>
+          Add a fixed earning
+      <% end %>
+      <%= link_to new_expense_path, data: { turbolinks: false, target: "sidebar.expense" }, class: "dropdown-item" do  %>
+          Add a fixed expense
+      <% end %>
+      <div class="dropdown-divider"></div>
+
+      <%= link_to contacts_path, class: "mt-2 #{'active' if current_page?('#')}" do %>
+        <h6 class="dropdown-header"><i class="far fa-address-book mr-1"></i>Contact</h6>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= link_to edit_user_path(current_user), class: "#{'active' if current_page?('#')}" do %>
+          <h6 class="dropdown-header"><i class="far fa-user"></i> Profile</h6>
+        <% end %>
+        <%= link_to destroy_user_session_path, class: "mt-2", method: :delete do %>
+          <h6 class="dropdown-header"><i class="fas fa-sign-out-alt"></i> Log Out</h6>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path, class: "mt-2" do %>
+         <h6 class="dropdown-header"><i class="fas fa-sign-in-alt"></i> Login</h6>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="logo-mobile">
+    <%= link_to (image_tag "ama-new-blue.png", alt: "logo", width: 160), root_path %>
+  </div>
+</div>
+
