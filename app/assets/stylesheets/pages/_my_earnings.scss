@@ -32,6 +32,7 @@
   margin-top: -22px;
   margin-bottom: 18px;
   padding-left: 5px;
+  position: relative;
 }
 
 .filter-btn {
@@ -67,6 +68,20 @@
   text-align: center;
 }
 
+.notif {
+  position: absolute;
+  top: 16px;
+  left: 279px;
+  background-color: $my-red;
+  color: white;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center
+}
+
 // @media (max-width: 1200px) {
 
 // }
@@ -86,5 +101,3 @@
     margin-top: 5px;
   }
 }
-
-
