@@ -41,9 +41,30 @@ body {
 @media (max-width: 1200px) {
 
 }
-@media (max-width: 992px) {
 
+@media (max-width: 992px) {
+  .content-wrapper {
+   padding: 0 !important;
+   width: 100vw;
+  }
+
+  .container-image {
+    .form-post-mobile {
+      margin: 37px 0px 0px 0px;
+
+      .btn {
+        margin-left: 30px;
+        padding-left: 14%;
+      }
+    }
+  }
+
+  .fa-history-mobile {
+    padding: 20px 1% 15px 2%;
+    display: inline-block;
+  }
 }
+
 @media (max-width: 768px) {
   .content-wrapper {
    padding: 0 !important;
@@ -66,7 +87,7 @@ body {
   }
 
   .fa-history-mobile {
-    padding: 18px 10% 15px 10%;
+    padding: 20px 1% 15px 2%;
     display: inline-block;
   }
 }

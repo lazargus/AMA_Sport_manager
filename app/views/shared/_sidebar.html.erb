@@ -41,7 +41,7 @@
   </div>
   <% if user_signed_in? %>
     <div class="d-flex align-items-center flex-end user-name">
-      <%= link_to user_path(current_user), class: "#{'active' if current_page?('#')}" do %>
+      <%= link_to edit_user_path(current_user), class: "#{'active' if current_page?('#')}" do %>
           <%= image_tag "stephane-robert.jpg", class: "avatar" %><em class="ml-1"><%= current_user.first_name %> <%= current_user.last_name %> </em>
       <% end %>
     </div>

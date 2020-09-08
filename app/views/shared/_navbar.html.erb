@@ -29,6 +29,9 @@
       <% end %>
 
       <% if user_signed_in? %>
+        <%= link_to edit_user_path(current_user), class: "#{'active' if current_page?('#')}" do %>
+          <h6 class="dropdown-header"><i class="far fa-user"></i> Profile</h6>
+        <% end %>
         <%= link_to destroy_user_session_path, class: "mt-2", method: :delete do %>
           <h6 class="dropdown-header"><i class="fas fa-sign-out-alt"></i> Log Out</h6>
         <% end %>
