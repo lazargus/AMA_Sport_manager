@@ -69,22 +69,65 @@
 }
 
 @media (max-width: 1200px) {
+  .roger {
+    display: none;
+  }
 
+  .catch-phrase{
+    .add-tournament-btn {
+      width: 20vw;
+    }
+  }
+
+  .taglines h1 {
+    font-size: 2.2rem;
+  }
 }
+
 @media (max-width: 992px) {
+  .roger {
+    display: none
+  }
 
+  .blocks {
+    display: block;
+  }
+
+  .catch-phrase {
+    width: 85vw;
+    margin: auto;
+    height: 30vh;
+    margin-bottom: 20px;
+
+    .add-tournament-btn {
+      width: 20vw;
+    }
+  }
+
+  .functionalities {
+    margin: auto;
+    margin-bottom: 30% !important;
+    display: flex;
+    flex-direction: column;
+    padding-left: 14%;
+    width: 85vw;
+    margin: auto;
+    height: 30vh;
+    margin-top: 10px;
+  }
+
+  .taglines h1 {
+    font-size: 2rem;
+  }
+
+  .functionnality {
+    margin-left: 0 !important;
+  }
 }
+
 @media (max-width: 768px) {
   .roger {
-    position: absolute;
-    bottom: -90px;
-    left: 112px;
-  }
-  .functionalities {
-    height: 38vh;
-  }
-  .catch-phrase{
-    width: 90vw;
+    display: none
   }
   .catch-phrase .add-tournament-btn {
     width: 30vw;
@@ -124,8 +167,13 @@
   }
 
   .catch-phrase .add-tournament-btn {
-    width: 70vw;
-    margin-bottom: 30px;
+    width: 55vw;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+  }
+
+  .taglines h1 {
+    font-size: 1.2rem !important;
   }
 }
 
@@ -135,6 +183,7 @@
 // @media (max-width: 992px) {
 
 // }
+
 // @media (max-width: 768px) {
 
 // }
