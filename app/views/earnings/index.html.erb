@@ -21,37 +21,41 @@
       <% end %>
     </div>
 
-    <% @earnings.each do |earning| %>
-        <div class="earning-container">
-          <div class="my-tournament-card" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
-            <div class="text">
-              <h1><%= earning.tournament.name %></h1>
-              <h2 class="animate-text"><%= earning.tournament.address %></h2>
-              <h2 class="animate-text"><%= earning.tournament.start_date.strftime("%A %B %d %Y") %></h2>
+    <% if current_user.earnings.empty? %>
+      <h1 class="no-tournaments">You have no tournaments, please add one</h1>
+    <% else %>
+      <% @earnings.each do |earning| %>
+          <div class="earning-container">
+            <div class="my-tournament-card" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('<%= cl_image_path earning.tournament.photo.key%>');" >
+              <div class="text">
+                <h1><%= earning.tournament.name %></h1>
+                <h2 class="animate-text"><%= earning.tournament.address %></h2>
+                <h2 class="animate-text"><%= earning.tournament.start_date.strftime("%A %B %d %Y") %></h2>
+              </div>
+            </div>
+            <div class="earning-status">
+                <div class="d-flex justify-content-end flex-column">
+                  <% if !earning.collected? && earning.tournament.finished? %>
+                    <p class='waiting'><em><%= earning.tournament.name%> finished on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
+                    <%= link_to earning_path(earning, validate: true), class: 'validate-btn', data: { turbolinks: false } do %>
+                      <span> Validate Earnings </span>
+                    <% end %>
+                  <% elsif earning.tournament.finished? %>
+                    <p class='waiting'><em>Your total earnings for <%= earning.tournament.name %> is $<%= number_with_delimiter(earning.real_amount, :delimiter => ',') %></em></p>
+                    <%= link_to earning_path(earning), class: 'validate-btn', data: { turbolinks: false } do %>
+                      <span> Tournament Summary
+                    <% end %>
+                  <% else %>
+                    <p class='waiting'><em><%= earning.tournament.name%> will start on <%= earning.tournament.start_date.strftime("%d/%m/%Y")%></em></p>
+                    <%= link_to earning_path(earning), class: 'validate-btn', data: { turbolinks: false } do %>
+                      <span> Manage Tournament
+                    <% end %>
+                  <% end %>
+                </div>
             </div>
           </div>
-          <div class="earning-status">
-              <div class="d-flex justify-content-end flex-column">
-                <% if !earning.collected? && earning.tournament.finished? %>
-                  <p class='waiting'><em><%= earning.tournament.name%> finished on <%= earning.tournament.end_date.strftime("%d/%m/%Y")%></em></p>
-                  <%= link_to earning_path(earning, validate: true), class: 'validate-btn', data: { turbolinks: false } do %>
-                    <span> Validate Earnings </span>
-                  <% end %>
-                <% elsif earning.tournament.finished? %>
-                  <p class='waiting'><em>Your total earnings for <%= earning.tournament.name %> is $<%= number_with_delimiter(earning.real_amount, :delimiter => ',') %></em></p>
-                  <%= link_to earning_path(earning), class: 'validate-btn', data: { turbolinks: false } do %>
-                    <span> Tournament Summary
-                  <% end %>
-                <% else %>
-                  <p class='waiting'><em><%= earning.tournament.name%> will start on <%= earning.tournament.start_date.strftime("%d/%m/%Y")%></em></p>
-                  <%= link_to earning_path(earning), class: 'validate-btn', data: { turbolinks: false } do %>
-                    <span> Manage Tournament
-                  <% end %>
-                <% end %>
-              </div>
-          </div>
-        </div>
-      <hr class="hr-earning mt-1 mb-3">
+        <hr class="hr-earning mt-1 mb-3">
+      <% end %>
     <% end %>
   </div>
   <div class="tab-pane fade" id="full-calendar" role="tabpanel" aria-labelledby="full-calendar-tab">
