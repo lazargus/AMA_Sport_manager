@@ -11,7 +11,7 @@
     "@ttskch/select2-bootstrap4-theme": "^1.4.0",
     "amadeus": "^5.0.0",
     "bootstrap": "^4.5.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "chartjs-plugin-labels": "^1.1.0",
     "flatpickr": "^4.6.3",
     "jquery": "^3.5.1",
